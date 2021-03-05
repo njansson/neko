@@ -36,6 +36,7 @@ libneko_a_SOURCES = \
 	krylov.f90\
 	cg.f90\
         ksp_bicgstab.f90\
+        ksp_pipecg.f90\
 	quad.f90\
 	hex.f90\
 	htable.f90\
