@@ -1197,7 +1197,7 @@ contains
     if (e .gt. m%nelv) then
        call neko_error('Invalid element index')
     end if
-    if ((m%gdim .eq. 2 .and. sum(curve_type(5:12)) .gt. 0) ) then
+    if ((m%gdim .eq. 2 .and. sum(curve_type(5:8)) .gt. 0) ) then
        call neko_error('Invalid curve element')
     end if
     call m%curve%add_element(e, curve_data, curve_type)
