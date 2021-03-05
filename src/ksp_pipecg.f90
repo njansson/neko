@@ -127,6 +127,7 @@ contains
     call this%M%solve(this%u, this%r, n)
     call Ax%compute(this%w, this%u, coef, x%msh, x%Xh)
     call gs_op(gs_h, this%w, n, GS_OP_ADD)
+    call bc_list_apply(blst, this%w, n)
 
     rtr = glsc4(this%r, coef%Binv,coef%mult, this%r, n)
     rnorm = sqrt(rtr)*norm_fac

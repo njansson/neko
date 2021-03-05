@@ -25,6 +25,7 @@ module parameters
      logical :: loadb        !< Load-balancing
      real(kind=dp) :: flow_rate !< Volume flow speed
      integer :: proj_dim     !< Projection space for pressure solution
+     character(len=20) :: crs_solver  !< Course grid solver (if needed)
 
   end type param_t
 
@@ -70,11 +71,12 @@ contains
     logical :: loadb = .false.
     real(kind=dp) :: flow_rate = 0d0
     integer :: proj_dim = 20
+    character(len=20) :: crs_solver = 'cg'
 
     namelist /NEKO_PARAMETERS/ nsamples, output_bdry, output_part, dt, &
          T_end, rho, mu, Re, uinf, abstol_vel, abstol_prs, ksp_vel, ksp_prs, &
          pc_vel, pc_prs, fluid_inflow, vol_flow_dir, loadb, avflow, flow_rate, &
-         proj_dim
+         proj_dim, crs_solver
 
     read(unit, nml=NEKO_PARAMETERS, iostat=iostat, iomsg=iomsg)
 
@@ -99,6 +101,7 @@ contains
     param%p%loadb = loadb
     param%p%flow_rate = flow_rate
     param%p%proj_dim = proj_dim
+    param%p%crs_solver= crs_solver
 
   end subroutine param_read
 
@@ -111,7 +114,7 @@ contains
     character(len=*), intent(inout) :: iomsg
 
     real(kind=dp) :: dt, T_End, rho, mu, Re, abstol_vel, abstol_prs, flow_rate
-    character(len=20) :: ksp_vel, ksp_prs, pc_vel, pc_prs, fluid_inflow
+    character(len=20) :: ksp_vel, ksp_prs, pc_vel, pc_prs, fluid_inflow, crs_solver
     real(kind=dp), dimension(3) :: uinf
     logical :: output_part, avflow
     logical :: output_bdry, loadb
@@ -119,7 +122,7 @@ contains
     namelist /NEKO_PARAMETERS/ nsamples, output_bdry, output_part, dt, &
          T_end, rho, mu, Re, uinf, abstol_vel, abstol_prs, ksp_vel, ksp_prs, &
          pc_vel, pc_prs, fluid_inflow, vol_flow_dir, avflow, loadb, flow_rate, &
-         proj_dim
+         proj_dim, crs_solver
 
     nsamples = param%p%nsamples
     output_bdry = param%p%output_bdry
@@ -142,6 +145,7 @@ contains
     loadb = param%p%loadb
     flow_rate = param%p%flow_rate
     proj_dim = param%p%proj_dim
+    crs_solver = param%p%crs_solver
     
     write(unit, nml=NEKO_PARAMETERS, iostat=iostat, iomsg=iomsg)
 

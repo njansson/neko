@@ -244,7 +244,7 @@ contains
        call fluid_scheme_solver_factory(this%ksp_vel, this%dm_Xh%size(), &
             params%ksp_vel, params%abstol_vel)
        call fluid_scheme_precon_factory(this%pc_vel, this%ksp_vel, &
-            this%c_Xh, this%dm_Xh, this%gs_Xh, this%bclst_vel, params%pc_vel)
+            this%c_Xh, this%dm_Xh, this%gs_Xh, this%bclst_vel, params%pc_vel, params%crs_solver)
     end if
 
     call neko_log%end_section()
@@ -282,14 +282,14 @@ contains
        call fluid_scheme_solver_factory(this%ksp_vel, this%dm_Xh%size(), &
             params%ksp_vel, params%abstol_vel)
        call fluid_scheme_precon_factory(this%pc_vel, this%ksp_vel, &
-            this%c_Xh, this%dm_Xh, this%gs_Xh, this%bclst_vel, params%pc_vel)
+            this%c_Xh, this%dm_Xh, this%gs_Xh, this%bclst_vel, params%pc_vel, params%crs_solver)
     end if
 
     if (kspp_init) then
        call fluid_scheme_solver_factory(this%ksp_prs, this%dm_Xh%size(), &
             params%ksp_prs, params%abstol_prs)
        call fluid_scheme_precon_factory(this%pc_prs, this%ksp_prs, &
-            this%c_Xh, this%dm_Xh, this%gs_Xh, this%bclst_prs, params%pc_prs)
+            this%c_Xh, this%dm_Xh, this%gs_Xh, this%bclst_prs, params%pc_prs, params%crs_solver)
     end if
 
 
@@ -421,7 +421,7 @@ contains
   end subroutine fluid_scheme_solver_factory
 
   !> Initialize a Krylov preconditioner
-  subroutine fluid_scheme_precon_factory(pc, ksp, coef, dof, gs, bclst, pctype)
+  subroutine fluid_scheme_precon_factory(pc, ksp, coef, dof, gs, bclst, pctype, crs_solver)
     class(pc_t), allocatable, intent(inout), target :: pc
     class(ksp_t), allocatable, intent(inout) :: ksp
     type(coef_t), intent(inout) :: coef
@@ -429,6 +429,7 @@ contains
     type(gs_t), intent(inout) :: gs
     type(bc_list_t), intent(inout) :: bclst
     character(len=20) :: pctype
+    character(len=20) :: crs_solver
     
     if (trim(pctype) .eq. 'jacobi') then
        allocate(jacobi_t::pc)
@@ -442,7 +443,7 @@ contains
     type is(jacobi_t)
        call pcp%init(coef, dof, gs)
     type is(hsmg_t)
-       call pcp%init(dof%msh, dof%Xh, coef, dof, gs, bclst)
+       call pcp%init(dof%msh, dof%Xh, coef, dof, gs, bclst, crs_solver)
     end select
 
     call ksp%set_pc(pc)

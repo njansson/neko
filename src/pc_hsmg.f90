@@ -6,8 +6,12 @@ module hsmg
   use ax_product
   use gather_scatter
   use fast3d
+  use krylov
   use bc
+  use pipecg
   use cg
+  use gmres
+  use bicgstab
   use dirichlet
   use fdm
   use schwarz
@@ -40,8 +44,8 @@ module hsmg
      type(bc_list_t) :: bclst_crs, bclst_mg
      type(schwarz_t) :: schwarz, schwarz_mg, schwarz_crs !< Schwarz decompostions
      type(field_t) :: e, e_mg, e_crs !< Solve fields
-     type(cg_t) :: crs_solver !< Solver for course problem
-     integer :: niter = 10 !< Number of iter of crs sovlve
+     class(ksp_t), allocatable :: crs_solver !< Solver for course problem
+     integer :: niter = 5 !< Number of iter of crs sovlve
      type(jacobi_t) :: pc_crs !< Some basic precon for crs
      type(ax_helm_t) :: ax !< Matrix for crs solve
      real(kind=dp), allocatable :: jh(:,:) !< Interpolator crs -> fine
@@ -63,7 +67,7 @@ module hsmg
   !! @param r vector of length @a n
 contains
   !> @note I do not think we actually use the same grids as they do in the original!
-  subroutine hsmg_init(this, msh, Xh, coef, dof, gs_h, bclst)
+  subroutine hsmg_init(this, msh, Xh, coef, dof, gs_h, bclst, crs_solver)
     class(hsmg_t), intent(inout) :: this
     type(mesh_t), intent(inout), target :: msh
     type(space_t), intent(inout), target :: Xh
@@ -71,6 +75,8 @@ contains
     type(dofmap_t), intent(inout), target :: dof
     type(gs_t), intent(inout), target :: gs_h 
     type(bc_list_t), intent(inout), target :: bclst
+    character(len=20) :: crs_solver
+    real(kind=dp) :: abstol
     integer :: lx, n
     
     call this%free()
@@ -100,7 +106,27 @@ contains
     call coef_init(this%c_crs, this%gs_crs)
     
     call this%pc_crs%init(this%c_crs, this%dm_crs, this%gs_crs)
-    call this%crs_solver%init(this%dm_crs%n_dofs, M= this%pc_crs)
+    if (trim(crs_solver) .eq. 'cg') then
+       allocate(cg_t::this%crs_solver)
+    else if (trim(crs_solver) .eq. 'gmres') then
+       allocate(gmres_t::this%crs_solver)
+    else if (trim(crs_solver) .eq. 'bicgstab') then
+       allocate(bicgstab_t::this%crs_solver)
+    else if (trim(crs_solver) .eq. 'pipecg') then
+       allocate(pipecg_t::this%crs_solver)
+    else
+       call neko_error('Unknown crs grid solver')
+    end if
+    select type(kp => this%crs_solver)
+    type is(cg_t)
+       call kp%init(n)
+    type is(gmres_t)
+       call kp%init(n)
+    type is(bicgstab_t)
+       call kp%init(n)
+    type is(pipecg_t)
+       call kp%init(n)
+    end select
 
     call this%bc_crs%init(this%dm_crs)
     call this%bc_crs%mark_zone(msh%outlet)
@@ -243,7 +269,11 @@ contains
     call this%pc_crs%free()
     call gs_free(this%gs_crs)
     call gs_free(this%gs_mg)
-    call this%crs_solver%free()
+    if (allocated(this%crs_solver)) then 
+       call this%crs_solver%free()
+       deallocate(this%crs_solver)
+    end if
+
     
 
 

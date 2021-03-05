@@ -49,7 +49,7 @@ contains
     call fluid_scheme_solver_factory(this%ksp_prs, this%dm_Yh%size(), &
          param%ksp_prs, param%abstol_prs)
     call fluid_scheme_precon_factory(this%pc_prs, this%ksp_prs, &
-         this%c_Yh, this%dm_Yh, this%gs_Yh, this%bclst_prs, param%pc_prs)
+         this%c_Yh, this%dm_Yh, this%gs_Yh, this%bclst_prs, param%pc_prs, param%crs_solver)
     
     
   end subroutine fluid_plan1_init
