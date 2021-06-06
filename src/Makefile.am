@@ -28,26 +28,26 @@ libneko_a_SOURCES = \
 	bcknd/sx/gs_sx.f90\
 	gs_ops.f90\
 	gather_scatter.f90\
-	entity.f90\
-	point.f90\
-	element.f90\
+	mesh/entity.f90\
+	mesh/point.f90\
+	mesh/element.f90\
 	ax.f90\
 	precon.f90\
 	krylov.f90\
 	cg.f90\
         ksp_bicgstab.f90\
-	quad.f90\
-	hex.f90\
-	tet.f90\
-	tri.f90\
+	mesh/quad.f90\
+	mesh/hex.f90\
+	mesh/tet.f90\
+	mesh/tri.f90\
 	htable.f90\
 	uset.f90\
 	stack.f90\
 	tuple.f90\
-	zone.f90\
-	mesh.f90\
+	mesh/zone.f90\
+	mesh/mesh.f90\
 	mesh_field.f90\
-	tet_mesh.f90\
+	mesh/tet_mesh.f90\
 	field.f90\
 	rea.f90\
 	bcknd/sx/sx_cdtp.f90\
