@@ -58,17 +58,17 @@ libneko_a_SOURCES = \
 	bcknd/cpu/opr_cpu.f90\
 	bcknd/sx/opr_sx.f90\
 	bcknd/xsmm/opr_xsmm.F90\
-	generic_file.f90\
-	map_file.f90\
-	re2_file.f90\
-	rea_file.f90\
-	fld_file.f90\
-	vtk_file.f90\
-	nmsh_file.f90\
-	file.f90\
-	output.f90\
-	fluid_output.f90\
-	sampler.f90\
+	io/generic_file.f90\
+	io/map_file.f90\
+	io/re2_file.f90\
+	io/rea_file.f90\
+	io/fld_file.f90\
+	io/vtk_file.f90\
+	io/nmsh_file.f90\
+	io/file.f90\
+	io/output.f90\
+	io/fluid_output.f90\
+	io/sampler.f90\
 	bc.f90\
 	dirichlet.f90\
 	wall.f90\
