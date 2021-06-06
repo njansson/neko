@@ -8,7 +8,7 @@ libneko_a_SOURCES = \
 	map.f90\
 	log.f90\
 	comm.f90\
-        curve.f90\
+        mesh/curve.f90\
 	mpi_types.f90 \
 	datadist.f90 \
 	distdata.f90 \
@@ -32,10 +32,10 @@ libneko_a_SOURCES = \
 	mesh/point.f90\
 	mesh/element.f90\
 	ax.f90\
-	precon.f90\
-	krylov.f90\
-	cg.f90\
-        ksp_bicgstab.f90\
+	ksp/precon.f90\
+	ksp/krylov.f90\
+	ksp/cg.f90\
+        ksp/bicgstab.f90\
 	mesh/quad.f90\
 	mesh/hex.f90\
 	mesh/tet.f90\
@@ -76,9 +76,9 @@ libneko_a_SOURCES = \
 	usr_inflow.f90\
 	facet_normal.f90\
 	symmetry.f90\
-	gmres.f90\
-	pc_jacobi.f90\
-	pc_identity.f90\
+	ksp/gmres.f90\
+	ksp/pc_jacobi.f90\
+	ksp/pc_identity.f90\
 	bcknd/sx/pc_jacobi_sx.f90\
 	source.f90\
 	abbdf.f90\
@@ -96,7 +96,7 @@ libneko_a_SOURCES = \
 	projection.f90\
 	parmetis.F90\
 	redist.f90\
-	pc_hsmg.f90\
+	ksp/pc_hsmg.f90\
 	fdm.f90\
 	schwarz.f90\
 	neko.f90
