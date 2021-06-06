@@ -15,14 +15,14 @@ libneko_a_SOURCES = \
 	utils.f90\
 	mxm_wrapper.F90\
 	mxm_std.f90\
-	speclib.f90 \
+	sem/speclib.f90 \
 	math.f90\
 	mathops.f90\
 	fast3d.f90\
 	tensor.f90\
-	space.f90\
-	dofmap.f90\
-	coef.f90\
+	sem/space.f90\
+	sem/dofmap.f90\
+	sem/coef.f90\
 	gs_bcknd.f90\
 	bcknd/cpu/gs_cpu.f90\
 	bcknd/sx/gs_sx.f90\
@@ -46,9 +46,9 @@ libneko_a_SOURCES = \
 	tuple.f90\
 	mesh/zone.f90\
 	mesh/mesh.f90\
-	mesh_field.f90\
+	field/mesh_field.f90\
 	mesh/tet_mesh.f90\
-	field.f90\
+	field/field.f90\
 	rea.f90\
 	bcknd/sx/sx_cdtp.f90\
 	bcknd/sx/sx_conv1.f90\
@@ -85,10 +85,10 @@ libneko_a_SOURCES = \
 	neko_config.f90\
 	case.f90\
 	user_intf.f90\
-	fluid_method.f90\
-	fluid_plan4.f90\
-	fluid_plan1.f90\
-	fluid_schemes.f90\
+	solver/fluid_method.f90\
+	solver/fluid_plan4.f90\
+	solver/fluid_plan1.f90\
+	solver/fluid_schemes.f90\
 	simulation.f90\
 	ax_helm.f90\
 	bcknd/sx/ax_helm_sx.f90\
