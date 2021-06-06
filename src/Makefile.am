@@ -24,8 +24,8 @@ libneko_a_SOURCES = \
 	dofmap.f90\
 	coef.f90\
 	gs_bcknd.f90\
-	gs_cpu.f90\
-	gs_sx.f90\
+	bcknd/cpu/gs_cpu.f90\
+	bcknd/sx/gs_sx.f90\
 	gs_ops.f90\
 	gather_scatter.f90\
 	entity.f90\
@@ -50,14 +50,14 @@ libneko_a_SOURCES = \
 	tet_mesh.f90\
 	field.f90\
 	rea.f90\
-	sx_cdtp.f90\
-	sx_conv1.f90\
-	sx_dudxyz.f90\
-	sx_opgrad.f90\
+	bcknd/sx/sx_cdtp.f90\
+	bcknd/sx/sx_conv1.f90\
+	bcknd/sx/sx_dudxyz.f90\
+	bcknd/sx/sx_opgrad.f90\
 	operators.f90\
-	opr_cpu.f90\
-	opr_sx.f90\
-	opr_xsmm.F90\
+	bcknd/cpu/opr_cpu.f90\
+	bcknd/sx/opr_sx.f90\
+	bcknd/xsmm/opr_xsmm.F90\
 	generic_file.f90\
 	map_file.f90\
 	re2_file.f90\
@@ -79,7 +79,7 @@ libneko_a_SOURCES = \
 	gmres.f90\
 	pc_jacobi.f90\
 	pc_identity.f90\
-	pc_jacobi_sx.f90\
+	bcknd/sx/pc_jacobi_sx.f90\
 	source.f90\
 	abbdf.f90\
 	neko_config.f90\
@@ -91,8 +91,8 @@ libneko_a_SOURCES = \
 	fluid_schemes.f90\
 	simulation.f90\
 	ax_helm.f90\
-	ax_helm_sx.f90\
-	ax_helm_xsmm.F90\
+	bcknd/sx/ax_helm_sx.f90\
+	bcknd/xsmm/ax_helm_xsmm.F90\
 	projection.f90\
 	parmetis.F90\
 	redist.f90\

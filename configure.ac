@@ -1,5 +1,5 @@
-AC_INIT([neko],[0.1.2])
-AM_INIT_AUTOMAKE([foreign])
+AC_INIT([neko],[0.2.x])
+AM_INIT_AUTOMAKE([foreign subdir-objects])
 AM_MAINTAINER_MODE
 AC_CONFIG_MACRO_DIR([m4])
 AC_CANONICAL_HOST
