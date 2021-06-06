@@ -120,9 +120,9 @@ AM_CONDITIONAL([ENABLE_PARMETIS], [test "x$found_domain_decomp" = xyes])
 AC_CONFIG_FILES([Makefile\
 		 src/Makefile\
 		 tests/Makefile\
-		 src/comm.f90\
-	 	 src/neko_config.f90\
-		 src/num_types.f90\
+		 src/comm/comm.f90\
+	 	 src/config/neko_config.f90\
+		 src/config/num_types.f90\
 		 makeneko\
 		 neko.pc])
 
