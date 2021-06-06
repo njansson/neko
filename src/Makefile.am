@@ -69,13 +69,13 @@ libneko_a_SOURCES = \
 	io/output.f90\
 	io/fluid_output.f90\
 	io/sampler.f90\
-	bc.f90\
-	dirichlet.f90\
-	wall.f90\
-	inflow.f90\
-	usr_inflow.f90\
-	facet_normal.f90\
-	symmetry.f90\
+	bc/bc.f90\
+	bc/dirichlet.f90\
+	bc/wall.f90\
+	bc/inflow.f90\
+	bc/usr_inflow.f90\
+	bc/facet_normal.f90\
+	bc/symmetry.f90\
 	ksp/gmres.f90\
 	ksp/pc_jacobi.f90\
 	ksp/pc_identity.f90\
