@@ -72,7 +72,7 @@ jobs:
         precision: [sp, dp]
         compiler: [ifort, ifx]
     env:
-     FC: $PP matrix.compiler }}
+     FC: ${{ matrix.compiler }}
      CC: icc
      RP: ${{ matrix.precision }}
     name: Intel Fortran / ${{ matrix.compiler }} / ${{ matrix.precision }}
