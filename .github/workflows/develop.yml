@@ -70,11 +70,12 @@ jobs:
       fail-fast: false
       matrix:
         precision: [sp, dp]
+        compiler: [ifort, ifx]
     env:
-     FC: ifort
+     FC: $PP matrix.compiler }}
      CC: icc
      RP: ${{ matrix.precision }}
-    name: Intel Fortran / ${{ matrix.precision }}
+    name: Intel Fortran / ${{ matrix.compiler }} / ${{ matrix.precision }}
     steps:
       - name: Setup env.
         run: |
@@ -94,7 +95,7 @@ jobs:
       - name: Build
         run: |
           ./regen.sh
-          ./configure FC=${FC} CC=${CC} MPIFC=mpiifort --enable-real=${RP}
+          ./configure FC=${FC} CC=${CC} MPIFC="mpiifort -fc=${FC}" --enable-real=${RP}
           make FCFLAGS="-O2 -stand f08 -warn errors" -j$(nproc)
 
  
