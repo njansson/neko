@@ -152,7 +152,7 @@ jobs:
     steps:
       - name: Setup env.
         run: |
-          sudo apt-get update && sudo apt-get install -y openmpi-bin libopenmpi-dev autoconf automake autotools-dev libopenblas-dev make git m4 python3
+          sudo apt-get install -y openmpi-bin libopenmpi-dev autoconf automake autotools-dev libopenblas-dev make git m4 python3
           printenv >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v2
