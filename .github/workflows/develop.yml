@@ -135,6 +135,7 @@ jobs:
           make -j $(nproc)
   HIP:
     runs-on: ubuntu-20.04
+    container: rocm/dev-ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
@@ -151,7 +152,7 @@ jobs:
     steps:
       - name: Setup env.
         run: |
-          sudo apt-get update && sudo apt-get install -y openmpi-bin libopenmpi-dev autoconf automake autotools-dev libopenblas-dev make git m4 python3 rocm
+          sudo apt-get update && sudo apt-get install -y openmpi-bin libopenmpi-dev autoconf automake autotools-dev libopenblas-dev make git m4 python3
           printenv >> $GITHUB_ENV
       - name: Checkout
         uses: actions/checkout@v2
