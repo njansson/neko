@@ -1,4 +1,4 @@
-! Copyright (c) 2019-2021, The Neko Authors
+! Copyright (c) 2019-2022, The Neko Authors
 ! All rights reserved.
 !
 ! Redistribution and use in source and binary forms, with or without
@@ -126,6 +126,39 @@ contains
     index(4) = index(4) + 1
 
   end function nonlinear_index
+ 
+  !> Find @a key in an array @a data using binary search
+  pure function bsearch(data, key, low, high) result(m)
+    integer, intent(in) :: data(:)
+    integer, intent(in) :: key
+    integer, intent(in), optional :: low
+    integer, intent(in), optional :: high
+    integer :: m, l, h
+
+    if (present(low)) then
+       l = low
+    else
+       l = lbound(data, 1)
+    end if
+    
+    if (present(high)) then
+       h = high
+    else
+       h = size(data)
+    end if
+
+    do while ( l .le. h)
+       m = (l + h) / 2d0
+       if (data(m) .lt. key) then
+          l = m + 1
+       else if (data(m) .gt. key) then
+          if (m .eq. 0) return
+          h = m - 1
+       else
+          return
+       end if
+    end do
+  end function bsearch
 
   subroutine neko_error_plain(error_code)
     integer, optional :: error_code
