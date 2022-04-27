@@ -187,6 +187,10 @@ if ENABLE_PARMETIS
 libneko_a_SOURCES += comm/parmetis_wrapper.c
 endif
 
+if ENABLE_COARRAY
+libneko_a_SOURCES += caf/vec.f90
+endif
+
 if ENABLE_HIP
 libneko_a_SOURCES += \
 	device/hip/check.hip\

@@ -178,7 +178,7 @@ AM_CONDITIONAL([ENABLE_PARMETIS], [test "x$found_domain_decomp" = xyes])
 AM_CONDITIONAL([ENABLE_CUDA], [test "x${have_cuda}" = xyes])
 AM_CONDITIONAL([ENABLE_HIP], [test "x${have_hip}" = xyes])
 AM_CONDITIONAL([ENABLE_OPENCL], [test "x${have_opencl}" = xyes])
-
+AM_CONDITIONAL([ENABLE_COARRAY], [test "x${ax_coarray}" = xyes])
 
 
 AC_CONFIG_FILES([Makefile\
