@@ -37,18 +37,27 @@ module vec
   use tuple
   use stack
   implicit none
-
-  type, private :: vec_data_t
+  private
+  
+  type :: vec_data_t
      real(kind=dp), allocatable :: x(:) !< Local part of global vector
   end type vec_data_t
 
-  type :: vec_t
+  type :: vec_oimg_t
+     type(tuple_i4r8_t), allocatable :: data(:)
+     integer :: top_
+     integer :: size_
+  end type vec_oimg_t
+
+  type, public :: vec_t
      type(vec_data_t), allocatable :: X[:]  !< Coarray of local vectors
      integer :: n                           !< Size of local vector
      integer :: m                           !< Size of global vector
      integer :: range(2)                    !< Ownership range
      integer, allocatable :: glb_range(:)   !< Start offset for each image
-     type(stack_i4_t), private :: neigh_img !< Neigh. images
+     type(vec_oimg_t), allocatable :: oimg(:)[:] !< Off image buffer
+     type(stack_i4_t), private :: neigh_img   !< Neigh. images
+     type(tuple_i4r8_t), private, allocatable :: tmp_buf(:)
      contains
      procedure, pass(this) :: init => vec_init
      procedure, pass(this) :: free => vec_free
@@ -104,6 +113,14 @@ contains
     end do
     this%glb_range(num_images() + 1) = this%m
 
+    allocate(this%oimg(num_images())[*])
+    sync all
+    
+    do i = 1, num_images()
+       allocate(this%oimg(i)%data(32))
+       this%oimg(i)%size_ = 32
+       this%oimg(i)%top_ = 0
+    end do
     sync all
     deallocate(tmp)
     
@@ -128,7 +145,20 @@ contains
        deallocate(this%glb_range)
     end if
 
+    if (allocated(this%oimg)) then
+       do i = 1, num_images()
+          if (allocated(this%oimg(i)%data)) then
+             deallocate(this%oimg(i)%data)
+          end if
+       end do
+       deallocate(this%oimg)
+    end if
+
     call this%neigh_img%free()
+
+    if (allocated(this%tmp_buf)) then
+       deallocate(this%tmp_buf)
+    end if
     
   end subroutine vec_free
 
@@ -143,31 +173,69 @@ contains
 
   subroutine vec_finalize(this)
     class(vec_t), intent(inout) :: this
-    integer :: i, src, osize, dst, nimages
+    type(tuple_i4r8_t), allocatable :: tmp(:)
+    integer :: i, j, src, osize, offset
+
     sync all
     
-    dst = int(this_image(), 4)
-    nimages = int(num_images(), 4)
-
-    if (.not. allocated(this%neigh_img%data)) then
-
+    if (.not. allocated(this%tmp_buf)) then
        call this%neigh_img%init()
-
        do i = 1, num_images()
-          src = mod((dst + i), nimages)
+          src = mod((this_image() + i), num_images()) + 1
 
           if (src .eq. this_image()) then
              cycle
           end if
-          
+
           ! obtain remote size
+          osize = this%oimg(this_image())[src]%top_
 
           if (osize .gt. 0) then
+               
+             if (.not. allocated(this%tmp_buf)) then
+                allocate(this%tmp_buf(osize))
+             else if (osize .gt. size(this%tmp_buf)) then
+                allocate(tmp(osize))
+                tmp(1:size(this%tmp_buf)) = this%tmp_buf
+                call move_alloc(tmp, this%tmp_buf)
+             end if
+
+             ! Only neighbours with non-zero data (assume static pattern)
              call this%neigh_img%push(src)
+
              ! Copy data from remote image
+             this%tmp_buf(1:osize) = this%oimg(this_image())[src]%data(1:osize)
+             do j = 1, osize
+                offset = this%tmp_buf(j)%x - this%range(1)
+                this%X%x(offset) = this%X%x(offset) + this%tmp_buf(j)%y
+             end do
+
           end if
        end do
+    else
+       select type(neighp=>this%neigh_img%data)
+       type is (integer)
+          do i = 1, this%neigh_img%top_
+             src = neighp(i)
+             osize = this%oimg(this_image())[src]%top_
+             if (osize .gt. 0) then
+                this%tmp_buf(1:osize) = &
+                     this%oimg(this_image())[src]%data(1:osize)
+                do j = 1, osize
+                   offset = this%tmp_buf(j)%x - this%range(1)
+                   this%X%x(offset) = this%X%x(offset) + this%tmp_buf(j)%y
+                end do
+             end if
+          end do
+       end select
     end if
+
+    sync all
+
+    ! Reset off-image buffer
+    do i = 0, num_images() - 1
+       this%oimg(i)%top_ = 0
+    end do
     
   end subroutine vec_finalize
 
@@ -184,7 +252,7 @@ contains
        vec_tuple%x = j
        vec_tuple%y = s
        owner = bsearch(this%glb_range, j, 1, num_images())
-       ! Stash tuple in (local) off-image buffer)
+       call vec_oimg_push(this%oimg(owner), vec_tuple)
     end if
   end subroutine vec_set_scalar
 
@@ -203,7 +271,7 @@ contains
           vec_tuple%x = j(i)
           vec_tuple%y = b(i)
           owner = bsearch(this%glb_range, j(i), 1, num_images())
-          ! Stash tuple in (local) off-image buffer)
+          call vec_oimg_push(this%oimg(owner), vec_tuple)
        end if
     end do
     
@@ -213,11 +281,17 @@ contains
     class(vec_t), intent(inout) :: this
     real(kind=rp), intent(in) :: s
     integer, intent(in) :: j
-    integer :: offset
+    integer :: offset, owner
+    type(tuple_i4r8_t) :: vec_tuple
 
     if (j .ge. this%range(1) .and. j .lt. this%range(2)) then
        offset = j - this%range(1) 
        this%X%x(offset) = this%X%x(offset) + s
+    else
+       vec_tuple%x = j
+       vec_tuple%y = s
+       owner = bsearch(this%glb_range, j, 1, num_images())
+       call vec_oimg_push(this%oimg(owner), vec_tuple)
     end if
   end subroutine vec_add_scalar
   
@@ -226,15 +300,39 @@ contains
     integer, intent(in) :: n
     real(kind=rp), intent(in) :: b(n)
     integer, intent(in) :: j(n)
-    integer :: i, offset
-
+    integer :: i, offset, owner
+    type(tuple_i4r8_t) :: vec_tuple
+    
     do i = 1, n
        if (j(i) .ge. this%range(1) .and. j(i) .lt. this%range(2)) then
           offset = j(i) - this%range(1)
           this%X%x(offset) = this%X%x(offset) + b(i)
+       else
+          vec_tuple%x = j(i)
+          vec_tuple%y = b(i)
+          owner = bsearch(this%glb_range, j(i), 1, num_images())
+          call vec_oimg_push(this%oimg(owner), vec_tuple)
        end if
     end do
     
   end subroutine vec_add_block
+
+  subroutine vec_oimg_push(oimg, vec_tuple)
+    type(vec_oimg_t), intent(inout) ::oimg
+    type(tuple_i4r8_t), intent(inout) :: vec_tuple
+    type(tuple_i4r8_t), allocatable :: tmp(:)
+    integer :: i
+
+    if (oimg%top_ .eq. oimg%size_) then
+       oimg%size_ = ishft(oimg%size_, 1)
+       allocate(tmp(oimg%size_))
+       tmp(1:oimg%top_) = oimg%data
+       call move_alloc(tmp, oimg%data)
+    end if
+
+    oimg%top_ = oimg%top_ + 1
+    oimg%data(oimg%top_) = vec_tuple
+    
+  end subroutine vec_oimg_push
   
 end module vec
