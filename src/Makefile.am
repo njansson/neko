@@ -188,7 +188,8 @@ libneko_a_SOURCES += comm/parmetis_wrapper.c
 endif
 
 if ENABLE_COARRAY
-libneko_a_SOURCES += caf/vec.f90
+libneko_a_SOURCES += caf/vec.f90\
+                     caf/mat.f90
 endif
 
 if ENABLE_HIP
