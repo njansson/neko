@@ -56,9 +56,9 @@ module vec
      integer :: range(2)                    !< Ownership range
      integer, allocatable :: glb_range(:)   !< Start offset for each image
      type(vec_oimg_t), allocatable :: oimg(:)[:] !< Off image buffer
-     type(stack_i4_t), private :: neigh_img   !< Neigh. images
+     type(stack_i4_t), private :: neigh_img      !< Neigh. images
      type(tuple_i4r8_t), private, allocatable :: tmp_buf(:)
-     contains
+   contains
      procedure, pass(this) :: init => vec_init
      procedure, pass(this) :: free => vec_free
      procedure, pass(this) :: zero => vec_zero
