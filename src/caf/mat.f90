@@ -45,6 +45,12 @@ module mat
      real(kind=dp), allocatable :: val
   end type mat_csr_t
 
+  type :: mat_oimg_t
+     type(tuple_2i4r8_t), allocatable :: data(:)
+     integer :: top_
+     integer :: size_ 
+  end type mat_oimg_t
+
   type, public :: mat_t
      type(mat_csr_t), allocatable :: D[:] !< Diagonal part 
      type(mat_csr_t), allocatable :: O[:] !< Off-diagonal part
@@ -54,38 +60,46 @@ module mat
      integer :: n_glb                     !< Global number of columns
      integer :: range(2)                  !< Ownership range
      integer, allocatable :: glb_range(:) !< Start offset for each image
+     type(mat_oimg_t), allocatable :: oimg(:)[:] !< Off image buffer
+     type(stack_i4_t), private :: neigh_img      !< Neigh. images
+     type(stack_i4r8t2_t), private, allocatable :: rs(:) !< Row-stacks
+     type(tuple_2i4r8_t), private, allocatable :: tmp_buf(:)
    contains
-     procedure, pass(this) :: init => mat_init
-     procedure, pass(this) :: free => mat_free
+     procedure, pass(A) :: init => mat_init
+     procedure, pass(A) :: free => mat_free
+     procedure, pass(A) :: finalize => mat_finalize
+     procedure, pass(A) :: add_scalar => mat_add_scalar
+     procedure, pass(A) :: add_block => mat_add_block
+     generic :: add => add_scalar, add_block
   end type mat_t
 
 contains
 
   !> Initialise a matrix with @a m local rows and @a n local columns
-  subroutine mat_init(this, m, n)
-    class(mat_t), intent(inout) :: this
+  subroutine mat_init(A, m, n)
+    class(mat_t), intent(inout) :: A
     integer, intent(in) :: m
     integer, intent(in) :: n
     integer, allocatable :: tmp[:]
     integer :: acc, i
     
-    call mat_free(this)
+    call mat_free(A)
 
-    this%m = m
-    this%m_glb = m
-    call co_sum(this%m_glb)
+    A%m = m
+    A%m_glb = m
+    call co_sum(A%m_glb)
 
 
-    this%n = n
-    this%n_glb = n
-    call co_sum(this%n_glb)
+    A%n = n
+    A%n_glb = n
+    call co_sum(A%n_glb)
 
     allocate(tmp[*])
-    allocate(this%D[*])
-    allocate(this%O[*])
+    allocate(A%D[*])
+    allocate(A%O[*])
     sync all
 
-    tmp[this_image()] = this%m
+    tmp[this_image()] = A%m
     sync all
 
     acc = 0
@@ -94,48 +108,84 @@ contains
     end do
     sync all
 
-    this%range(1) = acc - this%m + 1
-    this%range(2) = this%range(1) + this%m
+    A%range(1) = acc - A%m + 1
+    A%range(2) = A%range(1) + A%m
 
-    tmp[this_image()] = this%range(1)
+    tmp[this_image()] = A%range(1)
     sync memory
 
-    allocate(this%glb_range(num_images() + 1))
+    allocate(A%glb_range(num_images() + 1))
 
     do i = 1, num_images()
-       this%glb_range(i) = tmp[i]
+       A%glb_range(i) = tmp[i]
     end do
-    this%glb_range(num_images() + 1) = this%m_glb
+    A%glb_range(num_images() + 1) = A%m_glb
 
+    allocate(A%oimg(num_images())[*])
+    sync all
 
+    do i = 1, num_images()
+       allocate(A%oimg(i)%data(32))
+       A%oimg(i)%size_ = 32
+       A%oimg(i)%top_ = 0
+    end do
+    
     sync all
     deallocate(tmp)
+
+    allocate(A%rs(m))
+
+    do i = 1, m
+       call A%rs(i)%init()
+    end do
     
   end subroutine mat_init
 
-  subroutine mat_free(this)
-    class(mat_t), intent(inout) :: this
-
-    this%m = 0
-    this%n = 0
+  !> Destroy a matrix
+  subroutine mat_free(A)
+    class(mat_t), intent(inout) :: A
+    integer :: i
     
-    this%m_glb = 0
-    this%n_glb = 0
+    A%m = 0
+    A%n = 0
+    
+    A%m_glb = 0
+    A%n_glb = 0
 
-    if (allocated(this%D)) then       
-       call mat_csr_free(this%D)
+    if (allocated(A%D)) then       
+       call mat_csr_free(A%D)
     end if
 
-    if (allocated(this%O)) then
-       call mat_csr_free(this%O)
+    if (allocated(A%O)) then
+       call mat_csr_free(A%O)
     end if
 
-    if (allocated(this%glb_range)) then
-       deallocate(this%glb_range)
+    if (allocated(A%glb_range)) then
+       deallocate(A%glb_range)
+    end if
+
+    if (allocated(A%oimg)) then
+       do i = 1, num_images()
+          if (allocated(A%oimg(i)%data)) then
+             deallocate(A%oimg(i)%data)
+          end if
+       end do
+       deallocate(A%oimg)
+    end if
+
+    call A%neigh_img%free()
+    
+    if (allocated(A%rs)) then
+       deallocate(A%rs)
+    end if
+
+    if (allocated(A%tmp_buf)) then
+       deallocate(A%tmp_buf)
     end if
     
   end subroutine mat_free
 
+  !> Destroy a CSR structure
   subroutine mat_csr_free(csr)
     type(mat_csr_t), intent(inout) :: csr
 
@@ -152,5 +202,177 @@ contains
     end if
     
   end subroutine mat_csr_free
+
+  subroutine mat_finalize(A)
+    class(mat_t), intent(inout) :: A
+    type(tuple_2i4r8_t), allocatable :: tmp(:)
+    integer :: i, j, src, osize
+    
+    sync all
+
+    if (.not. allocated(A%tmp_buf)) then
+       call A%neigh_img%init()
+       do i = 1, num_images()
+          src = mod((this_image() + i), num_images()) + 1
+
+          if (src .eq. this_image()) then
+             cycle
+          end if
+
+          ! obtain remote size
+          osize = A%oimg(this_image())[src]%top_
+
+          if (osize .gt. 0) then
+
+             if (.not. allocated(A%tmp_buf)) then
+                allocate(A%tmp_buf(osize))
+             else if (osize .gt. size(A%tmp_buf)) then
+                allocate(tmp(osize))
+                tmp(1:size(A%tmp_buf)) = A%tmp_buf
+                call move_alloc(tmp, A%tmp_buf)
+             end if
+             
+             ! Only neighbours with non-zero data (assume static pattern)
+             call A%neigh_img%push(src)
+
+             ! Copy data from remote image
+             A%tmp_buf(1:osize) = A%oimg(this_image())[src]%data(1:osize)
+             do j = 1, osize
+                call A%add(A%tmp_buf(j)%x, A%tmp_buf(j)%y, A%tmp_buf(j)%z)
+             end do
+          end if
+       end do
+    else
+       select type(neighp => A%neigh_img%data)
+       type is(integer)
+          do i = 1, A%neigh_img%top_
+             src = neighp(i)
+             osize = A%oimg(this_image())[src]%top_
+             if (osize .gt. 0) then
+                A%tmp_buf(1:osize) = A%oimg(this_image())[src]%data(1:osize)
+                do j = 1, osize
+                   call A%add(A%tmp_buf(j)%x, A%tmp_buf(j)%y, A%tmp_buf(j)%z)
+                end do
+             end if
+          end do
+       end select
+    end if
+
+    sync all
+
+    ! Reset off-image buffer
+    do i = 1, num_images()
+       A%oimg(i)%top_ = 0
+    end do
+    
+  end subroutine mat_finalize
+
+  subroutine mat_zero(A)
+    class(mat_t), intent(inout) :: A
+    
+  end subroutine mat_zero
+
+  subroutine mat_add_scalar(A, r, c, v)
+    class(mat_t), intent(inout) :: A
+    integer, intent(in) :: r
+    integer, intent(in) :: c
+    real(kind=dp) :: v
+    type(tuple_i4r8_t) :: mat_tuple
+    type(tuple_2i4r8_t) :: oimg_mat_tuple
+    integer :: i, lr, owner
+
+    if (r .ge. A%range(1) .and. r .lt. A%range(2)) then
+
+       lr = r - A%range(1) ! Local row
+
+       select type(ep => A%rs(lr)%data)
+       type is (tuple_i4r8_t)
+          do i = 1, A%rs(lr)%top_
+             if (ep(i)%x .eq. c) then
+                ep(i)%y = ep(i)%y + v
+                return
+             end if
+          end do
+       class default
+          call neko_error('Invalid type (mat_add_scalar)')
+       end select
+       
+       mat_tuple%x = c
+       mat_tuple%y = v
+       call A%rs(lr)%push(mat_tuple)
+    else
+       oimg_mat_tuple%x = r
+       oimg_mat_tuple%y = c
+       oimg_mat_tuple%z = v
+       owner = bsearch(A%glb_range, r, 1, num_images())
+       call mat_oimg_push(A%oimg(owner), oimg_mat_tuple)
+    end if
+    
+  end subroutine mat_add_scalar
+
+  subroutine mat_add_block(A, m, r, n, c, b)
+    class(mat_t), intent(inout) :: A
+    integer, intent(in) :: m
+    integer, intent(in) :: r(m)
+    integer, intent(in) :: n
+    integer, intent(in) :: c(n)
+    real(kind=dp), intent(in) :: b(m*n)
+    type(tuple_i4r8_t) :: mat_tuple
+    type(tuple_2i4r8_t) :: oimg_mat_tuple
+    integer :: i, j, k, l, lr, owner
+
+    l = 0
+    do i = 1, m
+       do j = 1, n
+          l = l + 1
+          if (r(i) .ge. A%range(1) .and. r(i) .lt. A%range(2)) then
+
+             lr= r(i) - A%range(1) ! local row
+
+             select type(ep => A%rs(lr)%data)
+             type is (tuple_i4r8_t)
+                do k = 1, A%rs(lr)%top_
+                   if (ep(k)%x .eq. c(j)) then
+                      ep(k)%y = ep(k)%y + b(l)
+                      goto 42
+                   end if
+                end do
+             class default
+                call neko_error('Invalid type (mat_add_block)')
+             end select
+             
+             mat_tuple%x = c(j)
+             mat_tuple%y = b(l)
+             call A%rs(lr)%push(mat_tuple)
+          else
+             oimg_mat_tuple%x = r(i)
+             oimg_mat_tuple%y = c(j)
+             oimg_mat_tuple%z = b(l)
+             owner = bsearch(A%glb_range, r(i), 1, num_images())
+             call mat_oimg_push(A%oimg(owner), oimg_mat_tuple)
+42        end if
+
+       end do
+    end do
+    
+  end subroutine mat_add_block
+
+  subroutine mat_oimg_push(oimg, oimg_mat_tuple)
+    type(mat_oimg_t), intent(inout) :: oimg
+    type(tuple_2i4r8_t), intent(inout) :: oimg_mat_tuple
+    type(tuple_2i4r8_t), allocatable :: tmp(:)
+
+    if (oimg%top_ .eq. oimg%size_) then
+       oimg%size_ = ishft(oimg%size_, 1)
+       allocate(tmp(oimg%size_))
+       tmp(1:oimg%top_) = oimg%data
+       call move_alloc(tmp, oimg%data)
+    end if
+
+    oimg%top_ = oimg%top_ + 1
+    oimg%data(oimg%top_) = oimg_mat_tuple
+    
+  end subroutine mat_oimg_push
+
   
 end module mat
