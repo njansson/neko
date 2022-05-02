@@ -233,7 +233,7 @@ contains
     sync all
 
     ! Reset off-image buffer
-    do i = 0, num_images() - 1
+    do i = 1, num_images()
        this%oimg(i)%top_ = 0
     end do
     
