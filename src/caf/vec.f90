@@ -318,10 +318,9 @@ contains
   end subroutine vec_add_block
 
   subroutine vec_oimg_push(oimg, vec_tuple)
-    type(vec_oimg_t), intent(inout) ::oimg
+    type(vec_oimg_t), intent(inout) :: oimg
     type(tuple_i4r8_t), intent(inout) :: vec_tuple
     type(tuple_i4r8_t), allocatable :: tmp(:)
-    integer :: i
 
     if (oimg%top_ .eq. oimg%size_) then
        oimg%size_ = ishft(oimg%size_, 1)
