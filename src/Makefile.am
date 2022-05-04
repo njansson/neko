@@ -184,6 +184,11 @@ neko_fortran_SOURCES = \
 neko_c_SOURCES = common/sighdl.c\
                  gs/bcknd/device/device_mpi.c
 
+if ENABLE_COARRAY
+neko_fortran_SOURCES += caf/vec.f90\
+                        caf/mat.f90
+endif
+
 libneko_a_SOURCES = $(neko_fortran_SOURCES)\
                     $(neko_c_SOURCES)
 
@@ -191,10 +196,6 @@ if ENABLE_PARMETIS
 libneko_a_SOURCES += comm/parmetis_wrapper.c
 endif
 
-if ENABLE_COARRAY
-libneko_a_SOURCES += caf/vec.f90\
-                     caf/mat.f90
-endif
 
 if ENABLE_HIP
 libneko_a_SOURCES += \
