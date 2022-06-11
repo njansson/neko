@@ -179,6 +179,8 @@ contains
     sync all
     
     if (.not. allocated(this%tmp_buf)) then
+       ! Dummy allocation to mark initial finalisation
+       allocate(this%tmp_buf(16))
        call this%neigh_img%init()
        do i = 1, num_images()
           src = mod((this_image() + i), num_images()) + 1
