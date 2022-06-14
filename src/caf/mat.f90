@@ -42,7 +42,7 @@ module mat
   type :: mat_csr_t
      integer, allocatable :: col
      integer, allocatable :: rpt
-     real(kind=dp), allocatable :: val
+     real(kind=dp), allocatable :: val(:)
   end type mat_csr_t
 
   type :: mat_oimg_t
@@ -206,11 +206,14 @@ contains
   subroutine mat_finalize(A)
     class(mat_t), intent(inout) :: A
     type(tuple_2i4r8_t), allocatable :: tmp(:)
-    integer :: i, j, src, osize
+    integer :: i, j, k, src, osize
+    type(tuple_i4r8_t) :: col_data
     
     sync all
 
     if (.not. allocated(A%tmp_buf)) then
+       ! Dummy allocation to mark initial finalisation
+       allocate(A%tmp_buf(16))
        call A%neigh_img%init()
        do i = 1, num_images()
           src = mod((this_image() + i), num_images()) + 1
@@ -242,6 +245,23 @@ contains
              end do
           end if
        end do
+
+       ! Sort rows using insertion sort
+       do i = 1, A%m
+          select type (ep => A%rs(i)%data)
+          type is (tuple_i4r8_t)
+             do j = 2, A%rs(i)%top_
+                col_data = ep(j)
+                k = j - 1
+                do while(k .ge. 1 .and. ep(k)%x .gt. col_data%x)
+                   ep(k+1) = ep(k)
+                   k = k - 1
+                end do
+                ep(k+1) = col_data
+             end do
+          end select
+       end do
+       
     else
        select type(neighp => A%neigh_img%data)
        type is(integer)
@@ -269,7 +289,15 @@ contains
 
   subroutine mat_zero(A)
     class(mat_t), intent(inout) :: A
-    
+
+    if (allocated(A%O%val)) then
+       A%O%val = 0d0
+    end if
+
+    if (allocated(A%D%val)) then
+       A%D%val = 0d0
+    end if
+
   end subroutine mat_zero
 
   subroutine mat_add_scalar(A, r, c, v)
@@ -283,7 +311,7 @@ contains
 
     if (r .ge. A%range(1) .and. r .lt. A%range(2)) then
 
-       lr = r - A%range(1) ! Local row
+       lr = (r - A%range(1)) + 1 ! Local row
 
        select type(ep => A%rs(lr)%data)
        type is (tuple_i4r8_t)
@@ -327,7 +355,7 @@ contains
           l = l + 1
           if (r(i) .ge. A%range(1) .and. r(i) .lt. A%range(2)) then
 
-             lr= r(i) - A%range(1) ! local row
+             lr= (r(i) - A%range(1)) + 1 ! local row
 
              select type(ep => A%rs(lr)%data)
              type is (tuple_i4r8_t)
@@ -356,7 +384,7 @@ contains
     end do
     
   end subroutine mat_add_block
-
+  
   subroutine mat_oimg_push(oimg, oimg_mat_tuple)
     type(mat_oimg_t), intent(inout) :: oimg
     type(tuple_2i4r8_t), intent(inout) :: oimg_mat_tuple
@@ -373,6 +401,5 @@ contains
     oimg%data(oimg%top_) = oimg_mat_tuple
     
   end subroutine mat_oimg_push
-
   
 end module mat
