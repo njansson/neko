@@ -40,8 +40,8 @@ module mat
   private
 
   type :: mat_csr_t
-     integer, allocatable :: col
-     integer, allocatable :: rpt
+     integer, allocatable :: col(:)
+     integer, allocatable :: rpt(:)
      real(kind=dp), allocatable :: val(:)
   end type mat_csr_t
 
@@ -208,7 +208,8 @@ contains
     type(tuple_2i4r8_t), allocatable :: tmp(:)
     integer :: i, j, k, src, osize
     type(tuple_i4r8_t) :: col_data
-    
+    integer :: o_nz, d_nz, o_v, d_v
+
     sync all
 
     if (.not. allocated(A%tmp_buf)) then
@@ -246,8 +247,11 @@ contains
           end if
        end do
 
-       ! Sort rows using insertion sort
-       do i = 1, A%m
+       o_nz = 0
+       d_nz = 0
+       
+       ! Sort rows using insertion sort and count non-zeros       
+       do i = 1, A%m          
           select type (ep => A%rs(i)%data)
           type is (tuple_i4r8_t)
              do j = 2, A%rs(i)%top_
@@ -259,9 +263,49 @@ contains
                 end do
                 ep(k+1) = col_data
              end do
+
+             do j = 1, A%rs(i)%top_
+                if (ep(j)%x .lt. A%range(1) .or. ep(j)%x .ge. A%range(2)) then
+                   o_nz = o_nz + 1
+                else
+                   d_nz = d_nz + 1
+                end if
+             end do
           end select
        end do
-       
+
+       ! Construct diagonal and off-diagonal CSR blocks
+       allocate(A%O%val(o_nz), A%O%col(o_nz), A%O%rpt(A%m + 1))
+       allocate(A%D%val(d_nz), A%D%col(d_nz), A%D%rpt(A%m + 1))
+
+       ! counters
+       o_v = 0
+       d_v = 0
+              
+       do i = 1, A%m
+          select type (ep => A%rs(i)%data)
+          type is (tuple_i4r8_t)
+             do j = 1, A%rs(i)%top_
+                if (ep(j)%x .lt. A%range(1) .or. ep(j)%x .ge. A%range(2)) then
+                   o_v = o_v + 1
+                   A%O%col(o_v) = ep(j)%x
+                   A%O%val(o_v) = ep(j)%y
+                else
+                   d_v = d_v + 1
+                   A%D%col(d_v) = ep(j)%x
+                   A%D%val(d_v) = ep(j)%y
+                end if
+             end do
+
+             A%O%rpt(i) = o_v
+             A%D%rpt(i) = d_v
+
+          end select
+       end do
+
+       A%O%rpt(A%m + 1) = o_v + 1
+       A%D%rpt(A%m + 1) = d_v + 1
+
     else
        select type(neighp => A%neigh_img%data)
        type is(integer)
