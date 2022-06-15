@@ -279,32 +279,32 @@ contains
        allocate(A%D%val(d_nz), A%D%col(d_nz), A%D%rpt(A%m + 1))
 
        ! counters
-       o_v = 0
-       d_v = 0
+       o_v = 1
+       d_v = 1
               
        do i = 1, A%m
+
+          A%O%rpt(i) = o_v
+          A%D%rpt(i) = d_v
+                       
           select type (ep => A%rs(i)%data)
           type is (tuple_i4r8_t)
              do j = 1, A%rs(i)%top_
                 if (ep(j)%x .lt. A%range(1) .or. ep(j)%x .ge. A%range(2)) then
-                   o_v = o_v + 1
                    A%O%col(o_v) = ep(j)%x
                    A%O%val(o_v) = ep(j)%y
+                   o_v = o_v + 1                            
                 else
-                   d_v = d_v + 1
                    A%D%col(d_v) = ep(j)%x
                    A%D%val(d_v) = ep(j)%y
+                   d_v = d_v + 1                                      
                 end if
              end do
-
-             A%O%rpt(i) = o_v
-             A%D%rpt(i) = d_v
-
           end select
        end do
 
-       A%O%rpt(A%m + 1) = o_v + 1
-       A%D%rpt(A%m + 1) = d_v + 1
+       A%O%rpt(A%m + 1) = o_nz
+       A%D%rpt(A%m + 1) = d_nz
 
     else
        select type(neighp => A%neigh_img%data)
