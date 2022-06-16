@@ -64,6 +64,7 @@ module mat
      type(stack_i4_t), private :: neigh_img      !< Neigh. images
      type(stack_i4r8t2_t), private, allocatable :: rs(:) !< Row-stacks
      type(tuple_2i4r8_t), private, allocatable :: tmp_buf(:)
+     logical, private :: assembled = .false.
    contains
      procedure, pass(A) :: init => mat_init
      procedure, pass(A) :: free => mat_free
@@ -328,7 +329,8 @@ contains
     do i = 1, num_images()
        A%oimg(i)%top_ = 0
     end do
-    
+
+    A%assembled = .true.
   end subroutine mat_finalize
 
   subroutine mat_zero(A)
@@ -357,21 +359,43 @@ contains
 
        lr = (r - A%range(1)) + 1 ! Local row
 
-       select type(ep => A%rs(lr)%data)
-       type is (tuple_i4r8_t)
-          do i = 1, A%rs(lr)%top_
-             if (ep(i)%x .eq. c) then
-                ep(i)%y = ep(i)%y + v
-                return
-             end if
-          end do
-       class default
-          call neko_error('Invalid type (mat_add_scalar)')
-       end select
+       if (A%assembled) then
+          if (c .lt. A%range(1) .or. c .ge. A%range(2)) then
+             associate(rpt => A%O%rpt, col =>A%O%col, val => A%O%val)
+               do i = rpt(lr), rpt(lr+1)
+                  if (col(i) .eq. c) then
+                     val(i) = val(i) + v
+                     return
+                  end if
+               end do
+             end associate
+          else
+             associate(rpt => A%D%rpt, col =>A%D%col, val => A%D%val)
+               do i = rpt(lr), rpt(lr+1)
+                  if (col(i) .eq. c) then
+                     val(i) = val(i) + v
+                     return
+                  end if
+               end do
+             end associate
+          end if
+       else       
+          select type(ep => A%rs(lr)%data)
+          type is (tuple_i4r8_t)
+             do i = 1, A%rs(lr)%top_
+                if (ep(i)%x .eq. c) then
+                   ep(i)%y = ep(i)%y + v
+                   return
+                end if
+             end do
+          class default
+             call neko_error('Invalid type (mat_add_scalar)')
+          end select
        
-       mat_tuple%x = c
-       mat_tuple%y = v
-       call A%rs(lr)%push(mat_tuple)
+          mat_tuple%x = c
+          mat_tuple%y = v
+          call A%rs(lr)%push(mat_tuple)
+       end if
     else
        oimg_mat_tuple%x = r
        oimg_mat_tuple%y = c
@@ -400,22 +424,43 @@ contains
           if (r(i) .ge. A%range(1) .and. r(i) .lt. A%range(2)) then
 
              lr= (r(i) - A%range(1)) + 1 ! local row
-
-             select type(ep => A%rs(lr)%data)
-             type is (tuple_i4r8_t)
-                do k = 1, A%rs(lr)%top_
-                   if (ep(k)%x .eq. c(j)) then
-                      ep(k)%y = ep(k)%y + b(l)
-                      goto 42
-                   end if
-                end do
-             class default
-                call neko_error('Invalid type (mat_add_block)')
-             end select
+             if (A%assembled) then
+                if (c(j) .lt. A%range(1) .or. c(j) .ge. A%range(2)) then
+                   associate(rpt => A%O%rpt, col =>A%O%col, val => A%O%val)
+                     do k = rpt(lr), rpt(lr+1)
+                        if (col(k) .eq. c(j)) then
+                           val(k) = val(k) + b(l)
+                           return
+                        end if
+                     end do
+                   end associate
+                else
+                   associate(rpt => A%D%rpt, col =>A%D%col, val => A%D%val)
+                     do k = rpt(lr), rpt(lr+1)
+                        if (col(k) .eq. c(j)) then
+                           val(k) = val(k) + b(l)
+                           return
+                        end if
+                     end do
+                   end associate
+                end if
+             else
+                select type(ep => A%rs(lr)%data)
+                type is (tuple_i4r8_t)
+                   do k = 1, A%rs(lr)%top_
+                      if (ep(k)%x .eq. c(j)) then
+                         ep(k)%y = ep(k)%y + b(l)
+                         goto 42
+                      end if
+                   end do
+                class default
+                   call neko_error('Invalid type (mat_add_block)')
+                end select
              
-             mat_tuple%x = c(j)
-             mat_tuple%y = b(l)
-             call A%rs(lr)%push(mat_tuple)
+                mat_tuple%x = c(j)
+                mat_tuple%y = b(l)
+                call A%rs(lr)%push(mat_tuple)
+             end if
           else
              oimg_mat_tuple%x = r(i)
              oimg_mat_tuple%y = c(j)
