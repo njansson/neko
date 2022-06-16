@@ -189,7 +189,8 @@ neko_c_SOURCES = common/sighdl.c\
 
 if ENABLE_COARRAY
 neko_fortran_SOURCES += caf/vec.f90\
-                        caf/mat.f90
+                        caf/mat.f90\
+			caf/spmv.f90
 endif
 
 libneko_a_SOURCES = $(neko_fortran_SOURCES)\
