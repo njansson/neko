@@ -49,16 +49,32 @@ contains
     integer :: r, i
 
     ! Diagonal CSR block
-    associate(rpt => A%D%rpt, col => A%D%col, val => A%D%val, &
-         xp => x%X%x, yp => y%X%x)
-      do r = 1, A%m
-         tmp = 0d0
-         do i = rpt(r), rpt(r+1)
-            tmp  = tmp + val(i) * xp(col(i))
+    if (A%D%nz) then
+       associate(rpt => A%D%rpt, col => A%D%col, val => A%D%val, &
+            xp => x%X%x, yp => y%X%x)
+         do r = 1, A%m
+            tmp = 0d0
+            do i = rpt(r), rpt(r+1)
+               tmp  = tmp + val(i) * xp(col(i))
+            end do
+            yp(r) = tmp
          end do
-         yp(r) = tmp
-      end do
-    end associate
+       end associate
+    end if
+
+    ! Off-Diagonal CSR block    
+    if (A%O%nz) then
+       associate(rpt => A%O%rpt, col => A%O%col, val => A%O%val, &
+            xp => x%X%x, yp => y%X%x)
+         do r = 1, A%m
+            tmp = 0d0
+            do i = rpt(r), rpt(r+1)
+               tmp  = tmp + val(i) * xp(col(i))
+            end do
+            yp(r) = tmp
+         end do
+       end associate
+    end if
     
   end subroutine caf_spmv
   

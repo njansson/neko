@@ -43,6 +43,7 @@ module mat
      integer, allocatable :: col(:)
      integer, allocatable :: rpt(:)
      real(kind=dp), allocatable :: val(:)
+     integer :: nz
   end type mat_csr_t
 
   type :: mat_oimg_t
@@ -306,6 +307,9 @@ contains
 
        A%O%rpt(A%m + 1) = o_nz
        A%D%rpt(A%m + 1) = d_nz
+
+       A%O%nz = o_nz
+       A%D%nz = d_nz
 
     else
        select type(neighp => A%neigh_img%data)
