@@ -49,7 +49,7 @@ contains
     integer :: r, i
 
     ! Diagonal CSR block
-    if (A%D%nz) then
+    if (A%D%nz .gt. 0) then
        associate(rpt => A%D%rpt, col => A%D%col, val => A%D%val, &
             xp => x%X%x, yp => y%X%x)
          do r = 1, A%m
@@ -63,7 +63,7 @@ contains
     end if
 
     ! Off-Diagonal CSR block    
-    if (A%O%nz) then
+    if (A%O%nz .gt. 0) then
        associate(rpt => A%O%rpt, col => A%O%col, val => A%O%val, &
             xp => x%X%x, yp => y%X%x)
          do r = 1, A%m
