@@ -305,8 +305,8 @@ contains
           end select
        end do
 
-       A%O%rpt(A%m + 1) = o_nz
-       A%D%rpt(A%m + 1) = d_nz
+       A%O%rpt(A%m + 1) = o_nz + 1
+       A%D%rpt(A%m + 1) = d_nz + 1
 
        A%O%nz = o_nz
        A%D%nz = d_nz
