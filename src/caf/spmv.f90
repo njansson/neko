@@ -36,7 +36,7 @@ module spmv
   use mat
   use vec
   implicit none
-  private
+
   
 contains
 
@@ -54,7 +54,7 @@ contains
             xp => x%X%x, yp => y%X%x)
          do r = 1, A%m
             tmp = 0d0
-            do i = rpt(r), rpt(r+1)
+            do i = rpt(r), rpt(r+1) - 1
                tmp  = tmp + val(i) * xp(col(i))
             end do
             yp(r) = tmp
@@ -68,10 +68,10 @@ contains
             xp => x%X%x, yp => y%X%x)
          do r = 1, A%m
             tmp = 0d0
-            do i = rpt(r), rpt(r+1)
+            do i = rpt(r), rpt(r+1) - 1
                tmp  = tmp + val(i) * xp(col(i))
             end do
-            yp(r) = tmp
+            yp(r) = yp(r) + tmp
          end do
        end associate
     end if
