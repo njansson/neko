@@ -205,6 +205,7 @@ contains
     
   end subroutine mat_csr_free
 
+  !> Finalize matrix assembly
   subroutine mat_finalize(A)
     class(mat_t), intent(inout) :: A
     type(tuple_2i4r8_t), allocatable :: tmp(:)
@@ -337,6 +338,7 @@ contains
     A%assembled = .true.
   end subroutine mat_finalize
 
+  !> Zero a matrix
   subroutine mat_zero(A)
     class(mat_t), intent(inout) :: A
 
@@ -350,11 +352,12 @@ contains
 
   end subroutine mat_zero
 
+  !> Add a scalar @a v to a matrix at @a (r,c)
   subroutine mat_add_scalar(A, r, c, v)
     class(mat_t), intent(inout) :: A
-    integer, intent(in) :: r
-    integer, intent(in) :: c
-    real(kind=dp) :: v
+    integer, intent(in) :: r    !< Row (global index)
+    integer, intent(in) :: c    !< Column (global index)
+    real(kind=dp) :: v          !< Value of scalar
     type(tuple_i4r8_t) :: mat_tuple
     type(tuple_2i4r8_t) :: oimg_mat_tuple
     integer :: i, lr, owner
@@ -410,13 +413,14 @@ contains
     
   end subroutine mat_add_scalar
 
+  !> Add a block of values @a v(n) to a matrix at @a (r(n),c(n))
   subroutine mat_add_block(A, m, r, n, c, b)
     class(mat_t), intent(inout) :: A
-    integer, intent(in) :: m
-    integer, intent(in) :: r(m)
-    integer, intent(in) :: n
-    integer, intent(in) :: c(n)
-    real(kind=dp), intent(in) :: b(m*n)
+    integer, intent(in) :: m    !< Number of rows
+    integer, intent(in) :: r(m) !< Block of row indices (global)
+    integer, intent(in) :: n    !< Number of columns
+    integer, intent(in) :: c(n) !< Block of column indicies (global)
+    real(kind=dp), intent(in) :: b(m*n) !< Block of values
     type(tuple_i4r8_t) :: mat_tuple
     type(tuple_2i4r8_t) :: oimg_mat_tuple
     integer :: i, j, k, l, lr, owner
@@ -427,7 +431,8 @@ contains
           l = l + 1
           if (r(i) .ge. A%range(1) .and. r(i) .lt. A%range(2)) then
 
-             lr= (r(i) - A%range(1)) + 1 ! local row
+             lr = (r(i) - A%range(1)) + 1 ! local row
+             
              if (A%assembled) then
                 if (c(j) .lt. A%range(1) .or. c(j) .ge. A%range(2)) then
                    associate(rpt => A%O%rpt, col =>A%O%col, val => A%O%val)
