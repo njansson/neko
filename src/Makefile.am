@@ -7,6 +7,7 @@ neko_fortran_SOURCES = \
 	io/format/nmsh.f90\
 	io/format/re2.f90\
 	io/format/map.f90\
+	io/format/stl.f90\
 	common/log.f90\
 	comm/comm.F90\
 	mesh/curve.f90\
@@ -49,6 +50,7 @@ neko_fortran_SOURCES = \
 	mesh/zone.f90\
 	mesh/mesh.f90\
 	mesh/tet_mesh.f90\
+	mesh/tri_mesh.f90\
 	field/field.f90\
 	field/field_series.f90\
 	field/mesh_field.f90\
@@ -85,6 +87,7 @@ neko_fortran_SOURCES = \
 	io/rea_file.f90\
 	io/fld_file.f90\
 	io/vtk_file.f90\
+	io/stl_file.f90\
 	io/nmsh_file.f90\
 	io/chkp_file.f90\
 	io/file.f90\
@@ -139,6 +142,7 @@ neko_fortran_SOURCES = \
 	fluid/fluid_fctry.f90\
 	fluid/fluid_abbdf.f90\
 	fluid/fluid_abbdf_fctry.f90\
+	fluid/fluid_volflow.f90\
 	fluid/pnpn_res.f90\
 	fluid/pnpn_res_fctry.f90\
 	fluid/mean_flow.f90\
@@ -292,6 +296,23 @@ libneko_a_SOURCES += \
 %.cl.h: %.cl
 	bash ./scripts/cltostring.sh $<
 endif
+
+if ENABLE_ADIOS2
+#
+# Fortran code related to ADIOS2 can be added directly
+# to libneko_fortran_SOURCES (as above)
+#
+# To avoid linker issues, any C++ code related to ADIOS2
+# must be added to libneko_a_LIBADD, with a manual build
+# rule as illustrated below
+#
+#io/adios2_example.o: io/adios2_example.cpp
+#	$(CXX) -c $(CXXFLAGS) $(CPPFLAGS) -o $@ -c $^
+#
+#libneko_a_LIBADD = \
+#	io/adios2_example.o
+endif
+
 
 bin_PROGRAMS = neko
 neko_SOURCES = $(libneko_a_SOURCES) driver.f90
