@@ -6,6 +6,7 @@ AC_CANONICAL_HOST
 AC_LANG(Fortran)
 AC_PROG_RANLIB
 AC_PROG_INSTALL
+LT_INIT([disable-static])
 
 AC_ARG_ENABLE(contrib,
               AC_HELP_STRING([--enable-contrib],
@@ -261,7 +262,8 @@ AC_CONFIG_FILES([tests/stack/Makefile\
 if test "x${enable_contrib}" = xyes; then
    AC_CONFIG_FILES([contrib/Makefile\
 		    contrib/rea2nbin/Makefile\
-		    contrib/prepart/Makefile])
+		    contrib/prepart/Makefile\
+                    contrib/nekorepl/Makefile])
 fi
 # Doxygen
 AC_CONFIG_FILES([doc/Doxyfile doc/Makefile])
