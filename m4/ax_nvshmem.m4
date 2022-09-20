@@ -16,6 +16,7 @@ AC_DEFUN([AX_NVSHMEM],[
                        AS_IF([test -d "$ac_nvshmem_path/lib64"],
                              [suffix="64"],[suffix=""])
                        NVSHMEM_LDFLAGS="-L$ac_nvshmem_path/lib$suffix"
+                       NVSHMEM_CFLAGS="-I$ac_nvshmem_path/include"
                     fi
                     ], [with_nvshmem=no])
         nvshmem_bcknd="0"
@@ -31,7 +32,7 @@ AC_DEFUN([AX_NVSHMEM],[
 	      LDFLAGS="$NVSHMEM_LDFLAGS $LDFLAGS"
 	      export CPPFLAGS
 	      export LDFLAGS
-	      fi
+	   fi
 
               _CC=$CC
 	      _LIBS=$LIBS
@@ -47,6 +48,7 @@ AC_DEFUN([AX_NVSHMEM],[
                  nvshmem_bcknd="1"
                  AC_DEFINE(HAVE_NVSHMEM,1,[Define if you have NVSHMEM.])
                  LIBS="$NVSHMEM_LIBS $_LIBS"
+                 CUDA_CFLAGS="$CUDA_CFLAGS $NVSHMEM_CFLAGS"
               else
                  AC_MSG_ERROR([NVSHMEM not found])
               fi
