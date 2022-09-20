@@ -208,11 +208,15 @@ else
    AC_SUBST(device_mpi, .false.)
 fi
 
+# Checks for NVSHMEM backend
+AX_NVSHMEM
+
 AM_CONDITIONAL([ENABLE_PARMETIS], [test "x$found_domain_decomp" = xyes])
 AM_CONDITIONAL([ENABLE_ADIOS2], [test "x${have_adios2}" = xyes])
 AM_CONDITIONAL([ENABLE_CUDA], [test "x${have_cuda}" = xyes])
 AM_CONDITIONAL([ENABLE_HIP], [test "x${have_hip}" = xyes])
 AM_CONDITIONAL([ENABLE_OPENCL], [test "x${have_opencl}" = xyes])
+AM_CONDITIONAL([ENABLE_NVSHMEM], [test "x${have_nvshmem}" = xyes])
 
 # Set device dependent flags
 AC_SUBST(CUDA_ARCH)
