@@ -167,6 +167,7 @@ neko_fortran_SOURCES = \
 	math/bcknd/device/ax_helm_device.F90\
 	common/projection.f90\
 	comm/parmetis.F90\
+	comm/kahip.F90\
 	comm/redist.f90\
 	krylov/pc_hsmg.f90\
 	common/signal.f90\

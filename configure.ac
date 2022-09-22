@@ -120,23 +120,26 @@ if test "x${have_darshan}" != xyes; then
     fi
 fi
 
-found_domain_decomp="no"
+found_parmetis="no"
 
 # Checks for ParMetis
 if test "x${is_cray}" = xyes; then
    AX_CRAY_PARMETIS
    if test "x${have_cray_parmetis}" = xyes; then
-      found_domain_decomp="yes"
+      found_parmetis="yes"
    fi
 fi
 
-if test "x${found_domain_decomp}" != xyes; then
+if test "x${found_parmetis}" != xyes; then
    AX_PARMETIS
    if test "${PARMETIS_LIBS}"; then
        LIBS="$PARMETIS_LIBS $LIBS"
-       found_domain_decomp="yes"
+       found_parmetis="yes"
    fi
 fi
+
+# Checks for KaHIP
+AX_KAHIP
 
 # Checks for ADIOS2
 AX_ADIOS2
@@ -214,7 +217,8 @@ AX_NCCL
 # Checks for RCCL backend
 AX_RCCL
 
-AM_CONDITIONAL([ENABLE_PARMETIS], [test "x$found_domain_decomp" = xyes])
+AM_CONDITIONAL([ENABLE_PARMETIS], [test "x$found_parmetis" = xyes])
+AM_CONDITIONAL([ENABLE_KAHIP], [test "x${have_kahip}" = xyes])
 AM_CONDITIONAL([ENABLE_ADIOS2], [test "x${have_adios2}" = xyes])
 AM_CONDITIONAL([ENABLE_CUDA], [test "x${have_cuda}" = xyes])
 AM_CONDITIONAL([ENABLE_HIP], [test "x${have_hip}" = xyes])
