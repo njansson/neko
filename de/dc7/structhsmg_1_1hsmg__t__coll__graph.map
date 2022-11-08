@@ -1,0 +1,42 @@
+<map id="hsmg::hsmg_t" name="hsmg::hsmg_t">
+<area shape="rect" id="node1" title=" " alt="" coords="3156,557,3271,584"/>
+<area shape="rect" id="node2" href="$d7/d3a/structprecon_1_1pc__t.html" title="Defines a canonical Krylov preconditioner." alt="" coords="2951,241,3053,268"/>
+<area shape="rect" id="node3" href="$db/d74/structinterpolation_1_1interpolator__t.html" title=" " alt="" coords="1876,329,2077,356"/>
+<area shape="rect" id="node4" href="$da/d99/structspace_1_1space__t.html" title=" " alt="" coords="1459,448,1577,475"/>
+<area shape="rect" id="node5" href="$d0/d9f/structschwarz_1_1schwarz__t.html" title=" " alt="" coords="2676,557,2824,584"/>
+<area shape="rect" id="node6" href="$d0/df0/structdofmap_1_1dofmap__t.html" title=" " alt="" coords="1709,427,1852,453"/>
+<area shape="rect" id="node35" href="$de/d85/structfdm_1_1fdm__t.html" title=" " alt="" coords="2383,497,2478,524"/>
+<area shape="rect" id="node40" href="$d6/db3/structbc_1_1bc__t.html" title="Base type for a boundary condition." alt="" coords="2141,292,2213,319"/>
+<area shape="rect" id="node38" href="$dd/d1b/structhsmg_1_1multigrid__t.html" title=" " alt="" coords="2933,721,3071,748"/>
+<area shape="rect" id="node33" href="$dd/db8/structgather__scatter_1_1gs__t.html" title=" " alt="" coords="2101,643,2252,669"/>
+<area shape="rect" id="node7" href="$d7/d28/structmesh_1_1mesh__t.html" title=" " alt="" coords="1461,396,1575,423"/>
+<area shape="rect" id="node8" href="$dd/d69/structcurve_1_1curve__t.html" title=" " alt="" coords="773,53,888,80"/>
+<area shape="rect" id="node9" href="$d0/d10/structstructs_1_1struct__curve__t.html" title=" " alt="" coords="399,5,565,32"/>
+<area shape="rect" id="node10" href="$d1/ddd/structstack_1_1stack__curve__t.html" title="Curved element stack." alt="" coords="405,56,559,83"/>
+<area shape="rect" id="node11" href="$d2/dbd/structstack_1_1stack__t.html" title="Base type for a stack." alt="" coords="214,335,326,361"/>
+<area shape="rect" id="node16" href="$d1/d93/structstack_1_1stack__i4t2__t.html" title="Integer 2&#45;tuple based stack." alt="" coords="410,369,554,396"/>
+<area shape="rect" id="node27" href="$df/d1c/structstack_1_1stack__i4t4__t.html" title="Integer 4&#45;tuple based stack." alt="" coords="598,555,742,581"/>
+<area shape="rect" id="node31" href="$d2/d45/structstack_1_1stack__i4__t.html" title="Integer based stack." alt="" coords="926,337,1057,364"/>
+<area shape="rect" id="node12" href="$d8/d53/structhtable_1_1htable__i4t4__t.html" title="Integer 4&#45;tuple based hash table." alt="" coords="592,833,748,860"/>
+<area shape="rect" id="node13" href="$d0/d2e/structhtable_1_1htable__t.html" title="Base type for a hash table." alt="" coords="208,808,332,835"/>
+<area shape="rect" id="node21" href="$db/d4d/structhtable_1_1htable__i4__t.html" title="Integer based hash table." alt="" coords="411,579,553,605"/>
+<area shape="rect" id="node32" href="$da/d93/structhtable_1_1htable__i4t2__t.html" title="Integer 2&#45;tuple based hash table." alt="" coords="913,763,1069,789"/>
+<area shape="rect" id="node34" href="$df/da3/structhtable_1_1htable__i8__t.html" title="Integer*8 based hash table." alt="" coords="1292,876,1435,903"/>
+<area shape="rect" id="node14" href="$d8/d5b/structhtable_1_1h__tuple__t.html" title="Hash table entry, tuple (key, data)" alt="" coords="5,808,136,835"/>
+<area shape="rect" id="node15" href="$d4/ddd/structdistdata_1_1distdata__t.html" title=" " alt="" coords="1107,281,1255,308"/>
+<area shape="rect" id="node23" href="$dc/d98/structzone_1_1zone__periodic__t.html" title=" " alt="" coords="1099,531,1262,557"/>
+<area shape="rect" id="node24" href="$d7/dda/structzone_1_1zone__t.html" title=" " alt="" coords="779,464,883,491"/>
+<area shape="rect" id="node17" href="$d6/db2/structuset_1_1uset__i4__t.html" title="Integer based unordered set." alt="" coords="772,229,889,256"/>
+<area shape="rect" id="node18" href="$d8/d9e/structuset_1_1uset__t.html" title="Base type for an unordered set." alt="" coords="433,229,531,256"/>
+<area shape="rect" id="node19" href="$dc/d23/structhtable_1_1htable__iter__i4__t.html" title="Iterator for an integer based hash table." alt="" coords="396,107,568,133"/>
+<area shape="rect" id="node20" href="$d1/dec/structhtable_1_1htable__iter__t.html" title="Base type for a hash table iterator." alt="" coords="193,107,347,133"/>
+<area shape="rect" id="node22" href="$d1/d4c/structmesh_1_1mesh__element__t.html" title=" " alt="" coords="1093,180,1268,207"/>
+<area shape="rect" id="node25" href="$d5/d16/structtuple_1_1tuple__i4__t.html" title="Integer based 2&#45;tuple." alt="" coords="419,629,545,656"/>
+<area shape="rect" id="node26" href="$d1/d3b/structtuple_1_1tuple__t.html" title="Base type for an n&#45;tuple." alt="" coords="216,668,324,695"/>
+<area shape="rect" id="node28" href="$dd/de4/structtuple_1_1tuple4__i4__t.html" title="Integer based 4&#45;tuple." alt="" coords="603,701,737,728"/>
+<area shape="rect" id="node29" href="$db/d6f/structpoint_1_1point__t.html" title="A point in &#160;with coordinates ." alt="" coords="1127,231,1235,257"/>
+<area shape="rect" id="node30" href="$da/d8b/structentity_1_1entity__t.html" title="Base type for an entity." alt="" coords="772,179,889,205"/>
+<area shape="rect" id="node36" href="$d8/dd8/structbc_1_1bc__list__t.html" title="A list of boundary conditions." alt="" coords="2381,779,2480,805"/>
+<area shape="rect" id="node37" href="$dc/d46/structbc_1_1bcp__t.html" title="Pointer to boundary condtiion." alt="" coords="2137,779,2217,805"/>
+<area shape="rect" id="node39" href="$df/dd9/structdirichlet_1_1dirichlet__t.html" title="Generic Dirichlet boundary condition &#160;on ." alt="" coords="2504,292,2652,319"/>
+</map>

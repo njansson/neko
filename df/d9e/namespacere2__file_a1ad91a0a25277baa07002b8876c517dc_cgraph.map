@@ -1,0 +1,35 @@
+<map id="re2_file::re2_file_read" name="re2_file::re2_file_read">
+<area shape="rect" id="node1" title="Load a binary NEKTON mesh from a re2 file." alt="" coords="5,561,168,587"/>
+<area shape="rect" id="node2" href="$d6/d84/namespaceutils.html#ad035259b0db318528da0384dd484945d" title="Change a filename&#39;s suffix." alt="" coords="216,154,389,181"/>
+<area shape="rect" id="node4" href="$db/dfc/namespacemesh.html#af0ff552dc7ba05166ba8d1e221532314" title=" " alt="" coords="225,234,381,261"/>
+<area shape="rect" id="node18" href="$df/d9e/namespacere2__file.html#a83f78b1bd3723662d8f8f30fc1470b2e" title=" " alt="" coords="239,553,366,595"/>
+<area shape="rect" id="node30" href="$df/d9e/namespacere2__file.html#ac6a6e7f12b8abdc9e5f94ac9fa688eb2" title=" " alt="" coords="239,677,366,719"/>
+<area shape="rect" id="node32" href="$df/d9e/namespacere2__file.html#ae1e316c6fcaff6907f305abd16968d56" title=" " alt="" coords="239,859,366,900"/>
+<area shape="rect" id="node3" href="$d6/d84/namespaceutils.html#a590765fef437ae3c76556bf6b967afae" title="Find position (in the string) of a filename&#39;s suffix." alt="" coords="461,125,649,151"/>
+<area shape="rect" id="node5" href="$db/dfc/namespacemesh.html#a90390cabbda71a7f4b1e2ea9b58d4568" title="Generate element&#45;to&#45;element connectivity." alt="" coords="452,175,657,202"/>
+<area shape="rect" id="node17" href="$db/dfc/namespacemesh.html#a7278fd8b6049f335f1a733784d595d7e" title=" " alt="" coords="471,227,638,268"/>
+<area shape="rect" id="node6" href="$db/dfc/namespacemesh.html#ab9a596f402b6547638c42607a2627c78" title="Generate element&#45;element connectivity via edges both between internal and between PEs." alt="" coords="735,299,901,340"/>
+<area shape="rect" id="node10" href="$db/dfc/namespacemesh.html#a6dcb62f5acad81608f94fc29e6b7787b" title="Generate element&#45;element connectivity via facets between PEs." alt="" coords="735,71,901,112"/>
+<area shape="rect" id="node13" href="$db/dfc/namespacemesh.html#aee63f6aed325d74711a9e2fedfa12d6c" title="Generate element&#45;element connectivity via points between PEs." alt="" coords="735,201,901,243"/>
+<area shape="rect" id="node15" href="$db/dfc/namespacemesh.html#a085bcd83fbc337b97fead481375c119c" title="Generate a unique facet numbering." alt="" coords="735,136,901,177"/>
+<area shape="rect" id="node7" href="$dc/d48/namespacedistdata.html#a66e2d8156519bf42e00ef85a2dd9d696" title="Set local to global mapping (edges)" alt="" coords="965,332,1158,373"/>
+<area shape="rect" id="node8" href="$dc/d48/namespacedistdata.html#ab553d9210e3f859553e82c8be368db33" title="Mark an element&#39;s edge as shared." alt="" coords="992,397,1131,439"/>
+<area shape="rect" id="node9" href="$db/dfc/namespacemesh.html#af417a83f45459aa079949c7cedbc1050" title="Check if the mesh has a point given its global index." alt="" coords="971,267,1152,308"/>
+<area shape="rect" id="node11" href="$dc/d48/namespacedistdata.html#a13af2d2fa32c3733dbf1688e579951ec" title="Mark an element&#39;s facet as shared." alt="" coords="982,71,1141,112"/>
+<area shape="rect" id="node12" href="$dc/d48/namespacedistdata.html#a7aa5fbd5e4916c9f7eca2e0005716486" title="Mark a facet as shared." alt="" coords="991,5,1131,47"/>
+<area shape="rect" id="node14" href="$dc/d48/namespacedistdata.html#a104a6fac60956fc167df8bb063632973" title="Mark a point as shared." alt="" coords="991,201,1131,243"/>
+<area shape="rect" id="node16" href="$dc/d48/namespacedistdata.html#a21b01a3e652f6cd332611cce8b4f46b9" title="Set local to global mapping (facets)" alt="" coords="964,136,1159,177"/>
+<area shape="rect" id="node19" href="$db/dfc/namespacemesh.html#a700842914adcab31e77af59e18306295" title="Creates common ids for matching periodic points." alt="" coords="437,670,672,697"/>
+<area shape="rect" id="node22" href="$db/dfc/namespacemesh.html#ae76b7e632893c91a23429ffede647f28" title="Get original ids of periodic points." alt="" coords="720,525,916,551"/>
+<area shape="rect" id="node23" href="$db/dfc/namespacemesh.html#ab0054cc3dc022c774c09937ad5cf5f59" title="Mark facet f in element e as an inlet." alt="" coords="465,721,644,763"/>
+<area shape="rect" id="node24" href="$db/dfc/namespacemesh.html#aac356feb6f5b1ec888a11cddd6e79d64" title="Mark facet f in element e with label." alt="" coords="455,787,654,828"/>
+<area shape="rect" id="node25" href="$db/dfc/namespacemesh.html#a2f15be9cacf8b80385d2f230fcbfb191" title="Mark facet f in element e as an outlet." alt="" coords="461,292,649,333"/>
+<area shape="rect" id="node26" href="$db/dfc/namespacemesh.html#a23306e1eeec0fc47257af439346d39bb" title="Mark facet f in element e as an outlet normal." alt="" coords="461,357,649,399"/>
+<area shape="rect" id="node27" href="$db/dfc/namespacemesh.html#a22e6f4fbdee4e65401540acdfda17e73" title="Mark facet f in element e as periodic with (pf, pe)" alt="" coords="453,423,656,464"/>
+<area shape="rect" id="node28" href="$db/dfc/namespacemesh.html#a0bd4845e931ad0c5cb2ec925ee49cce6" title="Mark facet f in element e as a symmetry plane." alt="" coords="455,488,654,529"/>
+<area shape="rect" id="node29" href="$db/dfc/namespacemesh.html#a52f3802fed42ef38266f67e2ceb6c0bc" title="Mark facet f in element e as a wall." alt="" coords="466,553,643,595"/>
+<area shape="rect" id="node20" href="$db/dfc/namespacemesh.html#ac5df4c8431d1f8e9b1b87606f6a4be42" title="Add a unique edge represented as a 2&#45;tuple to the mesh." alt="" coords="732,645,904,671"/>
+<area shape="rect" id="node21" href="$db/dfc/namespacemesh.html#aff3b47cf0d5cb56d3e12f92525e91dc1" title="Add a unique face represented as a 4&#45;tuple to the mesh." alt="" coords="734,695,902,722"/>
+<area shape="rect" id="node31" href="$db/dfc/namespacemesh.html#ac059e4068189ac4a289e75a2a16928d7" title="Mark element e as a curve element." alt="" coords="461,852,648,893"/>
+<area shape="rect" id="node33" href="$df/d9e/namespacere2__file.html#a859e702ddca0f77f1d6f6659b4c6ca41" title=" " alt="" coords="491,917,618,959"/>
+</map>

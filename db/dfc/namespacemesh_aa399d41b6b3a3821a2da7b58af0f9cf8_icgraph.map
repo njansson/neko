@@ -1,0 +1,5 @@
+<map id="mesh::mesh_init_common" name="mesh::mesh_init_common">
+<area shape="rect" id="node1" title=" " alt="" coords="219,31,413,57"/>
+<area shape="rect" id="node2" href="$db/dfc/namespacemesh.html#a4c42e0fdf05f02c43bc2aeab6c81b4ab" title="Initialise a mesh m based on a distribution dist." alt="" coords="7,5,169,32"/>
+<area shape="rect" id="node3" href="$db/dfc/namespacemesh.html#aff6f363552a21cdb2de2b4c789d7a2af" title="Initialise a mesh m with nelv elements." alt="" coords="5,56,171,83"/>
+</map>

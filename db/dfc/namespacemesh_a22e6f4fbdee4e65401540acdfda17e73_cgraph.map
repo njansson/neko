@@ -1,0 +1,4 @@
+<map id="mesh::mesh_mark_periodic_facet" name="mesh::mesh_mark_periodic_facet">
+<area shape="rect" id="node1" title="Mark facet f in element e as periodic with (pf, pe)" alt="" coords="5,5,208,47"/>
+<area shape="rect" id="node2" href="$db/dfc/namespacemesh.html#ae76b7e632893c91a23429ffede647f28" title="Get original ids of periodic points." alt="" coords="256,13,452,39"/>
+</map>

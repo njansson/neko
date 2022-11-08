@@ -1,0 +1,10 @@
+<map id="gather_scatter::gs_init" name="gather_scatter::gs_init">
+<area shape="rect" id="node1" title="Initialize a gather&#45;scatter kernel." alt="" coords="5,81,172,108"/>
+<area shape="rect" id="node2" href="$d0/d78/namespacegather__scatter.html#a7b932fc67f24ee664f40c41bc61487c1" title="Deallocate a gather&#45;scatter kernel." alt="" coords="220,23,392,49"/>
+<area shape="rect" id="node3" href="$d0/d78/namespacegather__scatter.html#a154206fc22b1611f17ccaa89a0b2ec2d" title="Setup mapping of dofs to gather&#45;scatter operations." alt="" coords="237,74,375,115"/>
+<area shape="rect" id="node8" href="$d0/d78/namespacegather__scatter.html#a9b7e30db0a7f3f186ad0013c7d09f613" title="Schedule shared gather&#45;scatter operations." alt="" coords="237,139,375,181"/>
+<area shape="rect" id="node4" href="$d5/d7e/gather__scatter_8f90.html#a0df0f0f94eb369fc80627b7721fad2c3" title="Find blocks sharing dofs in non&#45;facet data." alt="" coords="469,5,571,32"/>
+<area shape="rect" id="node5" href="$d5/d7e/gather__scatter_8f90.html#af8cc5f86931d4ca4f75ac2ddc0b311d8" title="Register a unique dof." alt="" coords="440,56,600,83"/>
+<area shape="rect" id="node6" href="$d5/d7e/gather__scatter_8f90.html#a762680d00a8b9d4de7498ece71c4092b" title="Sort the dof lists based on the dof to gather&#45;scatter list." alt="" coords="453,107,587,133"/>
+<area shape="rect" id="node7" href="$d6/d84/namespaceutils.html#ae14221a870025e675db24d2b136d2aa0" title="Compute the address of a (i,j,k,l) array with sizes (1:lx, 1:ly, 1:lz, :)" alt="" coords="451,157,589,184"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="wall::no_slip_wall_apply_vector_dev" name="wall::no_slip_wall_apply_vector_dev">
+<area shape="rect" id="node1" title="Boundary condition apply for a no&#45;slip wall condition to vectors x, y and z (device version)" alt="" coords="5,71,149,112"/>
+<area shape="rect" id="node2" href="$d0/d29/namespacedevice__wall.html#a1d133e64ee725b812e334fe9c50f1e89" title=" " alt="" coords="197,63,349,119"/>
+<area shape="rect" id="node3" href="$d4/d1c/no__slip__wall_8cu.html#a8ceb4b09c98eaf09169b9b997275a91f" title=" " alt="" coords="397,5,580,47"/>
+<area shape="rect" id="node4" href="$df/d42/no__slip__wall_8hip.html#aa05d4fd15ee70fab35cdeb9cdb71b684" title=" " alt="" coords="403,71,575,112"/>
+<area shape="rect" id="node5" href="$d9/dbe/no__slip__wall_8c.html#a1d78fb9a480d9ebc9f03b5dd13cfe38c" title=" " alt="" coords="413,136,565,177"/>
+<area shape="rect" id="node6" href="$d6/df3/jit_8c.html#a7f4d1566adfd93b0565147e32387abf6" title=" " alt="" coords="628,143,760,170"/>
+</map>

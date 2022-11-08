@@ -1,0 +1,4 @@
+<map id="flow_ic::set_flow_ic_uniform" name="flow_ic::set_flow_ic_uniform">
+<area shape="rect" id="node1" title="Uniform initial condition." alt="" coords="224,5,371,47"/>
+<area shape="rect" id="node2" href="$d2/d13/namespaceflow__ic.html#a388819509058bcb45eb50c8bcc4e5e20" title="Set initial flow condition (builtin)" alt="" coords="5,13,176,39"/>
+</map>

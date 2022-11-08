@@ -1,0 +1,14 @@
+<map id="re2_file::re2_file_read_bcs" name="re2_file::re2_file_read_bcs">
+<area shape="rect" id="node1" title=" " alt="" coords="5,263,132,305"/>
+<area shape="rect" id="node2" href="$db/dfc/namespacemesh.html#a700842914adcab31e77af59e18306295" title="Creates common ids for matching periodic points." alt="" coords="180,31,415,57"/>
+<area shape="rect" id="node5" href="$db/dfc/namespacemesh.html#ae76b7e632893c91a23429ffede647f28" title="Get original ids of periodic points." alt="" coords="463,241,659,268"/>
+<area shape="rect" id="node6" href="$db/dfc/namespacemesh.html#ab0054cc3dc022c774c09937ad5cf5f59" title="Mark facet f in element e as an inlet." alt="" coords="208,133,387,174"/>
+<area shape="rect" id="node7" href="$db/dfc/namespacemesh.html#aac356feb6f5b1ec888a11cddd6e79d64" title="Mark facet f in element e with label." alt="" coords="198,198,397,239"/>
+<area shape="rect" id="node8" href="$db/dfc/namespacemesh.html#a2f15be9cacf8b80385d2f230fcbfb191" title="Mark facet f in element e as an outlet." alt="" coords="203,263,391,305"/>
+<area shape="rect" id="node9" href="$db/dfc/namespacemesh.html#a23306e1eeec0fc47257af439346d39bb" title="Mark facet f in element e as an outlet normal." alt="" coords="203,329,391,370"/>
+<area shape="rect" id="node10" href="$db/dfc/namespacemesh.html#a22e6f4fbdee4e65401540acdfda17e73" title="Mark facet f in element e as periodic with (pf, pe)" alt="" coords="196,394,399,435"/>
+<area shape="rect" id="node11" href="$db/dfc/namespacemesh.html#a0bd4845e931ad0c5cb2ec925ee49cce6" title="Mark facet f in element e as a symmetry plane." alt="" coords="198,459,397,501"/>
+<area shape="rect" id="node12" href="$db/dfc/namespacemesh.html#a52f3802fed42ef38266f67e2ceb6c0bc" title="Mark facet f in element e as a wall." alt="" coords="209,525,386,566"/>
+<area shape="rect" id="node3" href="$db/dfc/namespacemesh.html#ac5df4c8431d1f8e9b1b87606f6a4be42" title="Add a unique edge represented as a 2&#45;tuple to the mesh." alt="" coords="475,5,647,32"/>
+<area shape="rect" id="node4" href="$db/dfc/namespacemesh.html#aff3b47cf0d5cb56d3e12f92525e91dc1" title="Add a unique face represented as a 4&#45;tuple to the mesh." alt="" coords="477,56,645,83"/>
+</map>

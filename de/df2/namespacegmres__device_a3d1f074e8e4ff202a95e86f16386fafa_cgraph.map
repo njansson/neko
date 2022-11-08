@@ -1,0 +1,6 @@
+<map id="gmres_device::gmres_device_solve" name="gmres_device::gmres_device_solve">
+<area shape="rect" id="node1" title="Standard GMRES solve." alt="" coords="5,23,168,65"/>
+<area shape="rect" id="node2" href="$de/df2/namespacegmres__device.html#a0a158df824f0f1613e4f18806ea3a81e" title=" " alt="" coords="216,23,380,65"/>
+<area shape="rect" id="node3" href="$d6/d29/gmres__aux_8cu.html#a3952e21e8b02d7069a6d91b3708cffca" title=" " alt="" coords="428,5,571,32"/>
+<area shape="rect" id="node4" href="$da/d1d/gmres__aux_8hip.html#ad1130bc0fe9218ff1432134acd57f48d" title=" " alt="" coords="434,56,565,83"/>
+</map>

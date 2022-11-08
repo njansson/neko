@@ -1,0 +1,4 @@
+<map id="coefs::coef_generate_mass" name="coefs::coef_generate_mass">
+<area shape="rect" id="node1" title="Generate mass matrix B for the given mesh and space." alt="" coords="197,5,397,32"/>
+<area shape="rect" id="node2" href="$d6/dbe/namespacecoefs.html#a413ede8639e41c04562858f286370810" title="Initialize coefficients." alt="" coords="5,5,149,32"/>
+</map>

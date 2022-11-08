@@ -1,0 +1,8 @@
+<map id="cacg::cacg_solve" name="cacg::cacg_solve">
+<area shape="rect" id="node1" title="S&#45;step CA PCG solve." alt="" coords="5,122,137,149"/>
+<area shape="rect" id="node2" href="$d2/d10/namespacecacg.html#a80e42458990a0deb009fbb169e722aa7" title="Monomial matrix constuction, not sparse." alt="" coords="185,5,347,47"/>
+<area shape="rect" id="node3" href="$dd/d47/namespacemath.html#a06c292dd97b659412ba3df8a9fd756b2" title="Copy a vector ." alt="" coords="219,71,313,98"/>
+<area shape="rect" id="node4" href="$dd/d47/namespacemath.html#af39621cc6ab93bd93e913779e972db95" title="Weighted inner product ." alt="" coords="217,122,315,149"/>
+<area shape="rect" id="node5" href="$d1/d15/namespacemxm__wrapper.html#a04f42b056da86e6f3fd6c2573c029b72" title="Compute matrix&#45;matrix product &#160;for contiguously packed matrices A,B, and C." alt="" coords="187,173,345,199"/>
+<area shape="rect" id="node6" href="$dd/d47/namespacemath.html#a166dde30e679bcc8288bb0b817d2dcdd" title="Zero a real vector." alt="" coords="217,223,315,250"/>
+</map>

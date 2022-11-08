@@ -1,0 +1,6 @@
+<map id="projection::projection_init" name="projection::projection_init">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,193,57"/>
+<area shape="rect" id="node2" href="$d0/dbe/namespacedevice.html#a4a8ea40296ab83bbd2598076b6c85ba3" title="Allocate memory on the device." alt="" coords="461,5,616,32"/>
+<area shape="rect" id="node3" href="$d0/dbe/namespacedevice.html#a9d01a3705b3b15e31888ec3ad876079b" title="Map a Fortran rank 1 array to a device (allocate and associate)" alt="" coords="241,31,413,57"/>
+<area shape="rect" id="node4" href="$dd/d47/namespacemath.html#a166dde30e679bcc8288bb0b817d2dcdd" title="Zero a real vector." alt="" coords="279,81,376,108"/>
+</map>

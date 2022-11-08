@@ -1,0 +1,11 @@
+<map id="device::device_alloc" name="device::device_alloc">
+<area shape="rect" id="node1" title="Allocate memory on the device." alt="" coords="481,179,636,206"/>
+<area shape="rect" id="node2" href="$d0/dbe/namespacedevice.html#a9d01a3705b3b15e31888ec3ad876079b" title="Map a Fortran rank 1 array to a device (allocate and associate)" alt="" coords="251,53,423,79"/>
+<area shape="rect" id="node3" href="$da/d46/namespacepipecg__device.html#ae5da99e6a538e495b8a5637c098ca85a" title="Initialise a pipelined PCG solver." alt="" coords="16,5,183,47"/>
+<area shape="rect" id="node4" href="$d3/d06/namespaceprojection.html#afa912cf217031bb8243a7e5d50c6f511" title=" " alt="" coords="5,82,193,109"/>
+<area shape="rect" id="node5" href="$d0/dbe/namespacedevice.html#a70cc873be3dffdb9d921aa5721302688" title="Map a Fortran rank 2 array to a device (allocate and associate)" alt="" coords="251,154,423,181"/>
+<area shape="rect" id="node6" href="$d0/dbe/namespacedevice.html#a439614a19b5025c8fbcd69ae64579e8e" title="Map a Fortran rank 3 array to a device (allocate and associate)" alt="" coords="251,205,423,231"/>
+<area shape="rect" id="node7" href="$d0/dbe/namespacedevice.html#a75bea35e7a654ceeca8a962d0f059a82" title="Map a Fortran rank 4 array to a device (allocate and associate)" alt="" coords="251,255,423,282"/>
+<area shape="rect" id="node8" href="$d5/d79/namespacedong__outflow.html#ac024d2472c7133671e127fb0e7f5df9c" title=" " alt="" coords="263,307,411,348"/>
+<area shape="rect" id="node9" href="$d9/dfa/namespacegs__device__mpi.html#a1ffb2ff8429c63efe7920436e7fd21d6" title=" " alt="" coords="241,372,433,413"/>
+</map>

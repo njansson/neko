@@ -1,0 +1,17 @@
+<map id="pnpn_res_sx::pnpn_prs_res_sx_compute" name="pnpn_res_sx::pnpn_prs_res_sx_compute">
+<area shape="rect" id="node1" title=" " alt="" coords="5,113,176,154"/>
+<area shape="rect" id="node2" href="$dd/d30/namespaceoperators.html#a0567ee7595ffc5b3ad3e1cf7359b112b" title="Compute DT*X (entire field) This needs to be revised... the loop over n1,n2 is probably unesccssary." alt="" coords="224,95,344,121"/>
+<area shape="rect" id="node15" href="$dd/d30/namespaceoperators.html#af453af505205377ba31a868d33f4a197" title=" " alt="" coords="226,145,342,172"/>
+<area shape="rect" id="node3" href="$d0/d94/namespaceopr__cpu.html#a811e4c006443cc206608a9695e473f39" title=" " alt="" coords="412,19,579,45"/>
+<area shape="rect" id="node4" href="$d3/d4d/namespaceopr__device.html#ad5d00df0b50a85c3f400f90e628c0cae" title=" " alt="" coords="392,69,599,96"/>
+<area shape="rect" id="node10" href="$df/db5/namespaceopr__sx.html#ac006a5aef9f52758ab076ed545f2b838" title=" " alt="" coords="420,120,571,147"/>
+<area shape="rect" id="node11" href="$d9/d5a/namespaceopr__xsmm.html#a57bf41f6f4190d4e8f728bd37db80ec9" title=" " alt="" coords="394,183,597,209"/>
+<area shape="rect" id="node5" href="$df/d14/opr__cdtp_8cu.html#a217704e9e0aec3b1aec80eba77c3eefc" title=" " alt="" coords="658,5,746,32"/>
+<area shape="rect" id="node6" href="$d9/d63/opr__cdtp_8hip.html#a7147aefaaf9030b329837f03095685f0" title=" " alt="" coords="663,56,741,83"/>
+<area shape="rect" id="node7" href="$d6/d10/opr__cdtp_8c.html#ad014ae6fead1604386995ca75f53a3e1" title=" " alt="" coords="652,107,752,133"/>
+<area shape="rect" id="node8" href="$d3/dd9/cuda_2cdtp__kernel_8h.html#aa7f38447cbbb0aba64aa400ae701d06a" title=" " alt="" coords="823,81,920,108"/>
+<area shape="rect" id="node9" href="$d6/df3/jit_8c.html#a7f4d1566adfd93b0565147e32387abf6" title=" " alt="" coords="805,132,937,159"/>
+<area shape="rect" id="node12" href="$dd/d47/namespacemath.html#ac6c5531df69e2047f4646e0fcfa4523b" title="Vector addition ." alt="" coords="654,157,750,184"/>
+<area shape="rect" id="node13" href="$dd/d47/namespacemath.html#ae9c03c3dc7fc4ee652dbb7ba5e351269" title="Vector multiplication with 3 vectors ." alt="" coords="657,208,747,235"/>
+<area shape="rect" id="node14" href="$dd/d47/namespacemath.html#a0ac87bdc804d5f901726afe53430ead6" title="Vector division ." alt="" coords="647,259,757,285"/>
+</map>

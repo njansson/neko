@@ -1,0 +1,4 @@
+<map id="gather_scatter::gs_op_r4" name="gather_scatter::gs_op_r4">
+<area shape="rect" id="node1" title="Gather&#45;scatter operation on a rank 4 array." alt="" coords="5,5,144,47"/>
+<area shape="rect" id="node2" href="$d0/d78/namespacegather__scatter.html#a24f20db6086d8764db0584a835257504" title="Gather&#45;scatter operation on a vector u with op op." alt="" coords="192,5,331,47"/>
+</map>

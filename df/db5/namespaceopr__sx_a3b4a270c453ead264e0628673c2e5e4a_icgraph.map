@@ -1,0 +1,8 @@
+<map id="opr_sx::opr_sx_opgrad" name="opr_sx::opr_sx_opgrad">
+<area shape="rect" id="node1" title=" " alt="" coords="429,111,597,138"/>
+<area shape="rect" id="node2" href="$dd/d30/namespaceoperators.html#a3bb0b2a911e0cd08e32a255510d65c84" title="Equals wgradm1 in nek5000. Gradient of velocity vectors." alt="" coords="244,111,381,138"/>
+<area shape="rect" id="node3" href="$d3/d69/namespaceadvection.html#ae1607e7418ef9955cfad9cac9b6af844" title="Eulerian scheme, add convection term to forcing function at current time step." alt="" coords="20,5,181,47"/>
+<area shape="rect" id="node4" href="$d2/de4/namespacepnpn__res__cpu.html#a3c38f8c07954e340c64b5a8fdf25dce0" title=" " alt="" coords="15,71,186,112"/>
+<area shape="rect" id="node5" href="$d8/dea/namespacepnpn__res__device.html#a04a3b5f3a84d993cdd609c2b06232895" title=" " alt="" coords="5,136,196,177"/>
+<area shape="rect" id="node6" href="$d4/da3/namespacepnpn__res__sx.html#adbf62a9c0a1037b341a38dbb6e63a604" title=" " alt="" coords="15,201,186,243"/>
+</map>

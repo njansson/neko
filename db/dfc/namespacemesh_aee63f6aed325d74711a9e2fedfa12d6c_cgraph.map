@@ -1,0 +1,5 @@
+<map id="mesh::mesh_generate_external_point_conn" name="mesh::mesh_generate_external_point_conn">
+<area shape="rect" id="node1" title="Generate element&#45;element connectivity via points between PEs." alt="" coords="5,39,172,80"/>
+<area shape="rect" id="node2" href="$dc/d48/namespacedistdata.html#a104a6fac60956fc167df8bb063632973" title="Mark a point as shared." alt="" coords="241,5,381,47"/>
+<area shape="rect" id="node3" href="$db/dfc/namespacemesh.html#af417a83f45459aa079949c7cedbc1050" title="Check if the mesh has a point given its global index." alt="" coords="220,71,401,112"/>
+</map>

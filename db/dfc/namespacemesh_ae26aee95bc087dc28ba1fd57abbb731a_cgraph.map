@@ -1,0 +1,4 @@
+<map id="mesh::mesh_get_global_facet" name="mesh::mesh_get_global_facet">
+<area shape="rect" id="node1" title="Return the local id of a face f." alt="" coords="5,5,183,47"/>
+<area shape="rect" id="node2" href="$db/dfc/namespacemesh.html#a599e65ff2f3c240c9c4721f85efe8119" title="Return the local id of a face f." alt="" coords="231,5,399,47"/>
+</map>

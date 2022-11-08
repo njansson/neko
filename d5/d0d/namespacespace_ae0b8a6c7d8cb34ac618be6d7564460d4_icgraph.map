@@ -1,0 +1,20 @@
+<map id="space::space_free" name="space::space_free">
+<area shape="rect" id="node1" title="Deallocate a space s." alt="" coords="1200,97,1339,124"/>
+<area shape="rect" id="node2" href="$dd/dd2/namespacedofmap.html#a14be7fe99925dc0fb0e2e30c0d654b44" title=" " alt="" coords="743,9,935,36"/>
+<area shape="rect" id="node6" href="$d9/d33/namespacefluid__method.html#aa1997e959322163f6034b1121adc5e3a" title="Deallocate a fluid formulation." alt="" coords="996,61,1139,102"/>
+<area shape="rect" id="node7" href="$d2/d37/namespaceschwarz.html#aed04e84332557d214a95921525db8443" title=" " alt="" coords="983,127,1152,153"/>
+<area shape="rect" id="node8" href="$d5/d0d/namespacespace.html#aea7cdf9a8933056da79e3b73f4e0ed49" title="Initialize a function space s with given polynomial dimensions." alt="" coords="1000,177,1135,204"/>
+<area shape="rect" id="node3" href="$dd/dd2/namespacedofmap.html#a5d369623e2bb954910d6741afd4e93a8" title="Generate x,y,z&#45;coordinates for all dofs." alt="" coords="469,5,695,32"/>
+<area shape="rect" id="node4" href="$dd/dd2/namespacedofmap.html#a1a544e8604040c5c602a4b6fdeb74809" title=" " alt="" coords="246,5,405,32"/>
+<area shape="rect" id="node5" href="$d0/df0/structdofmap_1_1dofmap__t.html#ab2d3e1cd8cf04ce17467432e3c241849" title=" " alt="" coords="5,5,181,32"/>
+<area shape="rect" id="node9" href="$d9/d33/namespacefluid__method.html#a1ab2f2af8361d1e9d62b692d05f5d7c9" title="Initialize common data for the current scheme." alt="" coords="753,118,925,159"/>
+<area shape="rect" id="node13" href="$d3/d69/namespaceadvection.html#a155e772f99b667b81fe8a8c30c6aedb7" title=" " alt="" coords="754,184,923,211"/>
+<area shape="rect" id="node18" href="$d2/d37/namespaceschwarz.html#ae614e2a33b051d6843ac45bcff07c6b6" title=" " alt="" coords="757,235,921,261"/>
+<area shape="rect" id="node10" href="$d9/d33/namespacefluid__method.html#a1a2b5af161b9f2023967265d944b1433" title="Initialize all components of the current scheme." alt="" coords="511,57,653,98"/>
+<area shape="rect" id="node12" href="$d9/d33/namespacefluid__method.html#a8f99f82ddb2632121b63641290303030" title="Initialize all velocity related components of the current scheme." alt="" coords="511,122,653,163"/>
+<area shape="rect" id="node11" href="$d1/dcd/structfluid__method_1_1fluid__scheme__t.html#a7719b9dff0487bde42e6e4c78634160c" title=" " alt="" coords="236,57,415,98"/>
+<area shape="rect" id="node14" href="$d3/d69/namespaceadvection.html#a27316124e9b4a37c9ae00ec700953ed4" title=" " alt="" coords="503,187,661,229"/>
+<area shape="rect" id="node15" href="$db/d7d/interfaceadvection_1_1apply__adv.html#a200e0cad8c830677eef736289f4a047a" title=" " alt="" coords="245,122,406,163"/>
+<area shape="rect" id="node16" href="$de/d71/namespacefluid__plan4.html#afa0ce822bf2afdbd6fc948fa389c922e" title=" " alt="" coords="261,187,390,229"/>
+<area shape="rect" id="node17" href="$dc/da3/namespacefluid__pnpn.html#a2b7045443985c1276f51c9de2e9ced25" title=" " alt="" coords="229,253,421,280"/>
+</map>

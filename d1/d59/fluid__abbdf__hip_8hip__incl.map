@@ -1,0 +1,9 @@
+<map id="/home/runner/work/neko/neko/src/fluid/bcknd/device/hip/fluid_abbdf_hip.hip" name="/home/runner/work/neko/neko/src/fluid/bcknd/device/hip/fluid_abbdf_hip.hip">
+<area shape="rect" id="node1" title=" " alt="" coords="280,5,460,76"/>
+<area shape="rect" id="node2" title=" " alt="" coords="71,199,207,225"/>
+<area shape="rect" id="node3" href="$d8/dc8/device__config_8h.html" title=" " alt="" coords="24,124,195,151"/>
+<area shape="rect" id="node4" href="$d4/d7a/hip_2check_8h.html" title=" " alt="" coords="220,124,362,151"/>
+<area shape="rect" id="node5" href="$d9/d37/hip_2sumab__kernel_8h.html" title=" " alt="" coords="387,124,512,151"/>
+<area shape="rect" id="node6" href="$da/d43/hip_2makeabf__kernel_8h.html" title=" " alt="" coords="536,124,675,151"/>
+<area shape="rect" id="node7" href="$db/d6b/hip_2makebdf__kernel_8h.html" title=" " alt="" coords="699,124,838,151"/>
+</map>

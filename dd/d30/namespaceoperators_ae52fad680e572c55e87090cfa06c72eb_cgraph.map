@@ -1,0 +1,43 @@
+<map id="operators::dudxyz" name="operators::dudxyz">
+<area shape="rect" id="node1" title="Compute dU/dx or dU/dy or dU/dz." alt="" coords="5,993,144,1020"/>
+<area shape="rect" id="node2" href="$d0/d94/namespaceopr__cpu.html#a6f64e6857cccfc2f7fb6aafe89a22e2c" title=" " alt="" coords="192,360,379,387"/>
+<area shape="rect" id="node17" href="$d3/d4d/namespaceopr__device.html#ac4158c0811be34e133f1c2b76d34617c" title=" " alt="" coords="199,783,371,825"/>
+<area shape="rect" id="node23" href="$df/db5/namespaceopr__sx.html#a56ac313734cbbecb066b0e45f68fafc4" title=" " alt="" coords="200,1171,371,1197"/>
+<area shape="rect" id="node40" href="$d9/d5a/namespaceopr__xsmm.html#abd01047726757dd7140713007f5a5ff6" title=" " alt="" coords="452,1577,620,1618"/>
+<area shape="rect" id="node3" href="$de/d34/namespacecpu__dudxyz.html#ac692f955ad227445e95ea34d04fa6816" title=" " alt="" coords="435,613,637,640"/>
+<area shape="rect" id="node4" href="$de/d34/namespacecpu__dudxyz.html#a3b11ae52969fd100e86369f158959dab" title=" " alt="" coords="427,664,645,691"/>
+<area shape="rect" id="node5" href="$de/d34/namespacecpu__dudxyz.html#a403e926eed1f836f012cbbf0a1ac3e18" title=" " alt="" coords="427,5,645,32"/>
+<area shape="rect" id="node6" href="$de/d34/namespacecpu__dudxyz.html#a179ce802eb9468fc54c038ffd5c6687b" title=" " alt="" coords="427,56,645,83"/>
+<area shape="rect" id="node7" href="$de/d34/namespacecpu__dudxyz.html#a3744f8d74bf098125e44030494c21a2c" title=" " alt="" coords="427,107,645,133"/>
+<area shape="rect" id="node8" href="$de/d34/namespacecpu__dudxyz.html#a48a0c3b1b7cbe9e4041ac43e555f1a50" title=" " alt="" coords="427,157,645,184"/>
+<area shape="rect" id="node9" href="$de/d34/namespacecpu__dudxyz.html#a77b7b3a16ff404d5830537dc70141735" title=" " alt="" coords="431,208,641,235"/>
+<area shape="rect" id="node10" href="$de/d34/namespacecpu__dudxyz.html#a88c690deb5113f35a2a89e3eb877b4f8" title=" " alt="" coords="431,259,641,285"/>
+<area shape="rect" id="node11" href="$de/d34/namespacecpu__dudxyz.html#a030501690b8e99006f58acb059b2cae3" title=" " alt="" coords="431,309,641,336"/>
+<area shape="rect" id="node12" href="$de/d34/namespacecpu__dudxyz.html#af79a31d4a11b6601e61b175dafdb4b0b" title=" " alt="" coords="431,360,641,387"/>
+<area shape="rect" id="node13" href="$de/d34/namespacecpu__dudxyz.html#a93f3351254059c2ba8dd5d87945ec66e" title=" " alt="" coords="431,411,641,437"/>
+<area shape="rect" id="node14" href="$de/d34/namespacecpu__dudxyz.html#a7040aff7248af4b7f05f42b3d8511109" title=" " alt="" coords="431,461,641,488"/>
+<area shape="rect" id="node15" href="$de/d34/namespacecpu__dudxyz.html#af05d074a04fd7dc5a1151501d07d4772" title=" " alt="" coords="431,512,641,539"/>
+<area shape="rect" id="node16" href="$de/d34/namespacecpu__dudxyz.html#a7d03c3236421b8289c913449b69d9433" title=" " alt="" coords="431,563,641,589"/>
+<area shape="rect" id="node18" href="$d3/d13/opr__dudxyz_8cu.html#a12bdb6bf9c94199b29d19641386a2ea0" title=" " alt="" coords="483,715,589,741"/>
+<area shape="rect" id="node19" href="$d6/d27/opr__dudxyz_8hip.html#ac07a79e346adc55ea58eda2ff65e6fd6" title=" " alt="" coords="488,765,584,792"/>
+<area shape="rect" id="node20" href="$d1/d28/opr__dudxyz_8c.html#aa154bc09bc993f78a4d5ba22abe64ab2" title=" " alt="" coords="477,816,595,843"/>
+<area shape="rect" id="node21" href="$dc/dd2/cuda_2dudxyz__kernel_8h.html#a27f630be56b7400ae22498576af74cae" title=" " alt="" coords="715,841,831,868"/>
+<area shape="rect" id="node22" href="$d6/df3/jit_8c.html#a7f4d1566adfd93b0565147e32387abf6" title=" " alt="" coords="707,791,839,817"/>
+<area shape="rect" id="node24" href="$d3/d6b/namespacesx__dudxyz.html#aefc7338fa22f540967d9c04a2eac5801" title=" " alt="" coords="443,968,629,995"/>
+<area shape="rect" id="node27" href="$d3/d6b/namespacesx__dudxyz.html#aa416c6da9bef5fb8265cc32c23975456" title=" " alt="" coords="435,1019,637,1045"/>
+<area shape="rect" id="node28" href="$d3/d6b/namespacesx__dudxyz.html#ab270644de1fb536b1c28791ab0d1efae" title=" " alt="" coords="435,1069,637,1096"/>
+<area shape="rect" id="node29" href="$d3/d6b/namespacesx__dudxyz.html#a62dc0fa853400b5721f44a66e4480b5e" title=" " alt="" coords="435,1120,637,1147"/>
+<area shape="rect" id="node30" href="$d3/d6b/namespacesx__dudxyz.html#aa5865fc4d14677244d9160186a705184" title=" " alt="" coords="435,1171,637,1197"/>
+<area shape="rect" id="node31" href="$d3/d6b/namespacesx__dudxyz.html#af9b62beed05966d2e5496365051f9911" title=" " alt="" coords="435,1221,637,1248"/>
+<area shape="rect" id="node32" href="$d3/d6b/namespacesx__dudxyz.html#a73feb723b02f21fd1b7b4cb71f63edad" title=" " alt="" coords="439,1272,633,1299"/>
+<area shape="rect" id="node33" href="$d3/d6b/namespacesx__dudxyz.html#a713392286c07ef7256d77bbd941cde8d" title=" " alt="" coords="439,1323,633,1349"/>
+<area shape="rect" id="node34" href="$d3/d6b/namespacesx__dudxyz.html#af495614e7413e0c15cba91139e815be1" title=" " alt="" coords="439,1373,633,1400"/>
+<area shape="rect" id="node35" href="$d3/d6b/namespacesx__dudxyz.html#a5e3799b303faf073e68640bf6f12709a" title=" " alt="" coords="439,1424,633,1451"/>
+<area shape="rect" id="node36" href="$d3/d6b/namespacesx__dudxyz.html#aa201ef1e8ce70e88872980d307db3331" title=" " alt="" coords="439,1475,633,1501"/>
+<area shape="rect" id="node37" href="$d3/d6b/namespacesx__dudxyz.html#a645a3e4896681f55d59314209f471747" title=" " alt="" coords="439,1525,633,1552"/>
+<area shape="rect" id="node38" href="$d3/d6b/namespacesx__dudxyz.html#a915a0714c606b1a8fb32da2bc8844a80" title=" " alt="" coords="439,867,633,893"/>
+<area shape="rect" id="node39" href="$d3/d6b/namespacesx__dudxyz.html#a2536376c87d8272e0d9ad6b4c7e2f650" title=" " alt="" coords="439,917,633,944"/>
+<area shape="rect" id="node25" href="$dd/d47/namespacemath.html#ac90318c14c9f7bf107708bbdbcce4447" title="Returns ." alt="" coords="715,1247,830,1273"/>
+<area shape="rect" id="node26" href="$dd/d47/namespacemath.html#a04e9ebdb3dfc0ad9e724edd40362fddd" title="Vector multiplication ." alt="" coords="727,1196,818,1223"/>
+<area shape="rect" id="node41" href="$d1/d15/namespacemxm__wrapper.html#a04f42b056da86e6f3fd6c2573c029b72" title="Compute matrix&#45;matrix product &#160;for contiguously packed matrices A,B, and C." alt="" coords="693,1584,852,1611"/>
+</map>

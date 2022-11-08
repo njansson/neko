@@ -1,0 +1,4 @@
+<map id="mesh::mesh_get_local_edge" name="mesh::mesh_get_local_edge">
+<area shape="rect" id="node1" title="Return the local id of an edge e." alt="" coords="269,5,476,32"/>
+<area shape="rect" id="node2" href="$db/dfc/namespacemesh.html#a9af2dbe621736057802989ba0babf035" title="Return the global id of an edge e." alt="" coords="5,5,221,32"/>
+</map>

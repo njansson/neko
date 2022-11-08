@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['jac_1523',['jac',['../d0/dea/structcoefs_1_1coef__t.html#ade4861246ee05b985943ebce8c81d5e9',1,'coefs::coef_t']]],
+  ['jac_5fd_1524',['jac_d',['../d0/dea/structcoefs_1_1coef__t.html#a07974f86677b9aa452a5b397e5c18e7a',1,'coefs::coef_t']]],
+  ['jacg_1525',['jacg',['../dd/df0/namespacespeclib.html#a6e4006c61e176baff378ff31472b6634',1,'speclib']]],
+  ['jacinv_1526',['jacinv',['../d0/dea/structcoefs_1_1coef__t.html#a45e509a35697737f4430981c5f3cf04a',1,'coefs::coef_t']]],
+  ['jacinv_5fd_1527',['jacinv_d',['../d0/dea/structcoefs_1_1coef__t.html#ac40d5f427bded12d49c00a69a8373112',1,'coefs::coef_t']]],
+  ['jacobf_1528',['jacobf',['../dd/df0/namespacespeclib.html#af7eaf2eb0994474cab3a5582bbf02903',1,'speclib']]],
+  ['jacobi_1529',['jacobi',['../dd/d49/namespacejacobi.html',1,'']]],
+  ['jacobi_5ffree_1530',['jacobi_free',['../dd/d49/namespacejacobi.html#a798a261dfeab8b8296fd5a51d6b5b0f0',1,'jacobi']]],
+  ['jacobi_5finit_1531',['jacobi_init',['../dd/d49/namespacejacobi.html#a5c43a3d9d05e1ba76322ba2a8f1faea6',1,'jacobi']]],
+  ['jacobi_5fkernel_1532',['jacobi_kernel',['../db/d64/pc__jacobi_8cu.html#ad139e975441f7081d448c25f2ffa3256',1,'jacobi_kernel(T *__restrict__ du, const T *__restrict__ dxt, const T *__restrict__ dyt, const T *__restrict__ dzt, const T *__restrict__ G11, const T *__restrict__ G22, const T *__restrict__ G33, const T *__restrict__ G12, const T *__restrict__ G13, const T *__restrict__ G23, const int nel):&#160;pc_jacobi.cu'],['../d0/d8a/pc__jacobi_8hip.html#ad139e975441f7081d448c25f2ffa3256',1,'jacobi_kernel(T *__restrict__ du, const T *__restrict__ dxt, const T *__restrict__ dyt, const T *__restrict__ dzt, const T *__restrict__ G11, const T *__restrict__ G22, const T *__restrict__ G33, const T *__restrict__ G12, const T *__restrict__ G13, const T *__restrict__ G23, const int nel):&#160;pc_jacobi.hip']]],
+  ['jacobi_5fprogram_1533',['jacobi_program',['../d1/df7/prgm__lib_8h.html#adb314a3fcd6dbcf47f0108516b1898d8',1,'prgm_lib.h']]],
+  ['jacobi_5fsolve_1534',['jacobi_solve',['../dd/d49/namespacejacobi.html#a2b0806955e3e341cf531d44499994d7f',1,'jacobi']]],
+  ['jacobi_5ft_1535',['jacobi_t',['../da/d72/structjacobi_1_1jacobi__t.html',1,'jacobi']]],
+  ['jacobi_5fupdate_1536',['jacobi_update',['../dd/d49/namespacejacobi.html#a2b15f287f6c23fdb2b2c5b113e9d04dd',1,'jacobi']]],
+  ['jit_2ec_1537',['jit.c',['../d6/df3/jit_8c.html',1,'']]],
+  ['jit_2eh_1538',['jit.h',['../d4/d0f/jit_8h.html',1,'']]],
+  ['jlimit_1539',['jlimit',['../d0/d30/structparameters_1_1param__t.html#aa4dacb10ea601b387977a427cfa1981a',1,'parameters::param_t']]],
+  ['jobctrl_1540',['jobctrl',['../d7/d06/namespacejobctrl.html',1,'']]],
+  ['jobctrl_2ef90_1541',['jobctrl.f90',['../d1/d37/jobctrl_8f90.html',1,'']]],
+  ['jobctrl_5finit_1542',['jobctrl_init',['../d7/d06/namespacejobctrl.html#a32741fb329c5552119183688e6e6d97a',1,'jobctrl']]],
+  ['jobctrl_5fjobtime_1543',['jobctrl_jobtime',['../d7/d06/namespacejobctrl.html#aab0e9f6b9cce1e342bfda72b841887d2',1,'jobctrl']]],
+  ['jobctrl_5fset_5ftime_5flimit_1544',['jobctrl_set_time_limit',['../da/d39/interfacejobctrl_1_1jobctrl__set__time__limit.html',1,'jobctrl']]],
+  ['jobctrl_5fset_5ftime_5flimit_5fsec_1545',['jobctrl_set_time_limit_sec',['../da/d39/interfacejobctrl_1_1jobctrl__set__time__limit.html#a726abeee8968fe20bca3a6e0b23215be',1,'jobctrl::jobctrl_set_time_limit::jobctrl_set_time_limit_sec()'],['../d7/d06/namespacejobctrl.html#aaa38605ae63b754fcccffe3d10a3a4bb',1,'jobctrl::jobctrl_set_time_limit_sec()']]],
+  ['jobctrl_5fset_5ftime_5flimit_5fstr_1546',['jobctrl_set_time_limit_str',['../da/d39/interfacejobctrl_1_1jobctrl__set__time__limit.html#a465891abbe5d2c56c25d58e0afc0309a',1,'jobctrl::jobctrl_set_time_limit::jobctrl_set_time_limit_str()'],['../d7/d06/namespacejobctrl.html#a288823dde72b2464cf502906b6bf40da',1,'jobctrl::jobctrl_set_time_limit_str()']]],
+  ['jobctrl_5ftime_5flimit_1547',['jobctrl_time_limit',['../d7/d06/namespacejobctrl.html#aa766aab0c30411254759e41e89d1fb8f',1,'jobctrl']]]
+];

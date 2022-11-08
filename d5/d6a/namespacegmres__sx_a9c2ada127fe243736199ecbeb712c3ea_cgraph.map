@@ -1,0 +1,11 @@
+<map id="gmres_sx::sx_gmres_solve" name="gmres_sx::sx_gmres_solve">
+<area shape="rect" id="node1" title="Standard PCG solve." alt="" coords="5,175,161,217"/>
+<area shape="rect" id="node2" href="$dd/d47/namespacemath.html#ab2794adbce2d564d15d3f142e579f384" title="Vector addition with scalar multiplication &#160;(multiplication on second argument)" alt="" coords="209,5,320,32"/>
+<area shape="rect" id="node3" href="$dd/d47/namespacemath.html#a684e17262e69f79fd68aadeb016f37c2" title="Multiplication by constant c ." alt="" coords="210,56,319,83"/>
+<area shape="rect" id="node4" href="$dd/d47/namespacemath.html#a04e9ebdb3dfc0ad9e724edd40362fddd" title="Vector multiplication ." alt="" coords="219,107,310,133"/>
+<area shape="rect" id="node5" href="$dd/d47/namespacemath.html#ae9c03c3dc7fc4ee652dbb7ba5e351269" title="Vector multiplication with 3 vectors ." alt="" coords="219,157,310,184"/>
+<area shape="rect" id="node6" href="$dd/d47/namespacemath.html#a06c292dd97b659412ba3df8a9fd756b2" title="Copy a vector ." alt="" coords="217,208,312,235"/>
+<area shape="rect" id="node7" href="$dd/d47/namespacemath.html#af39621cc6ab93bd93e913779e972db95" title="Weighted inner product ." alt="" coords="215,259,314,285"/>
+<area shape="rect" id="node8" href="$dd/d47/namespacemath.html#a5e73146199e0cef5856fcddbd7e982f9" title="Set all elements to one." alt="" coords="218,309,311,336"/>
+<area shape="rect" id="node9" href="$dd/d47/namespacemath.html#a166dde30e679bcc8288bb0b817d2dcdd" title="Zero a real vector." alt="" coords="216,360,313,387"/>
+</map>

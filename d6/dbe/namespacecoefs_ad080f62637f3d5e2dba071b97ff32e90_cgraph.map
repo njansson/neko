@@ -1,0 +1,5 @@
+<map id="coefs::coef_init_empty" name="coefs::coef_init_empty">
+<area shape="rect" id="node1" title="Initialize empty coefs for a space and a mesh." alt="" coords="5,5,176,32"/>
+<area shape="rect" id="node2" href="$d6/dbe/namespacecoefs.html#a12f6ba25f9ef83da44f75c3cbe41bd06" title="Deallocate coefficients." alt="" coords="224,5,351,32"/>
+<area shape="rect" id="node3" href="$d0/dbe/namespacedevice.html#ababbe600c44ba18cd715ba8e41252e0a" title="Deallocate memory on the device." alt="" coords="399,5,548,32"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="user_intf::user_intf_init" name="user_intf::user_intf_init">
+<area shape="rect" id="node1" title="User interface initialization." alt="" coords="5,159,176,186"/>
+<area shape="rect" id="node2" href="$d9/dbc/namespaceuser__intf.html#afd21fc3b856d44b2024080205da6eec4" title="Dummy user check." alt="" coords="233,5,404,47"/>
+<area shape="rect" id="node3" href="$d9/dbc/namespaceuser__intf.html#ae2df4e70da560c11468c232d59039ff1" title="Dummy user forcing." alt="" coords="227,71,410,98"/>
+<area shape="rect" id="node4" href="$d9/dbc/namespaceuser__intf.html#a40ba933cf74cdcc9ff5dfeb2cc8813ea" title=" " alt="" coords="233,123,404,164"/>
+<area shape="rect" id="node5" href="$d9/dbc/namespaceuser__intf.html#a77e34db38c07863fa933ccc0bc6bc38a" title="Dummy user initial condition." alt="" coords="224,189,413,215"/>
+<area shape="rect" id="node6" href="$d9/dbc/namespaceuser__intf.html#ac034375c4e70421c7b6c9fd713983839" title=" " alt="" coords="233,240,404,281"/>
+<area shape="rect" id="node7" href="$d9/dbc/namespaceuser__intf.html#a65f7550c76dc49541fadb22fdb8b6fb9" title="Dummy user mesh apply." alt="" coords="233,305,404,347"/>
+</map>

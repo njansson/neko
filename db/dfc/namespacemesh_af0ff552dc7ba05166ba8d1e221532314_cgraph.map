@@ -1,0 +1,16 @@
+<map id="mesh::mesh_finalize" name="mesh::mesh_finalize">
+<area shape="rect" id="node1" title=" " alt="" coords="5,271,161,298"/>
+<area shape="rect" id="node2" href="$db/dfc/namespacemesh.html#a90390cabbda71a7f4b1e2ea9b58d4568" title="Generate element&#45;to&#45;element connectivity." alt="" coords="209,242,415,269"/>
+<area shape="rect" id="node14" href="$db/dfc/namespacemesh.html#a7278fd8b6049f335f1a733784d595d7e" title=" " alt="" coords="229,293,395,335"/>
+<area shape="rect" id="node3" href="$db/dfc/namespacemesh.html#ab9a596f402b6547638c42607a2627c78" title="Generate element&#45;element connectivity via edges both between internal and between PEs." alt="" coords="463,104,629,145"/>
+<area shape="rect" id="node7" href="$db/dfc/namespacemesh.html#a6dcb62f5acad81608f94fc29e6b7787b" title="Generate element&#45;element connectivity via facets between PEs." alt="" coords="463,267,629,308"/>
+<area shape="rect" id="node10" href="$db/dfc/namespacemesh.html#aee63f6aed325d74711a9e2fedfa12d6c" title="Generate element&#45;element connectivity via points between PEs." alt="" coords="463,201,629,243"/>
+<area shape="rect" id="node12" href="$db/dfc/namespacemesh.html#a085bcd83fbc337b97fead481375c119c" title="Generate a unique facet numbering." alt="" coords="463,364,629,405"/>
+<area shape="rect" id="node4" href="$dc/d48/namespacedistdata.html#a66e2d8156519bf42e00ef85a2dd9d696" title="Set local to global mapping (edges)" alt="" coords="678,5,871,47"/>
+<area shape="rect" id="node5" href="$dc/d48/namespacedistdata.html#ab553d9210e3f859553e82c8be368db33" title="Mark an element&#39;s edge as shared." alt="" coords="705,71,844,112"/>
+<area shape="rect" id="node6" href="$db/dfc/namespacemesh.html#af417a83f45459aa079949c7cedbc1050" title="Check if the mesh has a point given its global index." alt="" coords="684,136,865,177"/>
+<area shape="rect" id="node8" href="$dc/d48/namespacedistdata.html#a13af2d2fa32c3733dbf1688e579951ec" title="Mark an element&#39;s facet as shared." alt="" coords="695,267,854,308"/>
+<area shape="rect" id="node9" href="$dc/d48/namespacedistdata.html#a7aa5fbd5e4916c9f7eca2e0005716486" title="Mark a facet as shared." alt="" coords="705,332,845,373"/>
+<area shape="rect" id="node11" href="$dc/d48/namespacedistdata.html#a104a6fac60956fc167df8bb063632973" title="Mark a point as shared." alt="" coords="705,201,845,243"/>
+<area shape="rect" id="node13" href="$dc/d48/namespacedistdata.html#a21b01a3e652f6cd332611cce8b4f46b9" title="Set local to global mapping (facets)" alt="" coords="677,397,872,439"/>
+</map>

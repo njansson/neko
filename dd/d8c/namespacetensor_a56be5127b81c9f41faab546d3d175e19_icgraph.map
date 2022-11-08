@@ -1,0 +1,5 @@
+<map id="tensor::trsp1" name="tensor::trsp1">
+<area shape="rect" id="node1" title="In&#45;place transpose of a square tensor." alt="" coords="421,5,525,32"/>
+<area shape="rect" id="node2" href="$d2/d80/namespacecpr.html#ae689f520261060721e9a32eee074c3d7" title="Generate spectral tranform matrices." alt="" coords="175,5,373,32"/>
+<area shape="rect" id="node3" href="$d2/d80/namespacecpr.html#a4f865c729db08151da3cb27321909ede" title="Initialize cpr." alt="" coords="5,5,127,32"/>
+</map>

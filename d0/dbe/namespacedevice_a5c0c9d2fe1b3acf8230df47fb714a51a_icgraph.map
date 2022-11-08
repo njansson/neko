@@ -1,0 +1,8 @@
+<map id="device::device_memcpy_common" name="device::device_memcpy_common">
+<area shape="rect" id="node1" title="Copy data between host and device." alt="" coords="265,99,445,141"/>
+<area shape="rect" id="node2" href="$d0/dbe/namespacedevice.html#abbc5a0adab55e4c1d6243b4558c44d4c" title="Copy data between host and device (or device and device) (c&#45;pointers)" alt="" coords="5,5,217,32"/>
+<area shape="rect" id="node3" href="$d0/dbe/namespacedevice.html#a9ba361d99f8f2c1634899c16a0adb53f" title="Copy data between host and device (rank 1 arrays)" alt="" coords="11,56,211,83"/>
+<area shape="rect" id="node4" href="$d0/dbe/namespacedevice.html#ac62b32a1bf3561a9899fe2a687e143e0" title="Copy data between host and device (rank 2 arrays)" alt="" coords="11,107,211,133"/>
+<area shape="rect" id="node5" href="$d0/dbe/namespacedevice.html#a8f7b4d84958be5a38cdd62201aa4f479" title="Copy data between host and device (rank 3 arrays)" alt="" coords="11,157,211,184"/>
+<area shape="rect" id="node6" href="$d0/dbe/namespacedevice.html#a4b754118ec8590fe1b7b8671fc8737f8" title="Copy data between host and device (rank 4 arrays)" alt="" coords="11,208,211,235"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="flow_profile::blasius_quartic" name="flow_profile::blasius_quartic">
+<area shape="rect" id="node1" title="Quartic approximate Blasius Profile ." alt="" coords="419,5,569,47"/>
+<area shape="rect" id="node2" href="$d2/d13/namespaceflow__ic.html#aff7567086e0593009521c74afc760ff4" title="Set a Blasius profile as initial condition." alt="" coords="224,5,371,47"/>
+<area shape="rect" id="node3" href="$d2/d13/namespaceflow__ic.html#a388819509058bcb45eb50c8bcc4e5e20" title="Set initial flow condition (builtin)" alt="" coords="5,13,176,39"/>
+</map>

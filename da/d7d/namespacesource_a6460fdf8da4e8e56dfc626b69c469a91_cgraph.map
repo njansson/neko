@@ -1,0 +1,5 @@
+<map id="source::source_init" name="source::source_init">
+<area shape="rect" id="node1" title="Initialize a source term f." alt="" coords="5,5,149,32"/>
+<area shape="rect" id="node2" href="$da/d7d/namespacesource.html#a599903db632e0f13a43628d140383093" title="Deallocate a source term f." alt="" coords="197,5,347,32"/>
+<area shape="rect" id="node3" href="$d0/dbe/namespacedevice.html#ababbe600c44ba18cd715ba8e41252e0a" title="Deallocate memory on the device." alt="" coords="395,5,544,32"/>
+</map>

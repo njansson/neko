@@ -1,0 +1,6 @@
+<map id="coefs::coef_free" name="coefs::coef_free">
+<area shape="rect" id="node1" title="Deallocate coefficients." alt="" coords="224,56,351,83"/>
+<area shape="rect" id="node2" href="$d6/dbe/namespacecoefs.html#a413ede8639e41c04562858f286370810" title="Initialize coefficients." alt="" coords="19,5,163,32"/>
+<area shape="rect" id="node3" href="$d6/dbe/namespacecoefs.html#ad080f62637f3d5e2dba071b97ff32e90" title="Initialize empty coefs for a space and a mesh." alt="" coords="5,56,176,83"/>
+<area shape="rect" id="node4" href="$d9/d33/namespacefluid__method.html#aa1997e959322163f6034b1121adc5e3a" title="Deallocate a fluid formulation." alt="" coords="19,107,162,149"/>
+</map>

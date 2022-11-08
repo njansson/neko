@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$d5/d37/structgeneric__file_1_1generic__file__t.html" title="A generic file handler." alt="" coords="5,125,159,166"/>
+<area shape="rect" id="node2" href="$dd/dd2/structchkp__file_1_1chkp__file__t.html" title="Interface for Neko checkpoint files." alt="" coords="211,5,370,32"/>
+<area shape="rect" id="node3" href="$dd/d2f/structfld__file_1_1fld__file__t.html" title="Interface for NEKTON fld files." alt="" coords="227,56,355,83"/>
+<area shape="rect" id="node4" href="$df/d4d/structnmsh__file_1_1nmsh__file__t.html" title="Interface for Neko nmsh files." alt="" coords="207,107,375,133"/>
+<area shape="rect" id="node5" href="$d2/dfe/structre2__file_1_1re2__file__t.html" title="Interface for NEKTON re2 files." alt="" coords="221,157,360,184"/>
+<area shape="rect" id="node6" href="$d9/dfe/structrea__file_1_1rea__file__t.html" title="Interface for NEKTON ascii files." alt="" coords="221,208,360,235"/>
+<area shape="rect" id="node7" href="$d8/d43/structvtk__file_1_1vtk__file__t.html" title="Interface for legacy VTK files." alt="" coords="221,259,360,285"/>
+</map>

@@ -1,0 +1,46 @@
+<map id="fluid_method::fluid_scheme_t::scheme_init" name="fluid_method::fluid_scheme_t::scheme_init">
+<area shape="rect" id="node1" title=" " alt="" coords="5,503,184,545"/>
+<area shape="rect" id="node2" href="$d9/d33/namespacefluid__method.html#a1a2b5af161b9f2023967265d944b1433" title="Initialize all components of the current scheme." alt="" coords="232,535,375,577"/>
+<area shape="rect" id="node44" href="$d9/d33/namespacefluid__method.html#a8f99f82ddb2632121b63641290303030" title="Initialize all velocity related components of the current scheme." alt="" coords="232,470,375,511"/>
+<area shape="rect" id="node3" href="$d0/dc0/namespacebc.html#a132f9467b1f6ee956b4e31bf758b1199" title="Add a condition to a list of boundary conditions." alt="" coords="679,656,797,683"/>
+<area shape="rect" id="node4" href="$d0/dc0/namespacebc.html#a52ed37bbb9188c0673416ffa5de4dc5e" title="Initialize a list of boundary conditions." alt="" coords="681,539,795,565"/>
+<area shape="rect" id="node6" href="$d9/d33/namespacefluid__method.html#a1ab2f2af8361d1e9d62b692d05f5d7c9" title="Initialize common data for the current scheme." alt="" coords="429,473,601,514"/>
+<area shape="rect" id="node38" href="$d9/d33/namespacefluid__method.html#aec513189ce491e4e49538a04f94975f1" title="Initialize a Krylov preconditioner." alt="" coords="423,590,607,631"/>
+<area shape="rect" id="node41" href="$d9/d33/namespacefluid__method.html#a61d31ea74ff5328100498aee3eb35794" title="Initialize a linear solver." alt="" coords="425,407,605,449"/>
+<area shape="rect" id="node5" href="$d0/dc0/namespacebc.html#a70aeff826889ae0f54bd98cfacb0decb" title="Deallocate a list of boundary conditions." alt="" coords="910,611,1030,637"/>
+<area shape="rect" id="node7" href="$d0/d78/namespacegather__scatter.html#a6abafa7eaef0e406c6d411d8554b8bee" title="Initialize a gather&#45;scatter kernel." alt="" coords="655,176,821,203"/>
+<area shape="rect" id="node15" href="$da/d7d/namespacesource.html#a6460fdf8da4e8e56dfc626b69c469a91" title="Initialize a source term f." alt="" coords="666,484,810,511"/>
+<area shape="rect" id="node18" href="$d5/d0d/namespacespace.html#aea7cdf9a8933056da79e3b73f4e0ed49" title="Initialize a function space s with given polynomial dimensions." alt="" coords="671,408,805,435"/>
+<area shape="rect" id="node8" href="$d0/d78/namespacegather__scatter.html#a7b932fc67f24ee664f40c41bc61487c1" title="Deallocate a gather&#45;scatter kernel." alt="" coords="884,205,1056,232"/>
+<area shape="rect" id="node9" href="$d0/d78/namespacegather__scatter.html#a154206fc22b1611f17ccaa89a0b2ec2d" title="Setup mapping of dofs to gather&#45;scatter operations." alt="" coords="901,74,1039,115"/>
+<area shape="rect" id="node14" href="$d0/d78/namespacegather__scatter.html#a9b7e30db0a7f3f186ad0013c7d09f613" title="Schedule shared gather&#45;scatter operations." alt="" coords="901,139,1039,181"/>
+<area shape="rect" id="node10" href="$d5/d7e/gather__scatter_8f90.html#a0df0f0f94eb369fc80627b7721fad2c3" title="Find blocks sharing dofs in non&#45;facet data." alt="" coords="1153,107,1255,133"/>
+<area shape="rect" id="node11" href="$d5/d7e/gather__scatter_8f90.html#af8cc5f86931d4ca4f75ac2ddc0b311d8" title="Register a unique dof." alt="" coords="1124,157,1284,184"/>
+<area shape="rect" id="node12" href="$d5/d7e/gather__scatter_8f90.html#a762680d00a8b9d4de7498ece71c4092b" title="Sort the dof lists based on the dof to gather&#45;scatter list." alt="" coords="1137,5,1271,32"/>
+<area shape="rect" id="node13" href="$d6/d84/namespaceutils.html#ae14221a870025e675db24d2b136d2aa0" title="Compute the address of a (i,j,k,l) array with sizes (1:lx, 1:ly, 1:lz, :)" alt="" coords="1135,56,1273,83"/>
+<area shape="rect" id="node16" href="$da/d7d/namespacesource.html#a599903db632e0f13a43628d140383093" title="Deallocate a source term f." alt="" coords="895,509,1045,536"/>
+<area shape="rect" id="node17" href="$d0/dbe/namespacedevice.html#ababbe600c44ba18cd715ba8e41252e0a" title="Deallocate memory on the device." alt="" coords="1129,484,1279,511"/>
+<area shape="rect" id="node19" href="$dd/df0/namespacespeclib.html#a7607422b2789c40eb57f272aa7a0849c" title=" " alt="" coords="920,408,1020,435"/>
+<area shape="rect" id="node21" href="$dc/d5b/namespacefast3d.html#a9fccea2945bfd36eca8522da06b56c3c" title="Computes interpolation between points zf, zc The interpolation vectors are stored in jh,..." alt="" coords="901,560,1039,587"/>
+<area shape="rect" id="node23" href="$d5/d0d/namespacespace.html#abf1624ea96d6d74c2ad4d96272959544" title=" " alt="" coords="869,256,1071,283"/>
+<area shape="rect" id="node25" href="$d5/d0d/namespacespace.html#ae0b8a6c7d8cb34ac618be6d7564460d4" title="Deallocate a space s." alt="" coords="901,459,1039,485"/>
+<area shape="rect" id="node26" href="$dd/df0/namespacespeclib.html#ab11b66ebaf2ef6f202810bd016cfdf54" title=" " alt="" coords="917,307,1023,333"/>
+<area shape="rect" id="node33" href="$dd/df0/namespacespeclib.html#a179445887767b2f79644d8831c0aaa4a" title=" " alt="" coords="915,357,1025,384"/>
+<area shape="rect" id="node20" href="$dd/df0/namespacespeclib.html#a2bc7fce76bcabd1bc0ed408a25d8a368" title=" " alt="" coords="1148,408,1260,435"/>
+<area shape="rect" id="node22" href="$dc/d5b/namespacefast3d.html#a3818ed9a79f0d875651d5a467e0b88a6" title="Evaluates the derivative based on all points in the stencils" alt="" coords="1119,560,1289,587"/>
+<area shape="rect" id="node24" href="$dd/d47/namespacemath.html#a0d8b48501bec0c5a11432137733e6e3b" title="Invert a vector ." alt="" coords="1149,256,1259,283"/>
+<area shape="rect" id="node27" href="$dd/df0/namespacespeclib.html#a631f538efe1b48d5b557e06446dcb278" title=" " alt="" coords="1343,307,1450,333"/>
+<area shape="rect" id="node28" href="$dd/df0/namespacespeclib.html#a70378dbc00d8034b969f6b8143a9f79b" title=" " alt="" coords="1506,307,1621,333"/>
+<area shape="rect" id="node29" href="$dd/df0/namespacespeclib.html#a9f09a37ceba1bda3ba6d0bcb3a7c8ad5" title=" " alt="" coords="1841,383,1972,409"/>
+<area shape="rect" id="node30" href="$dd/df0/namespacespeclib.html#a6e4006c61e176baff378ff31472b6634" title=" " alt="" coords="1681,256,1783,283"/>
+<area shape="rect" id="node31" href="$dd/df0/namespacespeclib.html#af7eaf2eb0994474cab3a5582bbf02903" title=" " alt="" coords="1849,205,1965,232"/>
+<area shape="rect" id="node32" href="$dd/df0/namespacespeclib.html#a0c8e13cf445167798ffba39b31becd5c" title=" " alt="" coords="1671,357,1793,384"/>
+<area shape="rect" id="node34" href="$dd/df0/namespacespeclib.html#a7c5a4fdeafc7586a367bc910e26ba2a9" title=" " alt="" coords="1149,357,1259,384"/>
+<area shape="rect" id="node35" href="$dd/df0/namespacespeclib.html#ae2c64cf28960c6e471641deed404e86e" title=" " alt="" coords="1337,357,1456,384"/>
+<area shape="rect" id="node36" href="$dd/df0/namespacespeclib.html#ab618a625bedf7881d63d96ef454b9735" title=" " alt="" coords="1673,408,1791,435"/>
+<area shape="rect" id="node37" href="$dd/df0/namespacespeclib.html#ad943093ff49bf43afa083fdee6b3a8cc" title=" " alt="" coords="1504,445,1623,472"/>
+<area shape="rect" id="node39" href="$dc/d51/namespaceprecon__fctry.html#afff90caf28849e7a442f5856ccf578b0" title="Create a preconditioner." alt="" coords="661,590,815,631"/>
+<area shape="rect" id="node40" href="$dc/d51/namespaceprecon__fctry.html#a18ffcb1756eab1b82266908473cf1f99" title="Destroy a preconditioner." alt="" coords="893,662,1047,703"/>
+<area shape="rect" id="node42" href="$d9/d77/namespacekrylov__fctry.html#ac41dc022d96b8708532ee66f3a6981c5" title="Initialize an interative Krylov solver." alt="" coords="664,45,812,86"/>
+<area shape="rect" id="node43" href="$d9/d77/namespacekrylov__fctry.html#a1fe7494eabaed2f58223e03688ef839f" title="Destroy an interative Krylov solver." alt="" coords="896,9,1044,50"/>
+</map>

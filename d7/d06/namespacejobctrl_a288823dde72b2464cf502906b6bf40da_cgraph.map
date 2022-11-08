@@ -1,0 +1,6 @@
+<map id="jobctrl::jobctrl_set_time_limit_str" name="jobctrl::jobctrl_set_time_limit_str">
+<area shape="rect" id="node1" title="Set a job&#39;s time limit (in walltime &#39;HH:MM:SS&#39;)" alt="" coords="5,27,144,69"/>
+<area shape="rect" id="node2" href="$d7/d06/namespacejobctrl.html#aaa38605ae63b754fcccffe3d10a3a4bb" title="Set a job&#39;s time limit (in seconds)" alt="" coords="192,27,331,69"/>
+<area shape="rect" id="node3" href="$d7/d06/namespacejobctrl.html#aab0e9f6b9cce1e342bfda72b841887d2" title="Returns a job&#39;s time in seconds relative to the first call." alt="" coords="379,5,548,32"/>
+<area shape="rect" id="node4" href="$d1/daf/namespacesignal.html#a2ff4a002eab7144afd994b356435a9ca" title="Set a timeout after seconds." alt="" coords="396,57,531,98"/>
+</map>

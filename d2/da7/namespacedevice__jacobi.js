@@ -1,0 +1,7 @@
+var namespacedevice__jacobi =
+[
+    [ "cuda_jacobi_update", "df/d89/interfacedevice__jacobi_1_1cuda__jacobi__update.html", "df/d89/interfacedevice__jacobi_1_1cuda__jacobi__update" ],
+    [ "device_jacobi_t", "d8/dca/structdevice__jacobi_1_1device__jacobi__t.html", "d8/dca/structdevice__jacobi_1_1device__jacobi__t" ],
+    [ "hip_jacobi_update", "dd/d3d/interfacedevice__jacobi_1_1hip__jacobi__update.html", "dd/d3d/interfacedevice__jacobi_1_1hip__jacobi__update" ],
+    [ "opencl_jacobi_update", "de/daf/interfacedevice__jacobi_1_1opencl__jacobi__update.html", "de/daf/interfacedevice__jacobi_1_1opencl__jacobi__update" ]
+];

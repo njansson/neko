@@ -1,0 +1,6 @@
+<map id="bc::bc_list_apply_scalar" name="bc::bc_list_apply_scalar">
+<area shape="rect" id="node1" title="Apply a list of (scalar) boundary conditions." alt="" coords="277,64,453,91"/>
+<area shape="rect" id="node2" href="$d3/d06/namespaceprojection.html#a25be6cf95eeacd177d57821fe46a5e18" title=" " alt="" coords="5,5,229,32"/>
+<area shape="rect" id="node3" href="$d9/d33/namespacefluid__method.html#a41d5003b12437b155a9796622412d1dc" title="Apply all boundary conditions defined for pressure." alt="" coords="31,57,203,98"/>
+<area shape="rect" id="node4" href="$dd/dd1/namespacehsmg.html#a1c5ebdeb1e0caae9ec828b3f7e5bd7a0" title="The h1mg preconditioner from Nek5000." alt="" coords="45,123,189,149"/>
+</map>

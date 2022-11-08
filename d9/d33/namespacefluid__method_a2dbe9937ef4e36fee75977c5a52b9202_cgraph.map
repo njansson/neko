@@ -1,0 +1,4 @@
+<map id="fluid_method::fluid_scheme_bc_apply_vel" name="fluid_method::fluid_scheme_bc_apply_vel">
+<area shape="rect" id="node1" title="Apply all boundary conditions defined for velocity." alt="" coords="5,5,177,47"/>
+<area shape="rect" id="node2" href="$d0/dc0/namespacebc.html#a862fe84f1dfc991169398474d4a506f6" title="Apply a list of (scalar) boundary conditions." alt="" coords="225,13,404,39"/>
+</map>

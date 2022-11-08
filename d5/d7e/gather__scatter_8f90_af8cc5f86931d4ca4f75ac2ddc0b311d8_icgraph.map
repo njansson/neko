@@ -1,0 +1,11 @@
+<map id="gs_mapping_add_dof" name="gs_mapping_add_dof">
+<area shape="rect" id="node1" title="Register a unique dof." alt="" coords="1044,103,1204,130"/>
+<area shape="rect" id="node2" href="$d0/d78/namespacegather__scatter.html#a154206fc22b1611f17ccaa89a0b2ec2d" title="Setup mapping of dofs to gather&#45;scatter operations." alt="" coords="857,96,996,137"/>
+<area shape="rect" id="node3" href="$d0/d78/namespacegather__scatter.html#a6abafa7eaef0e406c6d411d8554b8bee" title="Initialize a gather&#45;scatter kernel." alt="" coords="643,103,809,130"/>
+<area shape="rect" id="node4" href="$d9/d33/namespacefluid__method.html#a1ab2f2af8361d1e9d62b692d05f5d7c9" title="Initialize common data for the current scheme." alt="" coords="423,37,595,79"/>
+<area shape="rect" id="node8" href="$dd/dd1/namespacehsmg.html#a203f4c75923462a923b3d5d38e90c896" title=" " alt="" coords="443,103,574,130"/>
+<area shape="rect" id="node9" href="$d2/d37/namespaceschwarz.html#ae614e2a33b051d6843ac45bcff07c6b6" title=" " alt="" coords="427,154,591,181"/>
+<area shape="rect" id="node5" href="$d9/d33/namespacefluid__method.html#a1a2b5af161b9f2023967265d944b1433" title="Initialize all components of the current scheme." alt="" coords="232,5,375,47"/>
+<area shape="rect" id="node7" href="$d9/d33/namespacefluid__method.html#a8f99f82ddb2632121b63641290303030" title="Initialize all velocity related components of the current scheme." alt="" coords="232,71,375,112"/>
+<area shape="rect" id="node6" href="$d1/dcd/structfluid__method_1_1fluid__scheme__t.html#a7719b9dff0487bde42e6e4c78634160c" title=" " alt="" coords="5,39,184,80"/>
+</map>

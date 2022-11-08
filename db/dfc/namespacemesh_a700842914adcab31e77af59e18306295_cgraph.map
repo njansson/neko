@@ -1,0 +1,5 @@
+<map id="mesh::mesh_create_periodic_ids" name="mesh::mesh_create_periodic_ids">
+<area shape="rect" id="node1" title="Creates common ids for matching periodic points." alt="" coords="5,31,240,57"/>
+<area shape="rect" id="node2" href="$db/dfc/namespacemesh.html#ac5df4c8431d1f8e9b1b87606f6a4be42" title="Add a unique edge represented as a 2&#45;tuple to the mesh." alt="" coords="288,5,460,32"/>
+<area shape="rect" id="node3" href="$db/dfc/namespacemesh.html#aff3b47cf0d5cb56d3e12f92525e91dc1" title="Add a unique face represented as a 4&#45;tuple to the mesh." alt="" coords="290,56,458,83"/>
+</map>

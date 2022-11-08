@@ -1,0 +1,11 @@
+<map id="device_math::device_copy" name="device_math::device_copy">
+<area shape="rect" id="node1" title=" " alt="" coords="456,195,651,221"/>
+<area shape="rect" id="node2" href="$d3/d06/namespaceprojection.html#a25be6cf95eeacd177d57821fe46a5e18" title=" " alt="" coords="184,5,408,32"/>
+<area shape="rect" id="node3" href="$d6/d60/namespacecg__device.html#a6e1d10056d59ba4295673097d13ac0f4" title="Standard PCG solve." alt="" coords="216,57,376,98"/>
+<area shape="rect" id="node4" href="$d0/d69/namespacedevice__identity.html#a657ba9ae56308ecc16c802275fc26046" title="The (default) naive preconditioner ." alt="" coords="210,122,382,163"/>
+<area shape="rect" id="node5" href="$dc/da9/namespacefield.html#a59affb618ed2c7c9a2e933e645675b97" title="Assignment ." alt="" coords="229,187,363,229"/>
+<area shape="rect" id="node6" href="$dd/dd1/namespacehsmg.html#a25c9fa74d9a25ea39e51a25695e12cf3" title=" " alt="" coords="224,253,368,280"/>
+<area shape="rect" id="node8" href="$dd/dd1/namespacehsmg.html#a1c5ebdeb1e0caae9ec828b3f7e5bd7a0" title="The h1mg preconditioner from Nek5000." alt="" coords="224,304,368,331"/>
+<area shape="rect" id="node9" href="$da/d46/namespacepipecg__device.html#a97a1fd422c4c03f238038a1d3e8154fe" title="Pipelined PCG solve." alt="" coords="213,355,379,397"/>
+<area shape="rect" id="node7" href="$dd/dd1/namespacehsmg.html#a203f4c75923462a923b3d5d38e90c896" title=" " alt="" coords="5,253,136,280"/>
+</map>

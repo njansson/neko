@@ -1,0 +1,46 @@
+<map id="device::device_free" name="device::device_free">
+<area shape="rect" id="node1" title="Deallocate memory on the device." alt="" coords="1480,701,1629,728"/>
+<area shape="rect" id="node2" href="$d1/d20/namespaceabbdf.html#a403bec132f73d626c26cd96234a9c093" title=" " alt="" coords="1267,25,1403,52"/>
+<area shape="rect" id="node4" href="$d0/dc0/namespacebc.html#a6ef61f50823ff60fba8fa16de22e4bc2" title="Deallocate a boundary condition." alt="" coords="1288,96,1381,123"/>
+<area shape="rect" id="node6" href="$de/da4/namespaceblasius.html#ad870c19602eeb17380eeba2452eaca92" title=" " alt="" coords="1257,187,1412,213"/>
+<area shape="rect" id="node8" href="$d6/dbe/namespacecoefs.html#a12f6ba25f9ef83da44f75c3cbe41bd06" title="Deallocate coefficients." alt="" coords="1271,308,1398,335"/>
+<area shape="rect" id="node12" href="$dd/dd2/namespacedofmap.html#a9f777e0d88d98b54f9b982f68089ed8e" title="Deallocate the dofmap." alt="" coords="757,828,920,855"/>
+<area shape="rect" id="node15" href="$dc/da9/namespacefield.html#a64d6cfe41dac9b6826f987eb0a92947f" title="Deallocate a field f." alt="" coords="1275,443,1394,469"/>
+<area shape="rect" id="node21" href="$d8/dcd/namespacegs__device.html#acb55cb0b9872ab64f6a6465b793176df" title="Dummy backend deallocation." alt="" coords="1238,777,1431,804"/>
+<area shape="rect" id="node22" href="$d9/dfa/namespacegs__device__mpi.html#abb045b3b7a92b5de7ffeed36d4da2a26" title=" " alt="" coords="1239,829,1431,870"/>
+<area shape="rect" id="node23" href="$d9/da0/namespaceinterpolation.html#ad3bf8c4a5ca916049d719b59629ad0ca" title=" " alt="" coords="1243,895,1427,921"/>
+<area shape="rect" id="node24" href="$da/d46/namespacepipecg__device.html#aeac2e2e47dadc8df22ea517657edae34" title="Deallocate a pipelined PCG solver." alt="" coords="1251,946,1418,987"/>
+<area shape="rect" id="node25" href="$d3/d06/namespaceprojection.html#a1b1f6be35bcc16036da6a95e6e5bd3eb" title=" " alt="" coords="1238,1012,1431,1039"/>
+<area shape="rect" id="node26" href="$da/d7d/namespacesource.html#a599903db632e0f13a43628d140383093" title="Deallocate a source term f." alt="" coords="1260,625,1409,652"/>
+<area shape="rect" id="node32" href="$d5/d0d/namespacespace.html#ae0b8a6c7d8cb34ac618be6d7564460d4" title="Deallocate a space s." alt="" coords="1265,676,1404,703"/>
+<area shape="rect" id="node43" href="$dc/d45/namespaceusr__inflow.html#ad596c94305154667eaeb02e8bb0243a9" title=" " alt="" coords="1237,1063,1432,1089"/>
+<area shape="rect" id="node3" href="$d6/d03/structabbdf_1_1abbdf__t.html#a050d7fe6de72d34fbc9e9e1fe3ae1b4a" title=" " alt="" coords="989,5,1183,32"/>
+<area shape="rect" id="node5" href="$d0/dc0/namespacebc.html#a5720fa6911f1e7e349f55937af0d68c4" title="Initialize a boundary condition type." alt="" coords="1042,56,1130,83"/>
+<area shape="rect" id="node7" href="$d0/dca/structblasius_1_1blasius__t.html#af87102de02e956a8500b6117269be801" title=" " alt="" coords="1019,107,1153,149"/>
+<area shape="rect" id="node9" href="$d6/dbe/namespacecoefs.html#a413ede8639e41c04562858f286370810" title="Initialize coefficients." alt="" coords="1014,173,1158,200"/>
+<area shape="rect" id="node10" href="$d6/dbe/namespacecoefs.html#ad080f62637f3d5e2dba071b97ff32e90" title="Initialize empty coefs for a space and a mesh." alt="" coords="1001,224,1171,251"/>
+<area shape="rect" id="node11" href="$d9/d33/namespacefluid__method.html#aa1997e959322163f6034b1121adc5e3a" title="Deallocate a fluid formulation." alt="" coords="1015,559,1157,601"/>
+<area shape="rect" id="node13" href="$dd/dd2/namespacedofmap.html#a1a544e8604040c5c602a4b6fdeb74809" title=" " alt="" coords="246,817,405,844"/>
+<area shape="rect" id="node14" href="$d0/df0/structdofmap_1_1dofmap__t.html#ab2d3e1cd8cf04ce17467432e3c241849" title=" " alt="" coords="5,817,181,844"/>
+<area shape="rect" id="node16" href="$dc/da9/namespacefield.html#a59affb618ed2c7c9a2e933e645675b97" title="Assignment ." alt="" coords="1019,494,1153,535"/>
+<area shape="rect" id="node17" href="$dc/da9/namespacefield.html#a97b91ca0e78193a9fce5544ac55fcfe3" title="Initialize a field f on the mesh msh using an internal dofmap." alt="" coords="985,275,1187,301"/>
+<area shape="rect" id="node18" href="$dc/da9/namespacefield.html#aa58382e40f54b59856ba03cddfef5b0d" title="Initialize a field f on the mesh msh using an internal dofmap." alt="" coords="987,325,1185,352"/>
+<area shape="rect" id="node19" href="$d6/d32/namespacefield__series.html#ad3fc1a739259da2ce0fe5562ae161087" title="Deallocates a field series." alt="" coords="1020,377,1152,418"/>
+<area shape="rect" id="node20" href="$d1/d26/namespacemean__field.html#afc0358fc3672e4ee399057537f0a0275" title="Deallocates a mean field." alt="" coords="983,443,1189,469"/>
+<area shape="rect" id="node27" href="$da/d7d/namespacesource.html#a6460fdf8da4e8e56dfc626b69c469a91" title="Initialize a source term f." alt="" coords="1014,625,1158,652"/>
+<area shape="rect" id="node28" href="$d9/d33/namespacefluid__method.html#a1ab2f2af8361d1e9d62b692d05f5d7c9" title="Initialize common data for the current scheme." alt="" coords="753,610,925,651"/>
+<area shape="rect" id="node29" href="$d9/d33/namespacefluid__method.html#a1a2b5af161b9f2023967265d944b1433" title="Initialize all components of the current scheme." alt="" coords="511,610,653,651"/>
+<area shape="rect" id="node31" href="$d9/d33/namespacefluid__method.html#a8f99f82ddb2632121b63641290303030" title="Initialize all velocity related components of the current scheme." alt="" coords="511,545,653,586"/>
+<area shape="rect" id="node30" href="$d1/dcd/structfluid__method_1_1fluid__scheme__t.html#a7719b9dff0487bde42e6e4c78634160c" title=" " alt="" coords="236,551,415,593"/>
+<area shape="rect" id="node33" href="$dd/dd2/namespacedofmap.html#a14be7fe99925dc0fb0e2e30c0d654b44" title=" " alt="" coords="743,777,935,804"/>
+<area shape="rect" id="node35" href="$d2/d37/namespaceschwarz.html#aed04e84332557d214a95921525db8443" title=" " alt="" coords="1001,727,1171,753"/>
+<area shape="rect" id="node36" href="$d5/d0d/namespacespace.html#aea7cdf9a8933056da79e3b73f4e0ed49" title="Initialize a function space s with given polynomial dimensions." alt="" coords="1019,676,1153,703"/>
+<area shape="rect" id="node34" href="$dd/dd2/namespacedofmap.html#a5d369623e2bb954910d6741afd4e93a8" title="Generate x,y,z&#45;coordinates for all dofs." alt="" coords="469,777,695,804"/>
+<area shape="rect" id="node37" href="$d3/d69/namespaceadvection.html#a155e772f99b667b81fe8a8c30c6aedb7" title=" " alt="" coords="754,676,923,703"/>
+<area shape="rect" id="node42" href="$d2/d37/namespaceschwarz.html#ae614e2a33b051d6843ac45bcff07c6b6" title=" " alt="" coords="757,727,921,753"/>
+<area shape="rect" id="node38" href="$d3/d69/namespaceadvection.html#a27316124e9b4a37c9ae00ec700953ed4" title=" " alt="" coords="503,675,661,717"/>
+<area shape="rect" id="node39" href="$db/d7d/interfaceadvection_1_1apply__adv.html#a200e0cad8c830677eef736289f4a047a" title=" " alt="" coords="245,675,406,717"/>
+<area shape="rect" id="node40" href="$de/d71/namespacefluid__plan4.html#afa0ce822bf2afdbd6fc948fa389c922e" title=" " alt="" coords="261,741,390,782"/>
+<area shape="rect" id="node41" href="$dc/da3/namespacefluid__pnpn.html#a2b7045443985c1276f51c9de2e9ced25" title=" " alt="" coords="229,624,421,651"/>
+<area shape="rect" id="node44" href="$d8/d63/structusr__inflow_1_1usr__inflow__t.html#af942c6050de4532858060bc04f3fc279" title=" " alt="" coords="1005,1055,1167,1097"/>
+</map>

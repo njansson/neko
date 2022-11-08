@@ -1,0 +1,26 @@
+<map id="math::col3" name="math::col3">
+<area shape="rect" id="node1" title="Vector multiplication with 3 vectors ." alt="" coords="663,477,753,503"/>
+<area shape="rect" id="node2" href="$d3/d69/namespaceadvection.html#ae1607e7418ef9955cfad9cac9b6af844" title="Eulerian scheme, add convection term to forcing function at current time step." alt="" coords="433,5,594,47"/>
+<area shape="rect" id="node3" href="$dd/d49/namespacejacobi.html#a2b0806955e3e341cf531d44499994d7f" title="The jacobi preconditioner &#160;&#160;where ." alt="" coords="438,71,589,98"/>
+<area shape="rect" id="node4" href="$d9/d5a/namespaceopr__xsmm.html#a57bf41f6f4190d4e8f728bd37db80ec9" title=" " alt="" coords="412,122,615,149"/>
+<area shape="rect" id="node9" href="$db/daf/namespacesx__cdtp.html#ae6efe535e1e570387b2660536a4a6f12" title=" " alt="" coords="439,173,588,199"/>
+<area shape="rect" id="node10" href="$db/daf/namespacesx__cdtp.html#a2af338a8b09b83ef2d46d9a03211d1e2" title=" " alt="" coords="431,223,596,250"/>
+<area shape="rect" id="node11" href="$db/daf/namespacesx__cdtp.html#a56da6e84f7bde573f2feeeb45c929ab0" title=" " alt="" coords="431,274,596,301"/>
+<area shape="rect" id="node12" href="$db/daf/namespacesx__cdtp.html#ac684b4e6cc673342fd07aa352143de01" title=" " alt="" coords="431,325,596,351"/>
+<area shape="rect" id="node13" href="$db/daf/namespacesx__cdtp.html#af843f4f01fe5510d6b35a926de898de5" title=" " alt="" coords="431,375,596,402"/>
+<area shape="rect" id="node14" href="$db/daf/namespacesx__cdtp.html#a4afb0c67b598cd7515f7ef319c5595bb" title=" " alt="" coords="431,426,596,453"/>
+<area shape="rect" id="node15" href="$db/daf/namespacesx__cdtp.html#ad76c052a30f2e2da794c1b2908a36844" title=" " alt="" coords="435,477,592,503"/>
+<area shape="rect" id="node16" href="$db/daf/namespacesx__cdtp.html#ad738f0dd24be0cdde4ea946aac868699" title=" " alt="" coords="435,527,592,554"/>
+<area shape="rect" id="node17" href="$db/daf/namespacesx__cdtp.html#ad95b3851f2a0493bd5217a0091e4c460" title=" " alt="" coords="435,578,592,605"/>
+<area shape="rect" id="node18" href="$db/daf/namespacesx__cdtp.html#aa228e81ec23eed69325d8494cc8e89ff" title=" " alt="" coords="435,629,592,655"/>
+<area shape="rect" id="node19" href="$db/daf/namespacesx__cdtp.html#a0c67778a2d5d114607a505aac8073176" title=" " alt="" coords="435,679,592,706"/>
+<area shape="rect" id="node20" href="$db/daf/namespacesx__cdtp.html#aae66a73c0521384d58573f28a2036cad" title=" " alt="" coords="435,730,592,757"/>
+<area shape="rect" id="node21" href="$db/daf/namespacesx__cdtp.html#a5025d287de7b3c5b86a2abad5ef4b0ad" title=" " alt="" coords="435,781,592,807"/>
+<area shape="rect" id="node22" href="$db/daf/namespacesx__cdtp.html#afd033c6021fbf9afac2336eb7b24d419" title=" " alt="" coords="435,831,592,858"/>
+<area shape="rect" id="node23" href="$d5/d6a/namespacegmres__sx.html#a9c2ada127fe243736199ecbeb712c3ea" title="Standard PCG solve." alt="" coords="435,883,591,924"/>
+<area shape="rect" id="node24" href="$dd/d6e/namespacesx__jacobi.html#a15f2370155b0cfbc9f3ca8b66c9c9054" title="The jacobi preconditioner &#160;&#160;where ." alt="" coords="437,948,589,989"/>
+<area shape="rect" id="node5" href="$dd/d30/namespaceoperators.html#a0567ee7595ffc5b3ad3e1cf7359b112b" title="Compute DT*X (entire field) This needs to be revised... the loop over n1,n2 is probably unesccssary." alt="" coords="244,122,364,149"/>
+<area shape="rect" id="node6" href="$d2/de4/namespacepnpn__res__cpu.html#a46237503a6585065f614a712cfd415ec" title=" " alt="" coords="15,49,186,91"/>
+<area shape="rect" id="node7" href="$d8/dea/namespacepnpn__res__device.html#a962e16f1457c120bac148e957ba2e90a" title=" " alt="" coords="5,115,196,156"/>
+<area shape="rect" id="node8" href="$d4/da3/namespacepnpn__res__sx.html#a27b33ebe36bc454ecfb853de4f715118" title=" " alt="" coords="15,180,186,221"/>
+</map>

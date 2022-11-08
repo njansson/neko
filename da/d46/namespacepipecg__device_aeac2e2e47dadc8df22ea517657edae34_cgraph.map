@@ -1,0 +1,4 @@
+<map id="pipecg_device::pipecg_device_free" name="pipecg_device::pipecg_device_free">
+<area shape="rect" id="node1" title="Deallocate a pipelined PCG solver." alt="" coords="5,5,172,47"/>
+<area shape="rect" id="node2" href="$d0/dbe/namespacedevice.html#ababbe600c44ba18cd715ba8e41252e0a" title="Deallocate memory on the device." alt="" coords="220,13,369,39"/>
+</map>

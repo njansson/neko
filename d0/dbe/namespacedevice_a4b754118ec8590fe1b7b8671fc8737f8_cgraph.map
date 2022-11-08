@@ -1,0 +1,4 @@
+<map id="device::device_memcpy_r4" name="device::device_memcpy_r4">
+<area shape="rect" id="node1" title="Copy data between host and device (rank 4 arrays)" alt="" coords="5,13,205,39"/>
+<area shape="rect" id="node2" href="$d0/dbe/namespacedevice.html#a5c0c9d2fe1b3acf8230df47fb714a51a" title="Copy data between host and device." alt="" coords="253,5,433,47"/>
+</map>

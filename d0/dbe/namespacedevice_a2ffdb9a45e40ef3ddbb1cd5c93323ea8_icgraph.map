@@ -1,0 +1,5 @@
+<map id="device::device_sync" name="device::device_sync">
+<area shape="rect" id="node1" title="Synchronize the device." alt="" coords="245,46,399,73"/>
+<area shape="rect" id="node2" href="$d9/dfa/namespacegs__device__mpi.html#ac3eb478c2848d018393b83a91132a30a" title="Post non&#45;blocking send operations." alt="" coords="5,5,197,47"/>
+<area shape="rect" id="node3" href="$d9/dfa/namespacegs__device__mpi.html#a8df75e84c62917643cacdcc05b47cab9" title="Wait for non&#45;blocking operations." alt="" coords="5,71,197,112"/>
+</map>

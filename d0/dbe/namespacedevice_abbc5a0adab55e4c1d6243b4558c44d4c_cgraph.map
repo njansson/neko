@@ -1,0 +1,4 @@
+<map id="device::device_memcpy_cptr" name="device::device_memcpy_cptr">
+<area shape="rect" id="node1" title="Copy data between host and device (or device and device) (c&#45;pointers)" alt="" coords="5,13,217,39"/>
+<area shape="rect" id="node2" href="$d0/dbe/namespacedevice.html#a5c0c9d2fe1b3acf8230df47fb714a51a" title="Copy data between host and device." alt="" coords="265,5,445,47"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="math::add2" name="math::add2">
+<area shape="rect" id="node1" title="Vector addition ." alt="" coords="1221,107,1317,133"/>
+<area shape="rect" id="node2" href="$d3/d06/namespaceprojection.html#a25be6cf95eeacd177d57821fe46a5e18" title=" " alt="" coords="949,5,1173,32"/>
+<area shape="rect" id="node3" href="$dc/da9/namespacefield.html#a3769c8ccac5cbf0cda06a2ae4d378815" title="Add ." alt="" coords="985,56,1137,83"/>
+<area shape="rect" id="node4" href="$dd/dd2/namespacedofmap.html#ae710cdf2efdddfe06dfd930addd83c84" title="Extend faces into interior via gordon hall gh_type: 1 &#45; vertex only &#160;&#160;2 &#45; vertex and edges 3 &#45; vertex..." alt="" coords="958,107,1165,133"/>
+<area shape="rect" id="node9" href="$dd/dd1/namespacehsmg.html#a1c5ebdeb1e0caae9ec828b3f7e5bd7a0" title="The h1mg preconditioner from Nek5000." alt="" coords="989,157,1133,184"/>
+<area shape="rect" id="node10" href="$d9/d5a/namespaceopr__xsmm.html#a57bf41f6f4190d4e8f728bd37db80ec9" title=" " alt="" coords="960,213,1163,240"/>
+<area shape="rect" id="node5" href="$dd/dd2/namespacedofmap.html#a14be7fe99925dc0fb0e2e30c0d654b44" title=" " alt="" coords="709,105,901,132"/>
+<area shape="rect" id="node6" href="$dd/dd2/namespacedofmap.html#a5d369623e2bb954910d6741afd4e93a8" title="Generate x,y,z&#45;coordinates for all dofs." alt="" coords="436,103,661,129"/>
+<area shape="rect" id="node7" href="$dd/dd2/namespacedofmap.html#a1a544e8604040c5c602a4b6fdeb74809" title=" " alt="" coords="229,103,388,129"/>
+<area shape="rect" id="node8" href="$d0/df0/structdofmap_1_1dofmap__t.html#ab2d3e1cd8cf04ce17467432e3c241849" title=" " alt="" coords="5,103,181,129"/>
+<area shape="rect" id="node11" href="$dd/d30/namespaceoperators.html#a0567ee7595ffc5b3ad3e1cf7359b112b" title="Compute DT*X (entire field) This needs to be revised... the loop over n1,n2 is probably unesccssary." alt="" coords="745,224,865,251"/>
+<area shape="rect" id="node12" href="$d2/de4/namespacepnpn__res__cpu.html#a46237503a6585065f614a712cfd415ec" title=" " alt="" coords="463,154,634,195"/>
+<area shape="rect" id="node13" href="$d8/dea/namespacepnpn__res__device.html#a962e16f1457c120bac148e957ba2e90a" title=" " alt="" coords="453,219,644,261"/>
+<area shape="rect" id="node14" href="$d4/da3/namespacepnpn__res__sx.html#a27b33ebe36bc454ecfb853de4f715118" title=" " alt="" coords="463,285,634,326"/>
+</map>

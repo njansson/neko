@@ -1,0 +1,6 @@
+<map id="mesh::mesh_apply_periodic_facet" name="mesh::mesh_apply_periodic_facet">
+<area shape="rect" id="node1" title="Replaces the periodic point&#39;s id with a common id for matching periodic points." alt="" coords="5,49,209,90"/>
+<area shape="rect" id="node2" href="$db/dfc/namespacemesh.html#ac5df4c8431d1f8e9b1b87606f6a4be42" title="Add a unique edge represented as a 2&#45;tuple to the mesh." alt="" coords="258,5,430,32"/>
+<area shape="rect" id="node3" href="$db/dfc/namespacemesh.html#aff3b47cf0d5cb56d3e12f92525e91dc1" title="Add a unique face represented as a 4&#45;tuple to the mesh." alt="" coords="260,56,428,83"/>
+<area shape="rect" id="node4" href="$db/dfc/namespacemesh.html#a3f63f466940b28b63042f0b78d5dc4a5" title="Add a unique point to the mesh." alt="" coords="257,107,431,133"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="pipecg_device::pipecg_device_init" name="pipecg_device::pipecg_device_init">
+<area shape="rect" id="node1" title="Initialise a pipelined PCG solver." alt="" coords="5,5,172,47"/>
+<area shape="rect" id="node2" href="$d0/dbe/namespacedevice.html#a4a8ea40296ab83bbd2598076b6c85ba3" title="Allocate memory on the device." alt="" coords="440,13,595,39"/>
+<area shape="rect" id="node3" href="$d0/dbe/namespacedevice.html#a9d01a3705b3b15e31888ec3ad876079b" title="Map a Fortran rank 1 array to a device (allocate and associate)" alt="" coords="220,38,392,65"/>
+</map>

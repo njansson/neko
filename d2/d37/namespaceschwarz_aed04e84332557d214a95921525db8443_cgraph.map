@@ -1,0 +1,6 @@
+<map id="schwarz::schwarz_free" name="schwarz::schwarz_free">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,175,57"/>
+<area shape="rect" id="node2" href="$d0/d78/namespacegather__scatter.html#a7b932fc67f24ee664f40c41bc61487c1" title="Deallocate a gather&#45;scatter kernel." alt="" coords="223,5,395,32"/>
+<area shape="rect" id="node3" href="$d5/d0d/namespacespace.html#ae0b8a6c7d8cb34ac618be6d7564460d4" title="Deallocate a space s." alt="" coords="239,56,378,83"/>
+<area shape="rect" id="node4" href="$d0/dbe/namespacedevice.html#ababbe600c44ba18cd715ba8e41252e0a" title="Deallocate memory on the device." alt="" coords="443,56,592,83"/>
+</map>

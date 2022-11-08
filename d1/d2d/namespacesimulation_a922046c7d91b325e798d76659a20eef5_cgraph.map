@@ -1,0 +1,8 @@
+<map id="simulation::neko_solve" name="simulation::neko_solve">
+<area shape="rect" id="node1" title="Main driver to solve a case C." alt="" coords="5,111,177,138"/>
+<area shape="rect" id="node2" href="$d7/d06/namespacejobctrl.html#aa766aab0c30411254759e41e89d1fb8f" title="Check if the job&#39;s time limit has been reached." alt="" coords="235,5,384,47"/>
+<area shape="rect" id="node4" href="$d1/d2d/namespacesimulation.html#a933da001f4561bdb159de8e62593bec3" title="Write a checkpoint at joblimit." alt="" coords="225,71,393,112"/>
+<area shape="rect" id="node5" href="$d1/d2d/namespacesimulation.html#af82971b79cd67a50aaed87190a60dd9d" title="Restart a case C from a given checkpoint." alt="" coords="225,136,393,177"/>
+<area shape="rect" id="node6" href="$d1/d2d/namespacesimulation.html#a4733116d6ea8f3967b79781cd3b86cee" title=" " alt="" coords="225,201,393,243"/>
+<area shape="rect" id="node3" href="$d1/daf/namespacesignal.html#a1eb78f2982b116e2f5498b9e6957efad" title="Check if any timeout has occurred (either SIGXCPU or SIGALRM)" alt="" coords="441,13,608,39"/>
+</map>

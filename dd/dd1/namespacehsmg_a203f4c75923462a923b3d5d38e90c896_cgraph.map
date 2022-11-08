@@ -1,0 +1,24 @@
+<map id="hsmg::hsmg_init" name="hsmg::hsmg_init">
+<area shape="rect" id="node1" title=" " alt="" coords="5,173,136,199"/>
+<area shape="rect" id="node2" href="$d8/dbc/namespaceax__helm__fctry.html#ac6dbd08dd7440f39fdf436828533d66e" title=" " alt="" coords="184,5,363,47"/>
+<area shape="rect" id="node3" href="$d0/dc0/namespacebc.html#a132f9467b1f6ee956b4e31bf758b1199" title="Add a condition to a list of boundary conditions." alt="" coords="214,71,333,98"/>
+<area shape="rect" id="node4" href="$d0/dc0/namespacebc.html#a52ed37bbb9188c0673416ffa5de4dc5e" title="Initialize a list of boundary conditions." alt="" coords="216,122,331,149"/>
+<area shape="rect" id="node6" href="$d0/d78/namespacegather__scatter.html#a6abafa7eaef0e406c6d411d8554b8bee" title="Initialize a gather&#45;scatter kernel." alt="" coords="190,173,357,199"/>
+<area shape="rect" id="node14" href="$dd/dd1/namespacehsmg.html#a986352b1944e92cc1fff998ff3a834c6" title=" " alt="" coords="195,223,352,250"/>
+<area shape="rect" id="node15" href="$dd/dd1/namespacehsmg.html#a25c9fa74d9a25ea39e51a25695e12cf3" title=" " alt="" coords="201,285,345,311"/>
+<area shape="rect" id="node21" href="$d9/d77/namespacekrylov__fctry.html#ac41dc022d96b8708532ee66f3a6981c5" title="Initialize an interative Krylov solver." alt="" coords="199,361,347,403"/>
+<area shape="rect" id="node5" href="$d0/dc0/namespacebc.html#a70aeff826889ae0f54bd98cfacb0decb" title="Deallocate a list of boundary conditions." alt="" coords="448,51,568,78"/>
+<area shape="rect" id="node7" href="$d0/d78/namespacegather__scatter.html#a7b932fc67f24ee664f40c41bc61487c1" title="Deallocate a gather&#45;scatter kernel." alt="" coords="422,102,594,129"/>
+<area shape="rect" id="node8" href="$d0/d78/namespacegather__scatter.html#a154206fc22b1611f17ccaa89a0b2ec2d" title="Setup mapping of dofs to gather&#45;scatter operations." alt="" coords="439,153,577,195"/>
+<area shape="rect" id="node13" href="$d0/d78/namespacegather__scatter.html#a9b7e30db0a7f3f186ad0013c7d09f613" title="Schedule shared gather&#45;scatter operations." alt="" coords="439,219,577,260"/>
+<area shape="rect" id="node9" href="$d5/d7e/gather__scatter_8f90.html#a0df0f0f94eb369fc80627b7721fad2c3" title="Find blocks sharing dofs in non&#45;facet data." alt="" coords="682,71,785,98"/>
+<area shape="rect" id="node10" href="$d5/d7e/gather__scatter_8f90.html#af8cc5f86931d4ca4f75ac2ddc0b311d8" title="Register a unique dof." alt="" coords="653,122,813,149"/>
+<area shape="rect" id="node11" href="$d5/d7e/gather__scatter_8f90.html#a762680d00a8b9d4de7498ece71c4092b" title="Sort the dof lists based on the dof to gather&#45;scatter list." alt="" coords="666,173,801,199"/>
+<area shape="rect" id="node12" href="$d6/d84/namespaceutils.html#ae14221a870025e675db24d2b136d2aa0" title="Compute the address of a (i,j,k,l) array with sizes (1:lx, 1:ly, 1:lz, :)" alt="" coords="664,223,803,250"/>
+<area shape="rect" id="node16" href="$dd/d47/namespacemath.html#a06c292dd97b659412ba3df8a9fd756b2" title="Copy a vector ." alt="" coords="461,285,555,311"/>
+<area shape="rect" id="node17" href="$d2/d73/namespacedevice__math.html#acfa201ca963eda2bf11f907d356ca687" title=" " alt="" coords="411,335,605,362"/>
+<area shape="rect" id="node18" href="$de/d1e/math_8cu.html#aaa922bf0afc80480ef12d8260376bf53" title=" " alt="" coords="688,285,779,311"/>
+<area shape="rect" id="node19" href="$de/d9b/math_8hip.html#a4c3c1d7060a85f274a85004721059a5c" title=" " alt="" coords="693,335,773,362"/>
+<area shape="rect" id="node20" href="$d6/da3/math_8c.html#af2055c7811d3d143b549d14a0f302079" title=" " alt="" coords="682,386,785,413"/>
+<area shape="rect" id="node22" href="$d9/d77/namespacekrylov__fctry.html#a1fe7494eabaed2f58223e03688ef839f" title="Destroy an interative Krylov solver." alt="" coords="434,387,582,428"/>
+</map>

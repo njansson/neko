@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['c_5580',['c',['../d0/dca/structblasius_1_1blasius__t.html#aa580faa4fe650ce5a25580c8b8a67cea',1,'blasius::blasius_t::c()'],['../d1/d1e/structfacet__normal_1_1facet__normal__t.html#a850daefadae60306741324d441640c76',1,'facet_normal::facet_normal_t::c()'],['../d8/d63/structusr__inflow_1_1usr__inflow__t.html#a31e578b0b033106f9c2d82314f5641b0',1,'usr_inflow::usr_inflow_t::c()'],['../df/db9/structgmres_1_1gmres__t.html#a8b20998ad7369f7b38a01f8351da0cca',1,'gmres::gmres_t::c()'],['../d8/d1e/structgmres__device_1_1gmres__device__t.html#a4cc0215a4c95fdea815871f0d6d52c11',1,'gmres_device::gmres_device_t::c()'],['../d3/d41/structgmres__sx_1_1sx__gmres__t.html#a80fffe477c26795dd69c9c324ef08ca4',1,'gmres_sx::sx_gmres_t::c()']]],
+  ['c_5fcrs_5581',['c_crs',['../dd/d81/structhsmg_1_1hsmg__t.html#a27d420c15daaa2866f404b5cbb868926',1,'hsmg::hsmg_t']]],
+  ['c_5fd_5582',['c_d',['../d8/d1e/structgmres__device_1_1gmres__device__t.html#acdde93276f84c6fa3c69be5e7af5af63',1,'gmres_device::gmres_device_t']]],
+  ['c_5fmg_5583',['c_mg',['../dd/d81/structhsmg_1_1hsmg__t.html#af966c0bdb63e18bf4aacfa52f4b2eb42',1,'hsmg::hsmg_t']]],
+  ['c_5frp_5584',['c_rp',['../df/d48/namespacenum__types.html#a2f7775fd372892e8c229d6d097bcb13c',1,'num_types']]],
+  ['c_5fxh_5585',['c_xh',['../d0/d88/structdong__outflow_1_1dong__outflow__t.html#af2bcc584efe07c62645a9aa0fbe94772',1,'dong_outflow::dong_outflow_t::c_xh()'],['../d1/dcd/structfluid__method_1_1fluid__scheme__t.html#af184d87f54744739eb92660550d9ffb4',1,'fluid_method::fluid_scheme_t::c_xh()']]],
+  ['c_5fyh_5586',['c_yh',['../dc/d90/structfluid__plan1_1_1fluid__plan1__t.html#ac2473ddc335a700d0121f221916c5b92',1,'fluid_plan1::fluid_plan1_t']]],
+  ['cbc_5587',['cbc',['../d1/db3/structrea_1_1rea__t.html#a7cd8988f25ed3d7d353f86b0f381938c',1,'rea::rea_t']]],
+  ['cdtp_5fprogram_5588',['cdtp_program',['../d1/df7/prgm__lib_8h.html#a37f6c2e61ea310ec9a9ff504a80576c9',1,'prgm_lib.h']]],
+  ['cfl_5fprogram_5589',['cfl_program',['../d1/df7/prgm__lib_8h.html#a8e327ed72eae8007fe873ee55f3542b8',1,'prgm_lib.h']]],
+  ['cg_5fp_5fspace_5590',['cg_p_space',['../d9/df6/namespacecg.html#a423b5aa8a58e413dc99f719b065ee8a8',1,'cg']]],
+  ['chkp_5591',['chkp',['../d1/dcd/structfluid__method_1_1fluid__scheme__t.html#a970ba8a9e31be042562b92e1746f577d',1,'fluid_method::fluid_scheme_t::chkp()'],['../da/d51/structchkp__output_1_1chkp__output__t.html#a181f32ca6de927ec1dbd0335a044152d',1,'chkp_output::chkp_output_t::chkp()']]],
+  ['coef_5592',['coef',['../da/d72/structjacobi_1_1jacobi__t.html#a08c828ea128aa4976f203564ef25f834',1,'jacobi::jacobi_t::coef()'],['../d8/dca/structdevice__jacobi_1_1device__jacobi__t.html#a38bdefde4803a156f802593552a97bb2',1,'device_jacobi::device_jacobi_t::coef()'],['../d4/d41/structsx__jacobi_1_1sx__jacobi__t.html#afc45938215ecdb395c267a5e0006e227',1,'sx_jacobi::sx_jacobi_t::coef()'],['../dd/d1b/structhsmg_1_1multigrid__t.html#a3a99b4ffee9862ac4948601db79b4195',1,'hsmg::multigrid_t::coef()']]],
+  ['coef_5fgl_5593',['coef_gl',['../d8/db2/structadvection_1_1adv__dealias__t.html#a458d5ae8a23f4fa7728ce8180bc8d476',1,'advection::adv_dealias_t']]],
+  ['coef_5fgll_5594',['coef_gll',['../d8/db2/structadvection_1_1adv__dealias__t.html#acc9f301c0ae1ee2e28ac5f94d1fbaa3b',1,'advection::adv_dealias_t']]],
+  ['coef_5fprogram_5595',['coef_program',['../d1/df7/prgm__lib_8h.html#a7da178fca82b5b362dd232f0a36ba5f3',1,'prgm_lib.h']]],
+  ['comm_5596',['comm',['../d6/d4a/structdatadist_1_1dist__t.html#a4870107dae31c01bcbe0b24f4eb67ead',1,'datadist::dist_t::comm()'],['../dd/db8/structgather__scatter_1_1gs__t.html#a72909c90cfe9ab7df22af948c0467733',1,'gather_scatter::gs_t::comm()']]],
+  ['conv1_5fprogram_5597',['conv1_program',['../d1/df7/prgm__lib_8h.html#a2824ac194f94fdb0ad8f4d7986f31be1',1,'prgm_lib.h']]],
+  ['counter_5598',['counter',['../d5/d37/structgeneric__file_1_1generic__file__t.html#a590608acce62212a28ba15a094caa5b4',1,'generic_file::generic_file_t']]],
+  ['crs_5fsolver_5599',['crs_solver',['../dd/d81/structhsmg_1_1hsmg__t.html#aebcfeb4e84e3be80bce45413594fa0fb',1,'hsmg::hsmg_t']]],
+  ['curve_5600',['curve',['../d7/d28/structmesh_1_1mesh__t.html#afad0a8d7591915892914836a1b898171',1,'mesh::mesh_t']]],
+  ['curve_5fdata_5601',['curve_data',['../d0/d10/structstructs_1_1struct__curve__t.html#a33d6b742f066f5c5693219074593fc40',1,'structs::struct_curve_t::curve_data()'],['../d1/d7a/structnmsh_1_1nmsh__curve__el__t.html#a62711e7859e7134c035321c32c159d0b',1,'nmsh::nmsh_curve_el_t::curve_data()']]],
+  ['curve_5fel_5602',['curve_el',['../dd/d69/structcurve_1_1curve__t.html#a2f057c1f79152ead09e239105a9bb265',1,'curve::curve_t']]],
+  ['curve_5ftype_5603',['curve_type',['../d0/d10/structstructs_1_1struct__curve__t.html#aeae795452ea3d79c602bd20558189de0',1,'structs::struct_curve_t']]]
+];

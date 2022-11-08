@@ -1,0 +1,10 @@
+<map id="precon_fctry::precon_destroy" name="precon_fctry::precon_destroy">
+<area shape="rect" id="node1" title="Destroy a preconditioner." alt="" coords="857,39,1012,80"/>
+<area shape="rect" id="node2" href="$d9/d33/namespacefluid__method.html#aa1997e959322163f6034b1121adc5e3a" title="Deallocate a fluid formulation." alt="" coords="661,5,803,47"/>
+<area shape="rect" id="node3" href="$dc/d51/namespaceprecon__fctry.html#afff90caf28849e7a442f5856ccf578b0" title="Create a preconditioner." alt="" coords="655,71,809,112"/>
+<area shape="rect" id="node4" href="$d9/d33/namespacefluid__method.html#aec513189ce491e4e49538a04f94975f1" title="Initialize a Krylov preconditioner." alt="" coords="423,71,607,112"/>
+<area shape="rect" id="node5" href="$d6/d78/namespacefluid__plan1.html#ab1fb9c5e6fea5145cee2e111f6ce9404" title=" " alt="" coords="239,5,368,47"/>
+<area shape="rect" id="node6" href="$d9/d33/namespacefluid__method.html#a1a2b5af161b9f2023967265d944b1433" title="Initialize all components of the current scheme." alt="" coords="232,71,375,112"/>
+<area shape="rect" id="node8" href="$d9/d33/namespacefluid__method.html#a8f99f82ddb2632121b63641290303030" title="Initialize all velocity related components of the current scheme." alt="" coords="232,136,375,177"/>
+<area shape="rect" id="node7" href="$d1/dcd/structfluid__method_1_1fluid__scheme__t.html#a7719b9dff0487bde42e6e4c78634160c" title=" " alt="" coords="5,104,184,145"/>
+</map>

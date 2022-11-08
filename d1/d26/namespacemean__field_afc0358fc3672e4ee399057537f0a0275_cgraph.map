@@ -1,0 +1,5 @@
+<map id="mean_field::mean_field_free" name="mean_field::mean_field_free">
+<area shape="rect" id="node1" title="Deallocates a mean field." alt="" coords="5,5,212,32"/>
+<area shape="rect" id="node2" href="$dc/da9/namespacefield.html#a64d6cfe41dac9b6826f987eb0a92947f" title="Deallocate a field f." alt="" coords="260,5,379,32"/>
+<area shape="rect" id="node3" href="$d0/dbe/namespacedevice.html#ababbe600c44ba18cd715ba8e41252e0a" title="Deallocate memory on the device." alt="" coords="427,5,576,32"/>
+</map>

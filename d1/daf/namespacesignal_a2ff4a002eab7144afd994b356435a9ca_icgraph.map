@@ -1,0 +1,5 @@
+<map id="signal::signal_set_timeout" name="signal::signal_set_timeout">
+<area shape="rect" id="node1" title="Set a timeout after seconds." alt="" coords="379,5,513,47"/>
+<area shape="rect" id="node2" href="$d7/d06/namespacejobctrl.html#aaa38605ae63b754fcccffe3d10a3a4bb" title="Set a job&#39;s time limit (in seconds)" alt="" coords="192,5,331,47"/>
+<area shape="rect" id="node3" href="$d7/d06/namespacejobctrl.html#a288823dde72b2464cf502906b6bf40da" title="Set a job&#39;s time limit (in walltime &#39;HH:MM:SS&#39;)" alt="" coords="5,5,144,47"/>
+</map>

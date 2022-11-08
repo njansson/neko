@@ -1,0 +1,7 @@
+<map id="cg::cg_solve" name="cg::cg_solve">
+<area shape="rect" id="node1" title="Standard PCG solve." alt="" coords="5,81,108,108"/>
+<area shape="rect" id="node2" href="$dd/d47/namespacemath.html#a06c292dd97b659412ba3df8a9fd756b2" title="Copy a vector ." alt="" coords="182,5,277,32"/>
+<area shape="rect" id="node3" href="$dd/d47/namespacemath.html#af39621cc6ab93bd93e913779e972db95" title="Weighted inner product ." alt="" coords="180,56,279,83"/>
+<area shape="rect" id="node4" href="$dd/d47/namespacemath.html#a166dde30e679bcc8288bb0b817d2dcdd" title="Zero a real vector." alt="" coords="181,107,278,133"/>
+<area shape="rect" id="node5" href="$d9/df6/namespacecg.html#ae7c2184419738c9ad50dcf394a039d18" title=" " alt="" coords="156,157,303,184"/>
+</map>

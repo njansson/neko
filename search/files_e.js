@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['opencl_5fintf_2ef90_3738',['opencl_intf.F90',['../de/ded/opencl__intf_8F90.html',1,'']]],
+  ['operators_2ef90_3739',['operators.f90',['../dd/dbf/operators_8f90.html',1,'']]],
+  ['opgrad_2ef90_3740',['opgrad.f90',['../dc/d32/opgrad_8f90.html',1,'']]],
+  ['opgrad_5fkernel_2eh_3741',['opgrad_kernel.h',['../da/da7/cuda_2opgrad__kernel_8h.html',1,'(Global Namespace)'],['../dd/d9e/hip_2opgrad__kernel_8h.html',1,'(Global Namespace)']]],
+  ['opr_5fcdtp_2ec_3742',['opr_cdtp.c',['../d6/d10/opr__cdtp_8c.html',1,'']]],
+  ['opr_5fcdtp_2ecu_3743',['opr_cdtp.cu',['../df/d14/opr__cdtp_8cu.html',1,'']]],
+  ['opr_5fcdtp_2ehip_3744',['opr_cdtp.hip',['../d9/d63/opr__cdtp_8hip.html',1,'']]],
+  ['opr_5fcfl_2ec_3745',['opr_cfl.c',['../da/d03/opr__cfl_8c.html',1,'']]],
+  ['opr_5fcfl_2ecu_3746',['opr_cfl.cu',['../da/d37/opr__cfl_8cu.html',1,'']]],
+  ['opr_5fcfl_2ehip_3747',['opr_cfl.hip',['../d1/d38/opr__cfl_8hip.html',1,'']]],
+  ['opr_5fconv1_2ec_3748',['opr_conv1.c',['../d1/dc1/opr__conv1_8c.html',1,'']]],
+  ['opr_5fconv1_2ecu_3749',['opr_conv1.cu',['../d2/d79/opr__conv1_8cu.html',1,'']]],
+  ['opr_5fconv1_2ehip_3750',['opr_conv1.hip',['../d3/d39/opr__conv1_8hip.html',1,'']]],
+  ['opr_5fcpu_2ef90_3751',['opr_cpu.f90',['../d6/d4c/opr__cpu_8f90.html',1,'']]],
+  ['opr_5fdevice_2ef90_3752',['opr_device.F90',['../df/d36/opr__device_8F90.html',1,'']]],
+  ['opr_5fdudxyz_2ec_3753',['opr_dudxyz.c',['../d1/d28/opr__dudxyz_8c.html',1,'']]],
+  ['opr_5fdudxyz_2ecu_3754',['opr_dudxyz.cu',['../d3/d13/opr__dudxyz_8cu.html',1,'']]],
+  ['opr_5fdudxyz_2ehip_3755',['opr_dudxyz.hip',['../d6/d27/opr__dudxyz_8hip.html',1,'']]],
+  ['opr_5fopgrad_2ec_3756',['opr_opgrad.c',['../d0/d82/opr__opgrad_8c.html',1,'']]],
+  ['opr_5fopgrad_2ecu_3757',['opr_opgrad.cu',['../d6/d68/opr__opgrad_8cu.html',1,'']]],
+  ['opr_5fopgrad_2ehip_3758',['opr_opgrad.hip',['../d5/dc3/opr__opgrad_8hip.html',1,'']]],
+  ['opr_5fsx_2ef90_3759',['opr_sx.f90',['../d4/d06/opr__sx_8f90.html',1,'']]],
+  ['opr_5fxsmm_2ef90_3760',['opr_xsmm.F90',['../d6/d05/opr__xsmm_8F90.html',1,'']]],
+  ['output_2ef90_3761',['output.f90',['../d8/d6c/output_8f90.html',1,'']]]
+];

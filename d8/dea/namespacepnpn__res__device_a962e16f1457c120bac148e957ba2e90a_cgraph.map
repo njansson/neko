@@ -1,0 +1,34 @@
+<map id="pnpn_res_device::pnpn_prs_res_device_compute" name="pnpn_res_device::pnpn_prs_res_device_compute">
+<area shape="rect" id="node1" title=" " alt="" coords="5,505,196,546"/>
+<area shape="rect" id="node2" href="$dd/d30/namespaceoperators.html#a0567ee7595ffc5b3ad3e1cf7359b112b" title="Compute DT*X (entire field) This needs to be revised... the loop over n1,n2 is probably unesccssary." alt="" coords="277,107,397,133"/>
+<area shape="rect" id="node15" href="$dd/d30/namespaceoperators.html#af453af505205377ba31a868d33f4a197" title=" " alt="" coords="279,228,395,255"/>
+<area shape="rect" id="node16" href="$d7/de8/namespacedevice__mathops.html#ad320386a9a26ac7a8ca3b8fb9e749cfc" title=" " alt="" coords="247,279,427,321"/>
+<area shape="rect" id="node20" href="$d2/d73/namespacedevice__math.html#acc0e174d7f1d96188c9c5cd3ae1e1a1b" title=" " alt="" coords="259,345,416,386"/>
+<area shape="rect" id="node24" href="$d4/d66/pnpn__res_8cu.html#a46d7fa984d288b53248930c7b562bae3" title=" " alt="" coords="244,411,431,437"/>
+<area shape="rect" id="node25" href="$dd/d79/pnpn__res_8hip.html#a188d4ccce58801250eae10aed5a8cee4" title=" " alt="" coords="249,461,425,488"/>
+<area shape="rect" id="node26" href="$df/d4b/pnpn__res_8c.html#aaa32232882058f8bcd81696682f8d2ab" title=" " alt="" coords="733,505,883,546"/>
+<area shape="rect" id="node27" href="$d4/d66/pnpn__res_8cu.html#a2fd7c133bdd5bb66430c9153240f70cb" title=" " alt="" coords="244,563,431,589"/>
+<area shape="rect" id="node28" href="$dd/d79/pnpn__res_8hip.html#a14669718af3049b2ec2c9273ce631d26" title=" " alt="" coords="249,613,425,640"/>
+<area shape="rect" id="node29" href="$df/d4b/pnpn__res_8c.html#a6ef5029e9556cc27d3076a0350dcf6c6" title=" " alt="" coords="733,613,883,654"/>
+<area shape="rect" id="node30" href="$d4/d66/pnpn__res_8cu.html#a866701e52b8188e86c1d70eb9d022484" title=" " alt="" coords="244,715,431,741"/>
+<area shape="rect" id="node31" href="$dd/d79/pnpn__res_8hip.html#a3a9abe7765b4304831f5ab93c3074c75" title=" " alt="" coords="249,765,425,792"/>
+<area shape="rect" id="node32" href="$df/d4b/pnpn__res_8c.html#a1592c5e447d4d3562124b4bb453c23f2" title=" " alt="" coords="733,765,883,806"/>
+<area shape="rect" id="node3" href="$d0/d94/namespaceopr__cpu.html#a811e4c006443cc206608a9695e473f39" title=" " alt="" coords="499,5,665,32"/>
+<area shape="rect" id="node4" href="$d3/d4d/namespaceopr__device.html#ad5d00df0b50a85c3f400f90e628c0cae" title=" " alt="" coords="479,56,685,83"/>
+<area shape="rect" id="node10" href="$df/db5/namespaceopr__sx.html#ac006a5aef9f52758ab076ed545f2b838" title=" " alt="" coords="507,107,657,133"/>
+<area shape="rect" id="node11" href="$d9/d5a/namespaceopr__xsmm.html#a57bf41f6f4190d4e8f728bd37db80ec9" title=" " alt="" coords="481,157,683,184"/>
+<area shape="rect" id="node5" href="$df/d14/opr__cdtp_8cu.html#a217704e9e0aec3b1aec80eba77c3eefc" title=" " alt="" coords="764,5,852,32"/>
+<area shape="rect" id="node6" href="$d9/d63/opr__cdtp_8hip.html#a7147aefaaf9030b329837f03095685f0" title=" " alt="" coords="769,56,847,83"/>
+<area shape="rect" id="node7" href="$d6/d10/opr__cdtp_8c.html#ad014ae6fead1604386995ca75f53a3e1" title=" " alt="" coords="758,107,858,133"/>
+<area shape="rect" id="node8" href="$d3/dd9/cuda_2cdtp__kernel_8h.html#aa7f38447cbbb0aba64aa400ae701d06a" title=" " alt="" coords="948,107,1045,133"/>
+<area shape="rect" id="node9" href="$d6/df3/jit_8c.html#a7f4d1566adfd93b0565147e32387abf6" title=" " alt="" coords="931,512,1063,539"/>
+<area shape="rect" id="node12" href="$dd/d47/namespacemath.html#ac6c5531df69e2047f4646e0fcfa4523b" title="Vector addition ." alt="" coords="760,157,856,184"/>
+<area shape="rect" id="node13" href="$dd/d47/namespacemath.html#ae9c03c3dc7fc4ee652dbb7ba5e351269" title="Vector multiplication with 3 vectors ." alt="" coords="763,208,853,235"/>
+<area shape="rect" id="node14" href="$dd/d47/namespacemath.html#a0ac87bdc804d5f901726afe53430ead6" title="Vector division ." alt="" coords="753,259,863,285"/>
+<area shape="rect" id="node17" href="$dd/db5/mathops_8cu.html#a62c8b601530d663d2e9037689bd033af" title=" " alt="" coords="531,208,633,235"/>
+<area shape="rect" id="node18" href="$d5/d0f/mathops_8hip.html#a7d072e06c3b20695fd0f419a68ee1c3c" title=" " alt="" coords="536,259,628,285"/>
+<area shape="rect" id="node19" href="$d5/d69/mathops_8c.html#ace47fde9bffcb8869b959bce8aadf033" title=" " alt="" coords="751,381,865,408"/>
+<area shape="rect" id="node21" href="$de/d1e/math_8cu.html#a929f7979761fc7dfdb31c1bc7dcd3897" title=" " alt="" coords="535,360,629,387"/>
+<area shape="rect" id="node22" href="$de/d9b/math_8hip.html#a77af7f53dcedc983cdf1d66596c73b0f" title=" " alt="" coords="541,411,623,437"/>
+<area shape="rect" id="node23" href="$d6/da3/math_8c.html#a4759a87ec336639cbcd865aea0801da7" title=" " alt="" coords="529,461,635,488"/>
+</map>

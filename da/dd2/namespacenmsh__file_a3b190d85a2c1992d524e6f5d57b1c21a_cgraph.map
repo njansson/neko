@@ -1,0 +1,4 @@
+<map id="nmsh_file::nmsh_file_write" name="nmsh_file::nmsh_file_write">
+<area shape="rect" id="node1" title="Write a mesh from to a binary Neko nmsh file." alt="" coords="5,5,161,47"/>
+<area shape="rect" id="node2" href="$db/dfc/namespacemesh.html#a36533b244a9e679e7803511d16b269ab" title="Reset ids of periodic points to their original ids." alt="" coords="209,13,436,39"/>
+</map>

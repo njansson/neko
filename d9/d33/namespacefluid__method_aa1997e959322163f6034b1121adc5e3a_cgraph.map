@@ -1,0 +1,12 @@
+<map id="fluid_method::fluid_scheme_free" name="fluid_method::fluid_scheme_free">
+<area shape="rect" id="node1" title="Deallocate a fluid formulation." alt="" coords="5,179,148,221"/>
+<area shape="rect" id="node2" href="$d0/dc0/namespacebc.html#a70aeff826889ae0f54bd98cfacb0decb" title="Deallocate a list of boundary conditions." alt="" coords="222,5,342,32"/>
+<area shape="rect" id="node3" href="$d6/dbe/namespacecoefs.html#a12f6ba25f9ef83da44f75c3cbe41bd06" title="Deallocate coefficients." alt="" coords="219,56,345,83"/>
+<area shape="rect" id="node5" href="$dc/da9/namespacefield.html#a64d6cfe41dac9b6826f987eb0a92947f" title="Deallocate a field f." alt="" coords="223,107,341,133"/>
+<area shape="rect" id="node6" href="$d0/d78/namespacegather__scatter.html#a7b932fc67f24ee664f40c41bc61487c1" title="Deallocate a gather&#45;scatter kernel." alt="" coords="196,157,368,184"/>
+<area shape="rect" id="node7" href="$d9/d77/namespacekrylov__fctry.html#a1fe7494eabaed2f58223e03688ef839f" title="Destroy an interative Krylov solver." alt="" coords="208,209,356,250"/>
+<area shape="rect" id="node8" href="$dc/d51/namespaceprecon__fctry.html#a18ffcb1756eab1b82266908473cf1f99" title="Destroy a preconditioner." alt="" coords="205,274,359,315"/>
+<area shape="rect" id="node9" href="$da/d7d/namespacesource.html#a599903db632e0f13a43628d140383093" title="Deallocate a source term f." alt="" coords="207,340,357,367"/>
+<area shape="rect" id="node10" href="$d5/d0d/namespacespace.html#ae0b8a6c7d8cb34ac618be6d7564460d4" title="Deallocate a space s." alt="" coords="213,391,351,417"/>
+<area shape="rect" id="node4" href="$d0/dbe/namespacedevice.html#ababbe600c44ba18cd715ba8e41252e0a" title="Deallocate memory on the device." alt="" coords="416,224,565,251"/>
+</map>

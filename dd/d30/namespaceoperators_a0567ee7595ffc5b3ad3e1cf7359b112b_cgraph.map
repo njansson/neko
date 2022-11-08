@@ -1,0 +1,15 @@
+<map id="operators::cdtp" name="operators::cdtp">
+<area shape="rect" id="node1" title="Compute DT*X (entire field) This needs to be revised... the loop over n1,n2 is probably unesccssary." alt="" coords="5,95,125,121"/>
+<area shape="rect" id="node2" href="$d0/d94/namespaceopr__cpu.html#a811e4c006443cc206608a9695e473f39" title=" " alt="" coords="193,19,360,45"/>
+<area shape="rect" id="node3" href="$d3/d4d/namespaceopr__device.html#ad5d00df0b50a85c3f400f90e628c0cae" title=" " alt="" coords="173,69,380,96"/>
+<area shape="rect" id="node9" href="$df/db5/namespaceopr__sx.html#ac006a5aef9f52758ab076ed545f2b838" title=" " alt="" coords="201,120,352,147"/>
+<area shape="rect" id="node10" href="$d9/d5a/namespaceopr__xsmm.html#a57bf41f6f4190d4e8f728bd37db80ec9" title=" " alt="" coords="175,183,378,209"/>
+<area shape="rect" id="node4" href="$df/d14/opr__cdtp_8cu.html#a217704e9e0aec3b1aec80eba77c3eefc" title=" " alt="" coords="439,5,527,32"/>
+<area shape="rect" id="node5" href="$d9/d63/opr__cdtp_8hip.html#a7147aefaaf9030b329837f03095685f0" title=" " alt="" coords="445,56,522,83"/>
+<area shape="rect" id="node6" href="$d6/d10/opr__cdtp_8c.html#ad014ae6fead1604386995ca75f53a3e1" title=" " alt="" coords="433,107,533,133"/>
+<area shape="rect" id="node7" href="$d3/dd9/cuda_2cdtp__kernel_8h.html#aa7f38447cbbb0aba64aa400ae701d06a" title=" " alt="" coords="604,81,701,108"/>
+<area shape="rect" id="node8" href="$d6/df3/jit_8c.html#a7f4d1566adfd93b0565147e32387abf6" title=" " alt="" coords="587,132,719,159"/>
+<area shape="rect" id="node11" href="$dd/d47/namespacemath.html#ac6c5531df69e2047f4646e0fcfa4523b" title="Vector addition ." alt="" coords="435,157,531,184"/>
+<area shape="rect" id="node12" href="$dd/d47/namespacemath.html#ae9c03c3dc7fc4ee652dbb7ba5e351269" title="Vector multiplication with 3 vectors ." alt="" coords="438,208,529,235"/>
+<area shape="rect" id="node13" href="$dd/d47/namespacemath.html#a0ac87bdc804d5f901726afe53430ead6" title="Vector division ." alt="" coords="428,259,539,285"/>
+</map>

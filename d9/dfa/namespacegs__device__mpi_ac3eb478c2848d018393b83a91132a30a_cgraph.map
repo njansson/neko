@@ -1,0 +1,4 @@
+<map id="gs_device_mpi::gs_device_mpi_nbsend" name="gs_device_mpi::gs_device_mpi_nbsend">
+<area shape="rect" id="node1" title="Post non&#45;blocking send operations." alt="" coords="5,5,197,47"/>
+<area shape="rect" id="node2" href="$d0/dbe/namespacedevice.html#a2ffdb9a45e40ef3ddbb1cd5c93323ea8" title="Synchronize the device." alt="" coords="245,13,399,39"/>
+</map>

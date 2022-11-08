@@ -1,0 +1,9 @@
+<map id="jobctrl::jobctrl_jobtime" name="jobctrl::jobctrl_jobtime">
+<area shape="rect" id="node1" title="Returns a job&#39;s time in seconds relative to the first call." alt="" coords="515,60,684,87"/>
+<area shape="rect" id="node2" href="$d7/d06/namespacejobctrl.html#a32741fb329c5552119183688e6e6d97a" title="Initialize jobctrl." alt="" coords="327,31,467,57"/>
+<area shape="rect" id="node6" href="$d7/d06/namespacejobctrl.html#aaa38605ae63b754fcccffe3d10a3a4bb" title="Set a job&#39;s time limit (in seconds)" alt="" coords="327,82,466,123"/>
+<area shape="rect" id="node3" href="$dd/d62/namespaceneko.html#a8a163ea0ce03c515a9d1523b55425a6e" title=" " alt="" coords="149,31,269,57"/>
+<area shape="rect" id="node4" href="$d7/d64/rea2nbin_8f90.html#ab8d17097ee23bae0a0911d8d65590e5e" title=" " alt="" coords="9,5,88,32"/>
+<area shape="rect" id="node5" href="$d0/dd9/driver_8f90.html#a30d609876f05bf02c9ca79b0448dc937" title="Main driver for TurboNeko." alt="" coords="5,56,92,83"/>
+<area shape="rect" id="node7" href="$d7/d06/namespacejobctrl.html#a288823dde72b2464cf502906b6bf40da" title="Set a job&#39;s time limit (in walltime &#39;HH:MM:SS&#39;)" alt="" coords="140,82,279,123"/>
+</map>

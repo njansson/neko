@@ -1,0 +1,12 @@
+<map id="dofmap::dofmap_xyzlin" name="dofmap::dofmap_xyzlin">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,181,133"/>
+<area shape="rect" id="node2" href="$dd/d47/namespacemath.html#a06c292dd97b659412ba3df8a9fd756b2" title="Copy a vector ." alt="" coords="267,5,362,32"/>
+<area shape="rect" id="node3" href="$dc/d5b/namespacefast3d.html#a3818ed9a79f0d875651d5a467e0b88a6" title="Evaluates the derivative based on all points in the stencils" alt="" coords="229,56,400,83"/>
+<area shape="rect" id="node4" href="$dd/d8c/namespacetensor.html#a1b363bd341668a929386a65996c56d68" title="Tensor product ." alt="" coords="479,69,591,96"/>
+<area shape="rect" id="node6" href="$dd/d8c/namespacetensor.html#aa50503d37312ded5c29134df83216e65" title=" " alt="" coords="249,157,380,184"/>
+<area shape="rect" id="node10" href="$dd/d8c/namespacetensor.html#a8947209d2430fc2471fbf9d2984485da" title="Transpose of a rectangular tensor ." alt="" coords="267,208,363,235"/>
+<area shape="rect" id="node5" href="$d1/d15/namespacemxm__wrapper.html#a04f42b056da86e6f3fd6c2573c029b72" title="Compute matrix&#45;matrix product &#160;for contiguously packed matrices A,B, and C." alt="" coords="671,157,829,184"/>
+<area shape="rect" id="node7" href="$d4/d59/namespacetensor__cpu.html#a17b15417dc2acf377aa232f937924e89" title=" " alt="" coords="464,121,607,162"/>
+<area shape="rect" id="node8" href="$db/de7/namespacetensor__sx.html#a1880f92e708eda2d24e1a7b0852289e2" title=" " alt="" coords="448,187,623,213"/>
+<area shape="rect" id="node9" href="$dd/d89/namespacetensor__xsmm.html#a3cb6ef649688a05f0cd0dc7ad19ab8d6" title=" " alt="" coords="455,238,615,279"/>
+</map>

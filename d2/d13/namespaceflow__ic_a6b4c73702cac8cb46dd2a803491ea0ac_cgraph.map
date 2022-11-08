@@ -1,0 +1,4 @@
+<map id="flow_ic::set_flow_ic_uniform" name="flow_ic::set_flow_ic_uniform">
+<area shape="rect" id="node1" title="Uniform initial condition." alt="" coords="5,5,152,47"/>
+<area shape="rect" id="node2" href="$dd/d47/namespacemath.html#acece89821336e2514abebfe55d7ddcfa" title="Set all elements to a constant c ." alt="" coords="200,13,287,39"/>
+</map>

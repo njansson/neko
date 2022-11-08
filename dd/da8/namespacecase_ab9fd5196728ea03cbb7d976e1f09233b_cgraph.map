@@ -1,0 +1,38 @@
+<map id="case::case_init" name="case::case_init">
+<area shape="rect" id="node1" title="Initialize a case from an input file case_file." alt="" coords="5,178,124,205"/>
+<area shape="rect" id="node2" href="$d8/dc8/namespacefluid__fctry.html#a8ffcb24fa2b7fe8bca93fbba82499a35" title="Initialise a fluid scheme." alt="" coords="205,61,339,103"/>
+<area shape="rect" id="node3" href="$da/dc3/namespacemesh__field.html#ab3409b769bcc21e34b347b722fcb7dbb" title=" " alt="" coords="431,127,636,154"/>
+<area shape="rect" id="node4" href="$da/dc3/namespacemesh__field.html#abf7e557141e873a916e3055fa069e0fc" title=" " alt="" coords="172,178,372,205"/>
+<area shape="rect" id="node5" href="$d1/dd7/namespaceparmetis.html#a7015f5a8d7bb32005378d0df25fc45e7" title="Compute a k&#45;way partitioning of a mesh msh." alt="" coords="199,229,345,271"/>
+<area shape="rect" id="node6" href="$db/dbb/namespaceredist.html#a0495227a7bc72edb4553026a816d7ebf" title="Redistribute a mesh msh according to new partitions." alt="" coords="199,485,345,511"/>
+<area shape="rect" id="node7" href="$db/dfc/namespacemesh.html#a4a79679585a1daef0a167286c2429687" title="Replaces the periodic point&#39;s id with a common id for matching periodic points." alt="" coords="431,179,635,220"/>
+<area shape="rect" id="node11" href="$db/dfc/namespacemesh.html#af0ff552dc7ba05166ba8d1e221532314" title=" " alt="" coords="455,245,611,271"/>
+<area shape="rect" id="node25" href="$db/dfc/namespacemesh.html#a81964398a01a1c0973c7321b0f861ed0" title="Deallocate a mesh m." alt="" coords="466,295,601,322"/>
+<area shape="rect" id="node27" href="$db/dfc/namespacemesh.html#ac059e4068189ac4a289e75a2a16928d7" title="Mark element e as a curve element." alt="" coords="440,347,627,388"/>
+<area shape="rect" id="node28" href="$db/dfc/namespacemesh.html#ab0054cc3dc022c774c09937ad5cf5f59" title="Mark facet f in element e as an inlet." alt="" coords="444,412,623,453"/>
+<area shape="rect" id="node29" href="$db/dfc/namespacemesh.html#a2f15be9cacf8b80385d2f230fcbfb191" title="Mark facet f in element e as an outlet." alt="" coords="439,477,627,519"/>
+<area shape="rect" id="node30" href="$db/dfc/namespacemesh.html#a22e6f4fbdee4e65401540acdfda17e73" title="Mark facet f in element e as periodic with (pf, pe)" alt="" coords="432,543,635,584"/>
+<area shape="rect" id="node32" href="$db/dfc/namespacemesh.html#a0bd4845e931ad0c5cb2ec925ee49cce6" title="Mark facet f in element e as a symmetry plane." alt="" coords="434,608,633,649"/>
+<area shape="rect" id="node33" href="$db/dfc/namespacemesh.html#a52f3802fed42ef38266f67e2ceb6c0bc" title="Mark facet f in element e as a wall." alt="" coords="445,673,622,715"/>
+<area shape="rect" id="node34" href="$db/dfc/namespacemesh.html#a36533b244a9e679e7803511d16b269ab" title="Reset ids of periodic points to their original ids." alt="" coords="420,739,647,766"/>
+<area shape="rect" id="node35" href="$db/dbb/namespaceredist.html#ae07ae81a5fb1331996356b54d531fa72" title="Fill redistribution list for zone data." alt="" coords="460,790,607,817"/>
+<area shape="rect" id="node36" href="$db/dbb/namespaceredist.html#abc21fb6eae4b95ea5d1e28aae9e19914" title="Fill redistribution list for zone data." alt="" coords="462,841,605,867"/>
+<area shape="rect" id="node8" href="$db/dfc/namespacemesh.html#ac5df4c8431d1f8e9b1b87606f6a4be42" title="Add a unique edge represented as a 2&#45;tuple to the mesh." alt="" coords="711,89,883,115"/>
+<area shape="rect" id="node9" href="$db/dfc/namespacemesh.html#aff3b47cf0d5cb56d3e12f92525e91dc1" title="Add a unique face represented as a 4&#45;tuple to the mesh." alt="" coords="713,139,881,166"/>
+<area shape="rect" id="node10" href="$db/dfc/namespacemesh.html#a3f63f466940b28b63042f0b78d5dc4a5" title="Add a unique point to the mesh." alt="" coords="711,190,884,217"/>
+<area shape="rect" id="node12" href="$db/dfc/namespacemesh.html#a90390cabbda71a7f4b1e2ea9b58d4568" title="Generate element&#45;to&#45;element connectivity." alt="" coords="695,241,900,267"/>
+<area shape="rect" id="node24" href="$db/dfc/namespacemesh.html#a7278fd8b6049f335f1a733784d595d7e" title=" " alt="" coords="714,292,881,333"/>
+<area shape="rect" id="node13" href="$db/dfc/namespacemesh.html#ab9a596f402b6547638c42607a2627c78" title="Generate element&#45;element connectivity via edges both between internal and between PEs." alt="" coords="948,104,1115,145"/>
+<area shape="rect" id="node17" href="$db/dfc/namespacemesh.html#a6dcb62f5acad81608f94fc29e6b7787b" title="Generate element&#45;element connectivity via facets between PEs." alt="" coords="948,267,1115,308"/>
+<area shape="rect" id="node20" href="$db/dfc/namespacemesh.html#aee63f6aed325d74711a9e2fedfa12d6c" title="Generate element&#45;element connectivity via points between PEs." alt="" coords="948,201,1115,243"/>
+<area shape="rect" id="node22" href="$db/dfc/namespacemesh.html#a085bcd83fbc337b97fead481375c119c" title="Generate a unique facet numbering." alt="" coords="948,364,1115,405"/>
+<area shape="rect" id="node14" href="$dc/d48/namespacedistdata.html#a66e2d8156519bf42e00ef85a2dd9d696" title="Set local to global mapping (edges)" alt="" coords="1163,5,1357,47"/>
+<area shape="rect" id="node15" href="$dc/d48/namespacedistdata.html#ab553d9210e3f859553e82c8be368db33" title="Mark an element&#39;s edge as shared." alt="" coords="1191,71,1329,112"/>
+<area shape="rect" id="node16" href="$db/dfc/namespacemesh.html#af417a83f45459aa079949c7cedbc1050" title="Check if the mesh has a point given its global index." alt="" coords="1169,136,1351,177"/>
+<area shape="rect" id="node18" href="$dc/d48/namespacedistdata.html#a13af2d2fa32c3733dbf1688e579951ec" title="Mark an element&#39;s facet as shared." alt="" coords="1181,267,1339,308"/>
+<area shape="rect" id="node19" href="$dc/d48/namespacedistdata.html#a7aa5fbd5e4916c9f7eca2e0005716486" title="Mark a facet as shared." alt="" coords="1190,332,1330,373"/>
+<area shape="rect" id="node21" href="$dc/d48/namespacedistdata.html#a104a6fac60956fc167df8bb063632973" title="Mark a point as shared." alt="" coords="1190,201,1330,243"/>
+<area shape="rect" id="node23" href="$dc/d48/namespacedistdata.html#a21b01a3e652f6cd332611cce8b4f46b9" title="Set local to global mapping (facets)" alt="" coords="1163,397,1357,439"/>
+<area shape="rect" id="node26" href="$dc/d48/namespacedistdata.html#a3a77ef0dd4cbeff5d6c510c493007288" title="Free a distdata type." alt="" coords="713,358,882,385"/>
+<area shape="rect" id="node31" href="$db/dfc/namespacemesh.html#ae76b7e632893c91a23429ffede647f28" title="Get original ids of periodic points." alt="" coords="699,550,895,577"/>
+</map>

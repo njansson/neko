@@ -1,0 +1,29 @@
+<map id="math::addcol3" name="math::addcol3">
+<area shape="rect" id="node1" title="Returns ." alt="" coords="697,507,812,534"/>
+<area shape="rect" id="node2" href="$d3/d69/namespaceadvection.html#ae1607e7418ef9955cfad9cac9b6af844" title="Eulerian scheme, add convection term to forcing function at current time step." alt="" coords="467,5,629,47"/>
+<area shape="rect" id="node3" href="$d6/dbe/namespacecoefs.html#a7109166ad05f1f18a62a9b96be52900e" title=" " alt="" coords="469,71,627,112"/>
+<area shape="rect" id="node5" href="$dd/d49/namespacejacobi.html#a2b15f287f6c23fdb2b2c5b113e9d04dd" title=" " alt="" coords="468,137,628,163"/>
+<area shape="rect" id="node7" href="$d9/d5a/namespaceopr__xsmm.html#abd01047726757dd7140713007f5a5ff6" title=" " alt="" coords="464,188,632,229"/>
+<area shape="rect" id="node10" href="$d3/d6b/namespacesx__dudxyz.html#aefc7338fa22f540967d9c04a2eac5801" title=" " alt="" coords="455,254,641,281"/>
+<area shape="rect" id="node13" href="$d3/d6b/namespacesx__dudxyz.html#aa416c6da9bef5fb8265cc32c23975456" title=" " alt="" coords="447,305,649,331"/>
+<area shape="rect" id="node14" href="$d3/d6b/namespacesx__dudxyz.html#ab270644de1fb536b1c28791ab0d1efae" title=" " alt="" coords="447,355,649,382"/>
+<area shape="rect" id="node15" href="$d3/d6b/namespacesx__dudxyz.html#a62dc0fa853400b5721f44a66e4480b5e" title=" " alt="" coords="447,406,649,433"/>
+<area shape="rect" id="node16" href="$d3/d6b/namespacesx__dudxyz.html#aa5865fc4d14677244d9160186a705184" title=" " alt="" coords="447,457,649,483"/>
+<area shape="rect" id="node17" href="$d3/d6b/namespacesx__dudxyz.html#af9b62beed05966d2e5496365051f9911" title=" " alt="" coords="447,507,649,534"/>
+<area shape="rect" id="node18" href="$d3/d6b/namespacesx__dudxyz.html#a73feb723b02f21fd1b7b4cb71f63edad" title=" " alt="" coords="451,558,645,585"/>
+<area shape="rect" id="node19" href="$d3/d6b/namespacesx__dudxyz.html#a713392286c07ef7256d77bbd941cde8d" title=" " alt="" coords="451,609,645,635"/>
+<area shape="rect" id="node20" href="$d3/d6b/namespacesx__dudxyz.html#af495614e7413e0c15cba91139e815be1" title=" " alt="" coords="451,659,645,686"/>
+<area shape="rect" id="node21" href="$d3/d6b/namespacesx__dudxyz.html#a5e3799b303faf073e68640bf6f12709a" title=" " alt="" coords="451,710,645,737"/>
+<area shape="rect" id="node22" href="$d3/d6b/namespacesx__dudxyz.html#aa201ef1e8ce70e88872980d307db3331" title=" " alt="" coords="451,761,645,787"/>
+<area shape="rect" id="node23" href="$d3/d6b/namespacesx__dudxyz.html#a645a3e4896681f55d59314209f471747" title=" " alt="" coords="451,811,645,838"/>
+<area shape="rect" id="node24" href="$d3/d6b/namespacesx__dudxyz.html#a915a0714c606b1a8fb32da2bc8844a80" title=" " alt="" coords="451,862,645,889"/>
+<area shape="rect" id="node25" href="$d3/d6b/namespacesx__dudxyz.html#a2536376c87d8272e0d9ad6b4c7e2f650" title=" " alt="" coords="451,913,645,939"/>
+<area shape="rect" id="node26" href="$dd/d6e/namespacesx__jacobi.html#add1b1766274e20b0a12d2f36627adecb" title=" " alt="" coords="472,964,624,1005"/>
+<area shape="rect" id="node4" href="$d6/dbe/namespacecoefs.html#a413ede8639e41c04562858f286370810" title="Initialize coefficients." alt="" coords="227,78,371,105"/>
+<area shape="rect" id="node6" href="$dd/d49/namespacejacobi.html#a5c43a3d9d05e1ba76322ba2a8f1faea6" title=" " alt="" coords="231,137,367,163"/>
+<area shape="rect" id="node8" href="$dd/d30/namespaceoperators.html#ae52fad680e572c55e87090cfa06c72eb" title="Compute dU/dx or dU/dy or dU/dz." alt="" coords="9,351,148,378"/>
+<area shape="rect" id="node9" href="$d9/d5a/namespaceopr__xsmm.html#acd8813ad0719f1353d493f684bfcdca6" title=" " alt="" coords="200,246,399,273"/>
+<area shape="rect" id="node11" href="$df/db5/namespaceopr__sx.html#a56ac313734cbbecb066b0e45f68fafc4" title=" " alt="" coords="214,558,385,585"/>
+<area shape="rect" id="node12" href="$df/db5/namespaceopr__sx.html#aa4b37924e1cf872be2526581325b9ec9" title=" " alt="" coords="5,558,152,585"/>
+<area shape="rect" id="node27" href="$dd/d6e/namespacesx__jacobi.html#a8e0d95bbb8f2b6dc135d59f47b066669" title=" " alt="" coords="209,971,389,998"/>
+</map>
