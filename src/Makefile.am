@@ -16,8 +16,9 @@ neko_fortran_SOURCES = \
 	common/distdata.f90\
 	common/utils.f90\
 	math/mxm_wrapper.F90\
-	sem/speclib.f90 \
+	sem/speclib.f90\
 	math/math.f90\
+	math/array_math.f90\
 	math/mathops.f90\
 	math/fast3d.f90\
 	sem/space.f90\

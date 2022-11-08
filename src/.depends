@@ -14,7 +14,8 @@ common/distdata.o : common/distdata.f90 adt/uset.o adt/tuple.o adt/stack.o
 common/utils.o : common/utils.f90 
 math/mxm_wrapper.o : math/mxm_wrapper.F90 common/utils.o config/num_types.o 
 sem/speclib.o : sem/speclib.f90 common/utils.o config/num_types.o 
-math/math.o : math/math.f90 comm/comm.o config/num_types.o 
+math/math.o : math/math.f90 comm/comm.o math/bcknd/device/device_math.o config/num_types.o 
+math/array_math.o : math/array_math.f90 comm/comm.o config/num_types.o 
 math/mathops.o : math/mathops.f90 config/num_types.o 
 math/fast3d.o : math/fast3d.f90 math/math.o sem/speclib.o config/num_types.o 
 sem/space.o : sem/space.f90 math/math.o math/fast3d.o common/utils.o device/device.o sem/speclib.o config/num_types.o config/neko_config.o 
