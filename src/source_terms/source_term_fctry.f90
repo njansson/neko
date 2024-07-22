@@ -1,4 +1,4 @@
-! Copyright (c) 2023, The Neko Authors
+! Copyright (c) 2023-2024, The Neko Authors
 ! All rights reserved.
 !
 ! Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,8 @@ module source_term_fctry
   use source_term, only : source_term_t
   use const_source_term, only : const_source_term_t
   use boussinesq_source_term, only : boussinesq_source_term_t
-  use brinkman_source_term, only: brinkman_source_term_t
+  use brinkman_source_term, only : brinkman_source_term_t
+  use idw_source_term, only : idw_source_term_t
   use json_module, only : json_file
   use json_utils, only : json_get
   use field_list, only : field_list_t
@@ -48,10 +49,11 @@ module source_term_fctry
   public :: source_term_factory
 
   ! List of all possible types created by the factory routine
-  character(len=20) :: KNOWN_TYPES(3) = [character(len=20) :: &
+  character(len=20) :: KNOWN_TYPES(4) = [character(len=20) :: &
      "constant", &
      "boussinesq", &
-     "brinkman"]
+     "brinkman", &
+     "idw"]
 
 contains
 
@@ -75,6 +77,8 @@ contains
        allocate(boussinesq_source_term_t::object)
     else if (trim(type_name) .eq. "brinkman") then
        allocate(brinkman_source_term_t::object)
+    else if (trim(type_name) .eq. "idw") then
+       allocate(idw_source_term_t::object)
     else
        type_string =  concat_string_array(KNOWN_TYPES, NEW_LINE('A') // "-  ", &
                                           .true.)
