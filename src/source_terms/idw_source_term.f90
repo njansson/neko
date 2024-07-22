@@ -45,34 +45,15 @@ module idw_source_term
   use field, only : field_t
   use file, only : file_t
   use comm, only : MPI_REAL_PRECISION, NEKO_COMM
+  use intersection_detector, only : intersect_detector_t
   use mpi_f08
   use logger
-  ! use point, only : point_t
-  ! use global_interpolation, only : global_interpolation_t
-  
-  ! use uset, only : uset_i4_t
-  ! use gather_scatter
-  ! use file
-  ! use stack
-  ! use math
   implicit none
   private
 
   !> Inverse distance weighting source term.
   type, public, extends(source_term_t) :: idw_source_term_t
-!     type(tri_mesh_t) :: model
-!     type(global_interpolation_t) :: global_interp
-!     real(kind=rp), allocatable :: xyz(:,:)
-!     real(kind=rp), allocatable :: F_ib(:,:)
-!     type(stack_i4_t), allocatable :: neigh_el(:)
-!     type(field_t) :: w
-!     real(kind=rp), allocatable :: rmax(:)
-!     real(kind=rp) :: pwr_param
-!     type(field_list_t) :: sampled_fields
-!     logical :: stationary = .true.
-!     logical :: w_computed = .false.
-     !     type(gs_t) :: gs
-     ! Smallest distance between between points and dofs     
+     !> Smallest distance between between points and dofs     
      real(kind=dp) :: ds_min
    contains
      !> The common constructor using a JSON object.
@@ -101,6 +82,7 @@ contains
     character(len=LOG_SIZE) :: log_buf
     real(kind=dp) :: dx_min, dy_min, dz_min
     type(field_t), pointer :: u
+    type(intersect_detector_t) :: intersect
 
     ! Mandatory fields for the general source term
     call json_get_or_default(json, "start_time", start_time, 0.0_rp)
@@ -150,6 +132,8 @@ contains
          MPI_REAL_PRECISION, MPI_MIN, NEKO_COMM)
     write(log_buf, '(A,ES13.6)') 'Minimum ds :',  this%ds_min
     call neko_log%message(log_buf)
+
+    call intersect%init(u%msh)
     
     call json%get('objects', json_object_list)
     call json%info('objects', n_children=n_regions)
