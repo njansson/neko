@@ -34,6 +34,8 @@
 module intersection_detector
   use aabb_tree, only : aabb_tree_t
   use mesh, only : mesh_t
+  use hex, only : hex_t
+  use utils, only : neko_error
   implicit none
   private
 
@@ -51,12 +53,31 @@ contains
   subroutine intersect_detector_init(this, msh)
     class(intersect_detector_t), intent(inout) :: this
     type(mesh_t), target, intent(in) :: msh
+    type(hex_t), allocatable :: elements(:)
+    integer :: i
 
     call this%free()
     this%msh => msh
 
     call this%search_tree%init(msh%nelv)
-    call this%search_tree%build(msh%elements)
+
+    !> @todo Rework this part once the new mesh structure is in place
+    allocate(elements(msh%nelv))
+    do i = 1, msh%nelv
+       select type(el => msh%elements(i)%e)
+       type is (hex_t)
+          elements = el
+       class default
+          call neko_error('Unsupported element type')
+       end select
+    end do
+    call this%search_tree%build(elements)
+
+    deallocate(elements)
+
+    if (this%search_tree%get_size() .ne. msh%nelv) then
+       call neko_error("Error building the search tree.")
+    end if
 
   end subroutine intersect_detector_init
 
