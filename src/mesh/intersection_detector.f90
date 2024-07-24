@@ -55,9 +55,10 @@ module intersection_detector
 contains
 
   !> Initialise an intersector detector for a given mesh @a msh
-  subroutine intersect_detector_init(this, msh)
+  subroutine intersect_detector_init(this, msh, padding)
     class(intersect_detector_t), intent(inout) :: this
     type(mesh_t), target, intent(in) :: msh
+    real(kind=dp), intent(in), optional :: padding
     type(hex_t), allocatable :: elements(:)
     integer :: i
 
@@ -76,7 +77,12 @@ contains
           call neko_error('Unsupported element type')
        end select
     end do
-    call this%search_tree%build(elements)
+
+    if (present(padding)) then
+       call this%search_tree%build(elements, padding)
+    else
+       call this%search_tree%build(elements)
+    end if
 
     deallocate(elements)
     

@@ -337,12 +337,13 @@ contains
   end subroutine aabb_tree_init
 
   !> @brief Builds the tree.
-  subroutine aabb_tree_build_tree(this, objects)
+  subroutine aabb_tree_build_tree(this, objects, padding)
     use utils, only: neko_error
     implicit none
 
     class(aabb_tree_t), intent(inout) :: this
     class(*), dimension(:), intent(in) :: objects
+    real(kind=dp), optional, intent(in) :: padding
 
     integer :: i_obj, i_node, i
     logical :: done
@@ -352,6 +353,8 @@ contains
     type(aabb_t), dimension(:), allocatable :: box_list
     integer, dimension(:), allocatable :: sorted_indices
 
+    real(kind=dp) :: aabb_padding
+
     call this%init(size(objects) * 2)
 
     ! ------------------------------------------------------------------------ !
@@ -360,8 +363,14 @@ contains
 
     allocate(box_list(size(objects)))
 
+    if (present(padding)) then
+       aabb_padding = padding
+    else
+       aabb_padding = 0.0_dp
+    end if
+       
     do i_obj = 1, size(objects)
-       box_list(i_obj) = get_aabb(objects(i_obj))
+       box_list(i_obj) = get_aabb(objects(i_obj), aabb_padding)
     end do
     sorted_indices = sort(box_list)
 
