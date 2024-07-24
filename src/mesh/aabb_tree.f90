@@ -588,18 +588,19 @@ contains
     class(aabb_tree_t), intent(in) :: this
     class(*), intent(in) :: object
     integer, intent(in) :: object_index
-    integer, intent(out) :: overlaps(:)
+    type(stack_i4_t), intent(inout) :: overlaps
 
     type(stack_i4_t) :: simple_stack
     type(aabb_t) :: object_box
 
     integer :: root_index, left_index, right_index
 
-    integer :: node_index
+    integer :: node_index, tmp_index
 
     object_box = get_aabb(object)
     root_index = this%get_root_index()
 
+    call simple_stack%init()
     call simple_stack%push(root_index)
 
     do while (.not. simple_stack%is_empty())
@@ -610,7 +611,8 @@ contains
        if (this%nodes(node_index)%aabb%overlaps(object_box)) then
           if (this%nodes(node_index)%is_leaf()) then
              if (.not. this%nodes(node_index)%object_index == object_index) then
-                overlaps = [this%nodes(node_index)%object_index, overlaps]
+                tmp_index = this%nodes(node_index)%object_index
+                call overlaps%push(tmp_index)
              end if
           else
              left_index = this%get_left_index(node_index)

@@ -32,10 +32,14 @@
 !
 !> Implements a mesh intersection detector
 module intersection_detector
+  use num_types, only : dp
   use aabb_tree, only : aabb_tree_t
   use mesh, only : mesh_t
   use hex, only : hex_t
+  use point, only : point_t
   use utils, only : neko_error
+  use stack, only : stack_i4_t
+  use aabb
   implicit none
   private
 
@@ -45,6 +49,7 @@ module intersection_detector
    contains
      procedure, pass(this) :: init => intersect_detector_init
      procedure, pass(this) :: free => intersect_detector_free
+     procedure, pass(this) :: overlap => intersect_detector_overlap
   end type intersect_detector_t
 
 contains
@@ -60,13 +65,13 @@ contains
     this%msh => msh
 
     call this%search_tree%init(msh%nelv)
-
+    
     !> @todo Rework this part once the new mesh structure is in place
     allocate(elements(msh%nelv))
     do i = 1, msh%nelv
        select type(el => msh%elements(i)%e)
        type is (hex_t)
-          elements = el
+          elements(i) = el
        class default
           call neko_error('Unsupported element type')
        end select
@@ -74,8 +79,8 @@ contains
     call this%search_tree%build(elements)
 
     deallocate(elements)
-
-    if (this%search_tree%get_size() .ne. msh%nelv) then
+    
+    if (this%search_tree%get_size() .ne. (msh%nelv)) then
        call neko_error("Error building the search tree.")
     end if
 
@@ -92,6 +97,15 @@ contains
     !> @todo cleanup the aabb tree
     
   end subroutine intersect_detector_free
+
+  !> Computes the overlap between elements and a given point @a p
+  subroutine intersect_detector_overlap(this, p, overlaps)
+    class(intersect_detector_t), intent(inout) :: this
+    type(point_t), intent(in) :: p
+    type(stack_i4_t), intent(inout) :: overlaps
+
+    call this%search_tree%query_overlaps(p, -1, overlaps)      
+    
+  end subroutine intersect_detector_overlap
   
-end module intersection_detector
-  
+end module intersection_detector  
