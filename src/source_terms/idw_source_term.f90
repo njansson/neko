@@ -50,7 +50,8 @@ module idw_source_term
   use stack, only : stack_i4_t, stack_pt_t   
   use global_interpolation, only : global_interpolation_t
   use point, only : point_t
-  use math, only : NEKO_EPS
+  use math, only : NEKO_EPS         
+  use gather_scatter
   use mpi_f08
   use logger
   implicit none
@@ -63,11 +64,14 @@ module idw_source_term
      type(intersect_detector_t), private :: intersect
      type(global_interpolation_t), private :: global_interp
      type(stack_pt_t), private ::  lagrangian_points
+     type(stack_i4_t), private, allocatable :: lag_el(:)
      real(kind=dp), private, allocatable :: xyz(:,:)
      real(kind=rp), private, allocatable :: fu_ib(:)
      real(kind=rp), private, allocatable :: fv_ib(:)
      real(kind=rp), private, allocatable :: fw_ib(:)
      real(kind=rp), private :: pwr_param
+     type(field_t), private :: w
+     type(gs_t), private :: gs
    contains
      !> The common constructor using a JSON object.
      procedure, pass(this) :: init => idw_source_term_init_from_json
@@ -75,7 +79,7 @@ module idw_source_term
      procedure, pass(this) :: free => idw_source_term_free
      !> Computes the source term and adds the result to `fields`.
      procedure, pass(this) :: compute_ => idw_source_term_compute
-     
+     !> Initialise lagrangian from a boundary mesh
      procedure, private, pass(this) :: init_boundary_mesh => idw_init_boundary_mesh
   end type idw_source_term_t
 
@@ -94,8 +98,8 @@ contains
     integer :: n_regions, i, j, k, e
     character(len=LOG_SIZE) :: log_buf
     real(kind=dp) :: dx_min, dy_min, dz_min, aabb_padding
-    type(field_t), pointer :: u
     type(point_t), pointer :: pt(:)
+    type(stack_i4_t) :: overlaps
 
     ! Mandatory fields for the general source term
     call json_get_or_default(json, "start_time", start_time, 0.0_rp)
@@ -111,12 +115,11 @@ contains
     call neko_log%message(log_buf)
     
     ! Naive apporach to find the smallest distance between two dofs in the mesh
-    u => neko_field_registry%get_field('u')
     dx_min = huge(0.0_rp)
     dy_min = huge(0.0_rp)
     dz_min = huge(0.0_rp)
-    associate (x => u%dof%x, y=>u%dof%y, z=>u%dof%z, lx => u%Xh%lx)
-      do e = 1, u%msh%nelv
+    associate (x => coef%dof%x, y => coef%dof%y, z => coef%dof%z, lx => coef%Xh%lx)
+      do e = 1, coef%msh%nelv
          dx_min = min(dx_min, &
               (minval(abs(cshift(x(:,:,:,e), dim = 1, shift = 1) - &
               cshift(x(:,:,:,e), dim = 1, shift = -1))) + &
@@ -150,9 +153,9 @@ contains
     write(log_buf, '(A,ES13.6)') 'Minimum ds :',  this%ds_min
     call neko_log%message(log_buf)
 
-    aabb_padding = 2 * this%ds_min
+    aabb_padding = 4 * this%ds_min
     
-    call this%intersect%init(u%msh, aabb_padding)
+    call this%intersect%init(coef%msh, aabb_padding)
     call this%lagrangian_points%init()
     
     call json%get('objects', json_object_list)
@@ -226,12 +229,36 @@ contains
 
     call this%global_interp%find_points_xyz(this%xyz, &
          this%lagrangian_points%size())
-    
+
+    ! Construct list of overlapping elements for each lagrangian particle    
+    allocate(this%lag_el(this%lagrangian_points%size()))
+    call overlaps%init()
+    pt => this%lagrangian_points%array()
+    do i = 1, this%lagrangian_points%size()
+       call this%lag_el(i)%init()
+       call this%intersect%overlap(pt(i), overlaps)
+       do while(.not. overlaps%is_empty())
+          e = overlaps%pop()
+          call this%lag_el(i)%push(e)
+       end do
+    end do
+    call overlaps%free()
+
+    ! Construct weight field
+    call this%w%init(coef%dof, "ib_weight")
+
+    call this%gs%init(coef%dof)
+
+    call idw_compute_weight(this%w, this%lagrangian_points, this%lag_el, &
+         coef%dof%x, coef%dof%y, coef%dof%z, aabb_padding, &
+         this%pwr_param, this%gs, coef%Xh%lx,coef%msh%nelv)
+
   end subroutine idw_source_term_init_from_json
 
   subroutine idw_source_term_free(this)
     class(idw_source_term_t), intent(inout) :: this
-
+    integer :: i
+    
     call this%free_base()
 
     call this%lagrangian_points%free()
@@ -251,6 +278,15 @@ contains
     if (allocated(this%fw_ib)) then
        deallocate(this%fw_ib)
     end if
+
+    if (allocated(this%lag_el)) then
+       do i = 1, size(this%lag_el)
+          call this%lag_el(i)%free()
+       end do
+       deallocate(this%lag_el)
+    end if
+
+    call this%gs%free()
 
   end subroutine idw_source_term_free
 
@@ -339,8 +375,45 @@ contains
     
   end subroutine idw_init_boundary_mesh
 
-!  !> Compute weight field
-!  subroutine idw_compute_weight
+  !> Compute IB weight field
+  subroutine idw_compute_weight(w, lag_pts, lag_el, x, y, z, rmax, p, gs, lx, ne)
+    type(field_t), intent(inout) :: w
+    type(stack_pt_t), intent(inout) :: lag_pts
+    type(stack_i4_t), intent(inout) :: lag_el(:)
+    integer, intent(in) :: lx, ne
+    real(kind=rp), dimension(lx,lx,lx,ne) :: x, y, z
+    real(kind=rp), intent(inout) :: rmax, p
+    type(gs_t), intent(inout) :: gs
+    integer, pointer :: el(:)
+    type(point_t), pointer :: pt(:)
+    integer :: i, j, k, l, e, ee
+    real(kind=rp) :: r
+
+    w%x = 0.0_rp
+
+    pt => lag_pts%array()
+    do i = 1, lag_pts%size()
+       el => lag_el(i)%array()
+       do ee = 1, lag_el(i)%size()
+          e = el(ee)
+          do l = 1, lx 
+             do k = 1, lx
+                do j = 1, lx
+                   r = sqrt((x(j,k,l,e) - pt(i)%x(1))**2 &
+                        + (y(j,k,l,e) - pt(i)%x(2))**2 &
+                        + (z(j,k,l,e) - pt(i)%x(3))**2)
+                   
+                   w%x(j, k, l, e) = w%x(j, k, l, e) &
+                        + inv_dist_weight(r, rmax, p)
+                end do
+             end do
+          end do
+       end do
+    end do
+
+    call gs%op(w, GS_OP_ADD)
+    
+  end subroutine idw_compute_weight
   
   !> Inverse distance weighting coefficient
   !! @param r Radial distance to Lagrangian point.
