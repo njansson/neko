@@ -61,6 +61,7 @@ module idw_source_term
   type, public, extends(source_term_t) :: idw_source_term_t
      !> Smallest distance between between points and dofs     
      real(kind=dp) :: ds_min
+     real(kind=dp) :: ds_max
      type(intersect_detector_t) :: intersect
      type(global_interpolation_t) :: global_interp
      type(point_t), allocatable :: lag_pts(:)
@@ -82,7 +83,7 @@ module idw_source_term
      !> Computes the source term and adds the result to `fields`.
      procedure, pass(this) :: compute_ => idw_source_term_compute
      !> Initialise lagrangian from a boundary mesh
-     procedure, private, pass(this) :: init_boundary_mesh => idw_init_boundary_mesh
+     procedure, pass(this) :: init_boundary_mesh => idw_init_boundary_mesh
   end type idw_source_term_t
 
 contains
@@ -125,7 +126,7 @@ contains
     ! Naive apporach to find the smallest distance between two dofs in the mesh
 
     ds_min = huge(0.0_rp)
-    ds_max = -huge(0.0_rp)
+    ds_max = -huge(1.0_rp)
 
     call this%ds%init(coef%dof)
 
@@ -203,14 +204,21 @@ contains
       end do
     end associate
 
+
     this%ds_min = ds_min
+    this%ds_max = ds_max
     
     call MPI_Allreduce(MPI_IN_PLACE, this%ds_min, 1, &
          MPI_REAL_PRECISION, MPI_MIN, NEKO_COMM)
-    write(log_buf, '(A,ES13.6)') 'Minimum ds :',  this%ds_min
+    write(log_buf, '(A,ES13.6)') 'Minimum ds :',  this%ds_min    
     call neko_log%message(log_buf)
 
-    aabb_padding = 1 * ds_max
+    call MPI_Allreduce(MPI_IN_PLACE, this%ds_max, 1, &
+         MPI_REAL_PRECISION, MPI_MAX, NEKO_COMM)
+    write(log_buf, '(A,ES13.6)') 'Maximum ds :',  this%ds_max    
+    call neko_log%message(log_buf)
+
+    aabb_padding = 4 * ds_max
     
     call this%intersect%init(coef%msh, aabb_padding)
     call lagrangian_points%init()
@@ -309,6 +317,11 @@ contains
     call this%w%init(coef%dof, "ib_weight")
 
     call this%gs%init(coef%dof)
+
+    this%ds%x = this%ds%x * coef%mult
+    
+    call this%gs%op(this%ds, GS_OP_ADD)
+    
 
     this%ds%x = this%ds%x * coef%mult    
     call this%gs%op(this%ds, GS_OP_ADD)
