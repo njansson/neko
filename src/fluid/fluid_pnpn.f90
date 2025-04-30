@@ -378,7 +378,7 @@ contains
          solver_type, solver_maxiter, abs_tol, monitor)
     call this%precon_factory_(this%pc_prs, this%ksp_prs, &
          this%c_Xh, this%dm_Xh, this%gs_Xh, this%bcs_prs, &
-         precon_type, precon_params)
+         precon_params)
     ! Initialize the advection factory
     call json_get_or_default(params, 'case.fluid.advection', advection, .true.)
     call json_extract_object(params, 'case.numerics', numerics_params)

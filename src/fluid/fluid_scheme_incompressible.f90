@@ -335,7 +335,7 @@ contains
             string_val1, integer_val, real_val, logical_val)
        call this%precon_factory_(this%pc_vel, this%ksp_vel, &
             this%c_Xh, this%dm_Xh, this%gs_Xh, this%bcs_vel, &
-            string_val2, json_subdict)
+            json_subdict)
        call neko_log%end_section()
     end if
 
@@ -588,7 +588,7 @@ contains
 
   !> Initialize a Krylov preconditioner
   subroutine fluid_scheme_precon_factory(this, pc, ksp, coef, dof, gs, bclst, &
-       pctype, pcparams)
+       pcparams)
     class(fluid_scheme_incompressible_t), intent(inout) :: this
     class(pc_t), allocatable, target, intent(inout) :: pc
     class(ksp_t), target, intent(inout) :: ksp
@@ -596,9 +596,10 @@ contains
     type(dofmap_t), target, intent(in) :: dof
     type(gs_t), target, intent(inout) :: gs
     type(bc_list_t), target, intent(inout) :: bclst
-    character(len=*) :: pctype
+    character(len=:), allocatable :: pctype
     type(json_file), intent(inout) :: pcparams
 
+    call json_get(pcparams, 'type', pctype)
     call precon_factory(pc, pctype)
 
     select type (pcp => pc)
