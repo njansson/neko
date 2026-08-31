@@ -41,19 +41,23 @@ module gather_scatter
   use gs_ops, only : GS_OP_ADD, GS_OP_MAX, GS_OP_MIN, GS_OP_MUL
   use gs_comm, only : gs_comm_t, GS_COMM_MPI, GS_COMM_MPIGPU, GS_COMM_NCCL, &
        GS_COMM_NVSHMEM, GS_COMM_OPENSHMEM, GS_COMM_CAF, GS_COMM_NEIGHBOUR, &
-       GS_COMM_UTOFU, GS_COMM_MPIRMA, GS_VEC_NC
+       GS_COMM_UTOFU, GS_COMM_MPIRMA, GS_COMM_CRAYSHMEM, GS_VEC_NC
   use gs_mpi, only : gs_mpi_t
   use gs_mpi_rma, only : gs_mpi_rma_t
   use gs_neighbour, only : gs_neighbour_t
-  ! Only the backend types are needed here; what tells whether a backend can
-  ! run at all is used by the autotuning, and imported by the gs_tune
-  ! submodule instead
-  use gs_shmem, only : gs_shmem_t
+  ! Mostly only the backend types are needed here; what tells whether a
+  ! backend can run at all is used by the autotuning and imported by the
+  ! gs_tune submodule instead. The exceptions are the three SHMEM
+  ! backends, whose availability decides what NEKO_GS_COMM=SHMEM means
+  ! for this build
+  use gs_shmem, only : gs_shmem_t, GS_SHMEM_AVAIL
   use gs_caf, only : gs_caf_t
   use gs_utofu, only : gs_utofu_t
   use gs_device_mpi, only : gs_device_mpi_t
   use gs_device_nccl, only : gs_device_nccl_t
-  use gs_device_shmem, only : gs_device_shmem_t
+  use gs_device_shmem, only : gs_device_shmem_t, GS_DEVICE_NVSHMEM_AVAIL
+  use gs_device_cray_shmem, only : gs_device_cray_shmem_t, &
+       GS_DEVICE_CRAY_SHMEM_AVAIL
   use mesh, only : mesh_t
   use comm, only : pe_rank, pe_size, global_pe_size, NEKO_COMM
   use mpi_f08, only : MPI_Reduce, MPI_Allreduce, MPI_Barrier, MPI_IN_PLACE, &
@@ -131,7 +135,7 @@ module gather_scatter
   ! Expose available gather-scatter comm. backends
   public :: GS_COMM_MPI, GS_COMM_MPIGPU, GS_COMM_NCCL, GS_COMM_NVSHMEM, &
        GS_COMM_OPENSHMEM, GS_COMM_CAF, GS_COMM_NEIGHBOUR, GS_COMM_UTOFU, &
-       GS_COMM_MPIRMA
+       GS_COMM_MPIRMA, GS_COMM_CRAYSHMEM
 
   ! These routines (used by the gs_tune submodule) have to be public
   ! since gfortran gives a private module procedure internal linkage
@@ -182,7 +186,7 @@ contains
     integer :: i, ierr, bcknd_, comm_bcknd_
     integer(i8) :: glb_nshared, glb_nlocal
     logical :: use_device_mpi, use_device_nccl, use_device_shmem, use_host_mpi
-    logical :: use_host_shmem
+    logical :: use_host_shmem, use_device_cray_shmem
     logical :: use_caf
     logical :: use_neighbour
     logical :: use_utofu
@@ -207,6 +211,7 @@ contains
     use_device_shmem = .false.
     use_host_mpi = .false.
     use_host_shmem = .false.
+    use_device_cray_shmem = .false.
     use_caf = .false.
     use_neighbour = .false.
     use_utofu = .false.
@@ -223,11 +228,36 @@ contains
        else if (env_gscomm(1:env_len) .eq. "NCCL") then
           use_device_nccl = .true.
        else if (env_gscomm(1:env_len) .eq. "SHMEM") then
-          if (NEKO_BCKND_DEVICE .eq. 1) then
+          ! Whichever SHMEM this Neko was built with: on a device build
+          ! the GPU-capable ones first (NVSHMEM ahead of GPU-aware
+          ! OpenSHMEM, as it can issue its puts from the kernel), then
+          ! the host backend, which works on a device build too but
+          ! stages the halo through the host
+          if (NEKO_BCKND_DEVICE .eq. 1 .and. GS_DEVICE_NVSHMEM_AVAIL) then
              use_device_shmem = .true.
-          else
+          else if (NEKO_BCKND_DEVICE .eq. 1 .and. &
+               GS_DEVICE_CRAY_SHMEM_AVAIL) then
+             use_device_cray_shmem = .true.
+          else if (GS_SHMEM_AVAIL) then
              use_host_shmem = .true.
+          else
+             call neko_error('Neko was built without NVSHMEM or OpenSHMEM')
           end if
+       else if (env_gscomm(1:env_len) .eq. "NVSHMEM") then
+          if (.not. GS_DEVICE_NVSHMEM_AVAIL) then
+             call neko_error('Neko was built without NVSHMEM support')
+          end if
+          use_device_shmem = .true.
+       else if (env_gscomm(1:env_len) .eq. "CRAYSHMEM") then
+          if (.not. GS_DEVICE_CRAY_SHMEM_AVAIL) then
+             call neko_error('Neko was built without GPU-aware OpenSHMEM')
+          end if
+          use_device_cray_shmem = .true.
+       else if (env_gscomm(1:env_len) .eq. "SHMEMCPU") then
+          if (.not. GS_SHMEM_AVAIL) then
+             call neko_error('Neko was built without OpenSHMEM support')
+          end if
+          use_host_shmem = .true.
        else if (env_gscomm(1:env_len) .eq. "CAF") then
           use_caf = .true.
        else if (env_gscomm(1:env_len) .eq. "NEIGHBOUR" .or. &
@@ -254,6 +284,8 @@ contains
        comm_bcknd_ = GS_COMM_NCCL
     else if (use_device_shmem) then
        comm_bcknd_ = GS_COMM_NVSHMEM
+    else if (use_device_cray_shmem) then
+       comm_bcknd_ = GS_COMM_CRAYSHMEM
     else if (use_host_shmem) then
        comm_bcknd_ = GS_COMM_OPENSHMEM
     else if (use_caf) then
@@ -368,7 +400,8 @@ contains
     ! select type (gs_device_t) miscompiles with CCE 21 at -O2/-O3,
     ! silently leaving shared points on the host so that the scatter
     ! overwrites the unpacked halo data with the stale host buffer
-    if (use_device_mpi .or. use_device_nccl .or. use_device_shmem) then
+    if (use_device_mpi .or. use_device_nccl .or. use_device_shmem .or. &
+         use_device_cray_shmem) then
        gs%bcknd%shared_on_host = .false.
     end if
 
@@ -457,6 +490,8 @@ contains
        allocate(gs_device_shmem_t::comm)
     case (GS_COMM_OPENSHMEM)
        allocate(gs_shmem_t::comm)
+    case (GS_COMM_CRAYSHMEM)
+       allocate(gs_device_cray_shmem_t::comm)
     case (GS_COMM_CAF)
        allocate(gs_caf_t::comm)
     case (GS_COMM_NEIGHBOUR)
@@ -489,6 +524,8 @@ contains
        name = '     NVSHMEM'
     case (GS_COMM_OPENSHMEM)
        name = '   OpenSHMEM'
+    case (GS_COMM_CRAYSHMEM)
+       name = '  Cray SHMEM'
     case (GS_COMM_CAF)
        name = '         CAF'
     case (GS_COMM_NEIGHBOUR)

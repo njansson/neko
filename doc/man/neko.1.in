@@ -241,7 +241,7 @@ noisier measurements. Defaults to
 .B NEKO_GS_COMM
 Selects the communication backend used by the gather\-scatter kernel.
 Accepted values are
-.BR MPI ", " MPIGPU ", " NCCL ", " SHMEM ", " CAF ", " UTOFU ", " NEIGHBOUR " and " MPIRMA ,
+.BR MPI ", " MPIGPU ", " NCCL ", " SHMEM ", " SHMEMCPU ", " NVSHMEM ", " CRAYSHMEM ", " CAF ", " UTOFU ", " NEIGHBOUR " and " MPIRMA ,
 where
 .B UTOFU
 is native one\-sided communication over the Tofu interconnect,
@@ -251,6 +251,18 @@ is host MPI using an
 neighbourhood collective and
 .B MPIRMA
 is host MPI one\-sided communication into a passive\-target window.
+.B SHMEM
+selects whichever SHMEM backend the build provides, preferring NVSHMEM and
+then GPU\-aware OpenSHMEM on accelerator builds over the host OpenSHMEM
+backend, which works there too but stages the halo through the host.
+.BR SHMEMCPU ", " NVSHMEM " and " CRAYSHMEM
+name the three outright and fail with an error if the build lacks them.
+.B CRAYSHMEM
+is GPU\-aware OpenSHMEM, which puts between GPU\-attached symmetric buffers
+using the memory space extension of HPE Slingshot SHMEM 12 or later, and
+further requires
+.B SHMEM_GPU_SUPPORT_ENABLED=1
+at run time.
 When unset, a device\-aware variant is used
 on accelerator builds; otherwise the host backends selected by
 .B NEKO_GS_TUNE

@@ -79,6 +79,24 @@ module shmem
     enumerator :: SHMEM_SIGNAL_SET = 1
     enumerator :: SHMEM_SIGNAL_ADD = 2
   end enum
+  !> Predefined team handles (@note shmem_team_t is an unsigned long
+  !! in HPE Slingshot SHMEM, not an opaque pointer)
+  integer(c_long), parameter :: SHMEM_TEAM_WORLD = 0_c_long
+  integer(c_long), parameter :: SHMEM_TEAM_NODE = 1_c_long
+  integer(c_long), parameter :: SHMEM_TEAM_NULL = -1_c_long
+
+  !> Memory type of a symmetric space (HPE Slingshot SHMEM extension)
+  enum, bind(c)
+    enumerator :: SHMEM_MTYPE_SYSTEM = 0
+    enumerator :: SHMEM_MTYPE_CPU = 1
+    enumerator :: SHMEM_MTYPE_GPU = 2
+  end enum
+
+  !> Configuration of a symmetric space (HPE Slingshot SHMEM extension)
+  type, bind(c) :: shmem_space_config_t
+     integer(c_size_t) :: size
+     integer(c_int) :: mtype
+  end type shmem_space_config_t
 
   !
   ! Library Setup
@@ -209,6 +227,114 @@ module shmem
        type(c_ptr), value :: dest
        integer(c_int), value :: pe
      end function shmem_ptr
+  end interface
+
+  !
+  ! Memory Spaces (HPE Slingshot SHMEM extension)
+  !
+
+  interface
+     integer(c_int) function shmemx_space_create(team, config_options, &
+          config, space) bind(c, name = 'shmemx_space_create')
+       use, intrinsic :: iso_c_binding
+       import :: shmem_space_config_t
+       integer(c_long), value :: team
+       integer(c_long), value :: config_options
+       type(shmem_space_config_t), value :: config
+       type(c_ptr) :: space
+     end function shmemx_space_create
+  end interface
+
+  interface
+     integer(c_int) function shmemx_space_destroy(space) &
+          bind(c, name = 'shmemx_space_destroy')
+       use, intrinsic :: iso_c_binding
+       type(c_ptr), value :: space
+     end function shmemx_space_destroy
+  end interface
+
+  interface
+     integer(c_int) function shmemx_query_gpu_awareness(team) &
+          bind(c, name = 'shmemx_query_gpu_awareness')
+       use, intrinsic :: iso_c_binding
+       integer(c_long), value :: team
+     end function shmemx_query_gpu_awareness
+  end interface
+
+  interface
+     integer(c_int) function shmemx_get_space_config(ptr, space_config) &
+          bind(c, name = 'shmemx_get_space_config')
+       use, intrinsic :: iso_c_binding
+       import :: shmem_space_config_t
+       type(c_ptr), value :: ptr
+       type(shmem_space_config_t) :: space_config
+     end function shmemx_get_space_config
+  end interface
+
+  interface
+     integer(c_int) function shmemx_get_space(ptr, space) &
+          bind(c, name = 'shmemx_get_space')
+       use, intrinsic :: iso_c_binding
+       type(c_ptr), value :: ptr
+       type(c_ptr) :: space
+     end function shmemx_get_space
+  end interface
+
+  interface
+     integer(c_int) function shmemx_space_get_team(space, team) &
+          bind(c, name = 'shmemx_space_get_team')
+       use, intrinsic :: iso_c_binding
+       type(c_ptr), value :: space
+       integer(c_long) :: team
+     end function shmemx_space_get_team
+  end interface
+
+  interface
+     type(c_ptr) function shmemx_space_malloc(space, size) &
+          bind(c, name = 'shmemx_space_malloc')
+       use, intrinsic :: iso_c_binding
+       type(c_ptr), value :: space
+       integer(c_size_t), value :: size
+     end function shmemx_space_malloc
+  end interface
+
+  interface
+     type(c_ptr) function shmemx_space_calloc(space, count, size) &
+          bind(c, name = 'shmemx_space_calloc')
+       use, intrinsic :: iso_c_binding
+       type(c_ptr), value :: space
+       integer(c_size_t), value :: count
+       integer(c_size_t), value :: size
+     end function shmemx_space_calloc
+  end interface
+
+  interface
+     type(c_ptr) function shmemx_space_align(space, alignment, size) &
+          bind(c, name = 'shmemx_space_align')
+       use, intrinsic :: iso_c_binding
+       type(c_ptr), value :: space
+       integer(c_size_t), value :: alignment
+       integer(c_size_t), value :: size
+     end function shmemx_space_align
+  end interface
+
+  interface
+     type(c_ptr) function shmemx_space_malloc_with_hints(space, size, &
+          hints) bind(c, name = 'shmemx_space_malloc_with_hints')
+       use, intrinsic :: iso_c_binding
+       type(c_ptr), value :: space
+       integer(c_size_t), value :: size
+       integer(c_long), value :: hints
+     end function shmemx_space_malloc_with_hints
+  end interface
+
+  interface
+     subroutine shmemx_space_free(space, ptr) &
+          bind(c, name = 'shmemx_space_free')
+       use, intrinsic :: iso_c_binding
+       type(c_ptr), value :: space
+       type(c_ptr), value :: ptr
+     end subroutine shmemx_space_free
   end interface
 
   !

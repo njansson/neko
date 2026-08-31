@@ -48,6 +48,15 @@ module gs_device_shmem
   implicit none
   private
 
+  !> Whether NVSHMEM was built into this Neko (--with-nvshmem, CUDA only).
+  !! Without it every routine below is a no-op, so callers must check
+  !! rather than silently exchanging nothing.
+#if defined(HAVE_CUDA) && defined(HAVE_NVSHMEM)
+  logical, parameter, public :: GS_DEVICE_NVSHMEM_AVAIL = .true.
+#else
+  logical, parameter, public :: GS_DEVICE_NVSHMEM_AVAIL = .false.
+#endif
+
   !> Buffers for non-blocking communication and packing/unpacking
   type, private :: gs_device_shmem_buf_t
      integer, allocatable :: ndofs(:) !< Number of dofs
