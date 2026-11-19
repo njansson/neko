@@ -15,6 +15,9 @@ module num_types
   integer, public, parameter :: c_rp = @NEKO_C_REAL_TYPE@
   integer, public, parameter :: xp = @NEKO_XREAL_TYPE@
   integer, public, parameter :: c_xp = @NEKO_C_XREAL_TYPE@
+  !> Precision of the geometric factors, \a rp unless configured otherwise
+  integer, public, parameter :: gp = @NEKO_GREAL_TYPE@
+  integer, public, parameter :: c_gp = @NEKO_C_GREAL_TYPE@
 end module num_types
 
 

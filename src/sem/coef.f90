@@ -36,7 +36,7 @@ module coefs
   use gs_ops, only : GS_OP_ADD
   use neko_config, only : NEKO_BCKND_DEVICE, NEKO_BCKND_OPENCL, &
        NEKO_BCKND_SX, NEKO_BCKND_XSMM
-  use num_types, only : rp, sp, dp
+  use num_types, only : rp, sp, dp, gp
   use dofmap, only : dofmap_t
   use space, only : space_t
   use math, only : rone, invcol1, addcol3, subcol3, copy, &
@@ -60,6 +60,11 @@ module coefs
   use, intrinsic :: iso_c_binding
   implicit none
   private
+
+  !> Kind the geometric factors are formed in when \a gp differs from
+  !! \a rp: the wider of the two, see coef_generate_geo_wide().
+  integer, parameter :: wp = merge(gp, rp, &
+       precision(1.0_gp) .gt. precision(1.0_rp))
 
   !> Largest metric condition number for which single precision *arithmetic*
   !! on the geometric factors \f$ G_{ij} \f$ is considered safe, i.e. an
@@ -135,17 +140,19 @@ module coefs
   !! Arrays use indices (i,j,k,e): element e, local coordinate (i,j,k).
   type, public :: coef_t
      !> Geometric factors \f$ G_{11} \f$
-     real(kind=rp), allocatable :: G11(:,:,:,:)
+     !! @note The geometric factors \f$ G_{ij} \f$ are held in \a gp, the
+     !! precision selected by `--enable-real-geom`, which need not be \a rp.
+     real(kind=gp), allocatable :: G11(:,:,:,:)
      !> Geometric factors \f$ G_{22} \f$
-     real(kind=rp), allocatable :: G22(:,:,:,:)
+     real(kind=gp), allocatable :: G22(:,:,:,:)
      !> Geometric factors \f$ G_{33} \f$
-     real(kind=rp), allocatable :: G33(:,:,:,:)
+     real(kind=gp), allocatable :: G33(:,:,:,:)
      !> Geometric factors \f$ G_{12} \f$
-     real(kind=rp), allocatable :: G12(:,:,:,:)
+     real(kind=gp), allocatable :: G12(:,:,:,:)
      !> Geometric factors \f$ G_{13} \f$
-     real(kind=rp), allocatable :: G13(:,:,:,:)
+     real(kind=gp), allocatable :: G13(:,:,:,:)
      !> Geometric factors \f$ G_{23} \f$
-     real(kind=rp), allocatable :: G23(:,:,:,:)
+     real(kind=gp), allocatable :: G23(:,:,:,:)
 
      !> Largest condition number of the metric tensor over the mesh, global
      !! across ranks. Zero until coef_metric_condition() has been called.
@@ -171,25 +178,27 @@ module coefs
      !! i.e. metric_perturb <= NEKO_METRIC_PERTURB_MAX and no degenerate
      !! points. Because metric_perturb carries the accumulation term as well
      !! as the storage term, this is correct on an \a rp = \a sp build as
-     !! well as on a double precision build holding \f$ G_{ij} \f$ in single.
-     !! A reduced precision storage path should gate on this flag and report
-     !! its own decision. coef_metric_condition() logs the flag every run
-     !! beside the two condition numbers and the estimate that produce it, and
-     !! warns separately -- on definiteness grounds -- when a single precision
-     !! build trips NEKO_METRIC_COND_SP.
+     !! well as on a double precision build holding \f$ G_{ij} \f$ in single,
+     !! i.e. \a gp = \a sp. The precision the factors are held in is fixed
+     !! when Neko is configured, so nothing gates on this flag at run time:
+     !! coef_metric_condition() logs it every run beside the two condition
+     !! numbers and the estimate that produce it, warns when the build at
+     !! hand holds or accumulates in single precision and exceeds the
+     !! tolerance, and warns separately -- on definiteness grounds -- when a
+     !! single precision build trips NEKO_METRIC_COND_SP.
      logical :: metric_sp_safe = .false.
      !> Compressed geometric factors \f$ G_{11} \f$
-     real(kind=rp), allocatable :: G11_compr(:,:,:,:)
+     real(kind=gp), allocatable :: G11_compr(:,:,:,:)
      !> Compressed geometric factors \f$ G_{22} \f$
-     real(kind=rp), allocatable :: G22_compr(:,:,:,:)
+     real(kind=gp), allocatable :: G22_compr(:,:,:,:)
      !> Compressed geometric factors \f$ G_{33} \f$
-     real(kind=rp), allocatable :: G33_compr(:,:,:,:)
+     real(kind=gp), allocatable :: G33_compr(:,:,:,:)
      !> Compressed geometric factors \f$ G_{12} \f$
-     real(kind=rp), allocatable :: G12_compr(:,:,:,:)
+     real(kind=gp), allocatable :: G12_compr(:,:,:,:)
      !> Compressed geometric factors \f$ G_{13} \f$
-     real(kind=rp), allocatable :: G13_compr(:,:,:,:)
+     real(kind=gp), allocatable :: G13_compr(:,:,:,:)
      !> Compressed geometric factors \f$ G_{23} \f$
-     real(kind=rp), allocatable :: G23_compr(:,:,:,:)
+     real(kind=gp), allocatable :: G23_compr(:,:,:,:)
      !> Compressed geometric factors lookup indices
      integer, allocatable :: compression_inds(:)
      !> Whether the compressed geometric factors are kept in step with the
@@ -1177,6 +1186,11 @@ contains
 
   !> Generate geometric data for the given mesh
   !! @note Current implementation assumes regular shaped hex elements
+  !! @note When \a gp differs from \a rp the factors are formed by
+  !! coef_generate_geo_wide() instead: always on a host backend, and at
+  !! initialization on a device backend, which then holds a copy of the host
+  !! result. A device backend recomputing the metrics of a moving mesh uses
+  !! the device kernel, which forms them from the \a rp mapping derivatives.
   subroutine coef_generate_geo(c)
     type(coef_t), intent(inout) :: c
     integer :: e, i, lxyz, ntot
@@ -1184,7 +1198,35 @@ contains
     lxyz = c%Xh%lx * c%Xh%ly * c%Xh%lz
     ntot = c%dof%size()
 
-    if (NEKO_BCKND_DEVICE .eq. 1) then
+    if (gp .ne. rp .and. (NEKO_BCKND_DEVICE .ne. 1 .or. &
+         .not. c%coef_metrics_initialized)) then
+
+       if (NEKO_BCKND_DEVICE .eq. 1) then
+          ! The device coordinates are the ones every dofmap constructor
+          ! leaves current
+          call c%dof%x%copy_from(DEVICE_TO_HOST, .false.)
+          call c%dof%y%copy_from(DEVICE_TO_HOST, .false.)
+          call c%dof%z%copy_from(DEVICE_TO_HOST, .true.)
+       end if
+
+       call coef_generate_geo_wide(c)
+
+       if (NEKO_BCKND_DEVICE .eq. 1) then
+          call device_memcpy(c%G11, c%G11_d, ntot, HOST_TO_DEVICE, &
+               sync = .false.)
+          call device_memcpy(c%G22, c%G22_d, ntot, HOST_TO_DEVICE, &
+               sync = .false.)
+          call device_memcpy(c%G33, c%G33_d, ntot, HOST_TO_DEVICE, &
+               sync = .false.)
+          call device_memcpy(c%G12, c%G12_d, ntot, HOST_TO_DEVICE, &
+               sync = .false.)
+          call device_memcpy(c%G13, c%G13_d, ntot, HOST_TO_DEVICE, &
+               sync = .false.)
+          call device_memcpy(c%G23, c%G23_d, ntot, HOST_TO_DEVICE, &
+               sync = .true.)
+       end if
+
+    else if (NEKO_BCKND_DEVICE .eq. 1) then
 
        call device_coef_generate_geo(c%G11_d, c%G12_d, c%G13_d, &
             c%G22_d, c%G23_d, c%G33_d, &
@@ -1306,6 +1348,159 @@ contains
 
   end subroutine coef_generate_geo
 
+  !> Generate the geometric factors when \a gp differs from \a rp
+  !! @details The mapping derivatives, the Jacobian and its cofactors are
+  !! formed from the coordinates in \a wp, the wider of the working and the
+  !! geometric precision, and each factor is rounded to \a gp once. The
+  !! cofactors, the Jacobian and the off-diagonal factors are all differences
+  !! of products, so forming them in the narrower precision would lose the
+  !! digits a wider \a gp is there to hold, and forming them in a narrower
+  !! \a gp would discard what the coordinates carry.
+  !!
+  !! The coordinates and the derivative matrices are themselves \a rp and
+  !! are only promoted: the rounding they already carry is not recovered.
+  !! @note Host only, on the host coordinates. The caller keeps the device
+  !! in step.
+  subroutine coef_generate_geo_wide(c)
+    type(coef_t), intent(inout) :: c
+    real(kind=wp), allocatable :: dx(:,:), dy(:,:), dz(:,:)
+    real(kind=wp) :: xr, xs, xt, yr, ys, yt, zr, zs, zt
+    real(kind=wp) :: rx, ry, rz, sx, sy, sz, tx, ty, tz
+    real(kind=wp) :: jac, scl
+    integer :: e, i, j, k, l, lx, ly, lz
+
+    lx = c%Xh%lx
+    ly = c%Xh%ly
+    lz = c%Xh%lz
+
+    allocate(dx(lx, lx), dy(ly, ly), dz(lz, lz))
+    dx = real(c%Xh%dx, wp)
+    dy = real(c%Xh%dy, wp)
+    dz = real(c%Xh%dz, wp)
+
+    associate(x => c%dof%x%x, y => c%dof%y%x, z => c%dof%z%x, &
+         w3 => c%Xh%w3)
+
+      if (c%msh%gdim .eq. 2) then
+
+         !$omp parallel do private(i, j, l, xr, xs, yr, ys) &
+         !$omp private(rx, ry, sx, sy, jac, scl)
+         do e = 1, c%msh%nelv
+            do j = 1, ly
+               do i = 1, lx
+                  xr = 0.0_wp
+                  yr = 0.0_wp
+                  do l = 1, lx
+                     xr = xr + dx(i,l) * real(x(l,j,1,e), wp)
+                     yr = yr + dx(i,l) * real(y(l,j,1,e), wp)
+                  end do
+
+                  xs = 0.0_wp
+                  ys = 0.0_wp
+                  do l = 1, ly
+                     xs = xs + dy(j,l) * real(x(i,l,1,e), wp)
+                     ys = ys + dy(j,l) * real(y(i,l,1,e), wp)
+                  end do
+
+                  jac = xr * ys - xs * yr
+
+                  rx = ys
+                  ry = -xs
+                  sx = -yr
+                  sy = xr
+
+                  scl = real(w3(i,j,1), wp) / jac
+
+                  c%G11(i,j,1,e) = real((rx * rx + ry * ry) * scl, gp)
+                  c%G22(i,j,1,e) = real((sx * sx + sy * sy) * scl, gp)
+                  c%G12(i,j,1,e) = real((rx * sx + ry * sy) * scl, gp)
+                  c%G33(i,j,1,e) = 0.0_gp
+                  c%G13(i,j,1,e) = 0.0_gp
+                  c%G23(i,j,1,e) = 0.0_gp
+               end do
+            end do
+         end do
+         !$omp end parallel do
+
+      else
+
+         !$omp parallel do private(i, j, k, l) &
+         !$omp private(xr, xs, xt, yr, ys, yt, zr, zs, zt) &
+         !$omp private(rx, ry, rz, sx, sy, sz, tx, ty, tz, jac, scl)
+         do e = 1, c%msh%nelv
+            do k = 1, lz
+               do j = 1, ly
+                  do i = 1, lx
+                     xr = 0.0_wp
+                     yr = 0.0_wp
+                     zr = 0.0_wp
+                     do l = 1, lx
+                        xr = xr + dx(i,l) * real(x(l,j,k,e), wp)
+                        yr = yr + dx(i,l) * real(y(l,j,k,e), wp)
+                        zr = zr + dx(i,l) * real(z(l,j,k,e), wp)
+                     end do
+
+                     xs = 0.0_wp
+                     ys = 0.0_wp
+                     zs = 0.0_wp
+                     do l = 1, ly
+                        xs = xs + dy(j,l) * real(x(i,l,k,e), wp)
+                        ys = ys + dy(j,l) * real(y(i,l,k,e), wp)
+                        zs = zs + dy(j,l) * real(z(i,l,k,e), wp)
+                     end do
+
+                     xt = 0.0_wp
+                     yt = 0.0_wp
+                     zt = 0.0_wp
+                     do l = 1, lz
+                        xt = xt + dz(k,l) * real(x(i,j,l,e), wp)
+                        yt = yt + dz(k,l) * real(y(i,j,l,e), wp)
+                        zt = zt + dz(k,l) * real(z(i,j,l,e), wp)
+                     end do
+
+                     jac = xr * ys * zt + xt * yr * zs + xs * yt * zr &
+                          - xr * yt * zs - xs * yr * zt - xt * ys * zr
+
+                     rx = ys * zt - yt * zs
+                     ry = xt * zs - xs * zt
+                     rz = xs * yt - xt * ys
+
+                     sx = yt * zr - yr * zt
+                     sy = xr * zt - xt * zr
+                     sz = xt * yr - xr * yt
+
+                     tx = yr * zs - ys * zr
+                     ty = xs * zr - xr * zs
+                     tz = xr * ys - xs * yr
+
+                     scl = real(w3(i,j,k), wp) / jac
+
+                     c%G11(i,j,k,e) = &
+                          real((rx * rx + ry * ry + rz * rz) * scl, gp)
+                     c%G22(i,j,k,e) = &
+                          real((sx * sx + sy * sy + sz * sz) * scl, gp)
+                     c%G33(i,j,k,e) = &
+                          real((tx * tx + ty * ty + tz * tz) * scl, gp)
+                     c%G12(i,j,k,e) = &
+                          real((rx * sx + ry * sy + rz * sz) * scl, gp)
+                     c%G13(i,j,k,e) = &
+                          real((rx * tx + ry * ty + rz * tz) * scl, gp)
+                     c%G23(i,j,k,e) = &
+                          real((sx * tx + sy * ty + sz * tz) * scl, gp)
+                  end do
+               end do
+            end do
+         end do
+         !$omp end parallel do
+
+      end if
+
+    end associate
+
+    deallocate(dx, dy, dz)
+
+  end subroutine coef_generate_geo_wide
+
   !> Compute the metric tensor condition numbers over the mesh
   !!
   !! The stored geometric factors are \f$ G = w_3 J M \f$, where \f$ M \f$ is
@@ -1369,6 +1564,7 @@ contains
     real(kind=dp) :: e1, e2, e3, scal
     real(kind=dp) :: c1, c2, c3, c12, c13, c23
     real(kind=rp) :: kmax, kcmax, tmp(1)
+    real(kind=rp) :: eps_store, perturb
     integer :: i, j, k, e, n, ndeg, ndeg_glb, ierr
     character(len=LOG_SIZE) :: log_buf
 
@@ -1525,18 +1721,30 @@ contains
             'definiteness, consider a double precision build')
     end if
 
-    ! How much the single precision factors actually perturb the operator,
-    ! regardless of whether the definiteness limit above was also crossed.
-    ! On a single precision build that error is being incurred now, so it
-    ! warrants a warning; on a double precision build it describes a storage
-    ! path that may not be in use, so it is recorded without one. Which of
-    ! the two terms dominates is the actionable part: skew is a meshing
-    ! problem, aspect ratio is a precision problem, and they have different
-    ! remedies.
-    if (this%metric_perturb .gt. NEKO_METRIC_PERTURB_MAX) then
-       if (rp .eq. sp) then
+    ! How much single precision actually perturbs the operator, regardless
+    ! of whether the definiteness limit above was also crossed. When either
+    ! the working precision or the precision the factors are held in is
+    ! single that error is being incurred now, so it warrants a warning, and
+    ! the estimate uses the roundoff of the precision the factors are really
+    ! held in: with rp = sp and gp = dp the storage term all but vanishes and
+    ! only the accumulation term is left. On a build that is double in both
+    ! it describes a storage choice not in use, so it is recorded without a
+    ! warning. Which of the two terms dominates is the actionable part: skew
+    ! is a meshing problem, aspect ratio is a precision problem, and they
+    ! have different remedies.
+    if (rp .eq. sp .or. gp .eq. sp) then
+       eps_store = real(epsilon(1.0_gp), rp)
+       perturb = eps_store * this%metric_scaled_cond &
+            + NEKO_EPS * this%metric_cond
+    else
+       eps_store = real(NEKO_EPS_SP, rp)
+       perturb = this%metric_perturb
+    end if
+
+    if (perturb .gt. NEKO_METRIC_PERTURB_MAX) then
+       if (rp .eq. sp .or. gp .eq. sp) then
           write(log_buf, '(A,ES12.5,A,ES12.5)') &
-               'Single precision metric error ', this%metric_perturb, &
+               'Single precision metric error ', perturb, &
                ', tolerance ', NEKO_METRIC_PERTURB_MAX
           call neko_log%warning(log_buf)
        else
@@ -1544,7 +1752,7 @@ contains
                'geometric factors would exceed the error tolerance')
        end if
 
-       if (real(NEKO_EPS_SP, rp) * this%metric_scaled_cond .ge. &
+       if (eps_store * this%metric_scaled_cond .ge. &
             NEKO_EPS * this%metric_cond) then
           call neko_log%message('Dominated by element skew')
        else

@@ -115,8 +115,9 @@ extern "C" {
                        (real *) w, (real *) u,                                  \
                        (real *) dx, (real *) dy, (real *) dz,                   \
                        (real *) dxt, (real *) dyt, (real *) dzt, (real *) h1,   \
-                       (real *) g11, (real *) g22, (real *) g33,                \
-                       (real *) g12, (real *) g13, (real *) g23, (int *) ind);  \
+                       (real_gp *) g11, (real_gp *) g22, (real_gp *) g33,       \
+                       (real_gp *) g12, (real_gp *) g13, (real_gp *) g23,       \
+                       (int *) ind);                                            \
     HIP_CHECK(hipGetLastError());
 
 /* Runtime dispatch onto the tuned chunk candidate */
@@ -136,8 +137,8 @@ extern "C" {
                         (hipStream_t) glb_cmd_queue,                            \
                         (real *) w, (real *) u,                                 \
                         (real *) dx, (real *) dy, (real *) dz,  (real *) h1,    \
-                        (real *) g11, (real *) g22, (real *) g33,               \
-                        (real *) g12, (real *) g13, (real *) g23,               \
+                        (real_gp *) g11, (real_gp *) g22, (real_gp *) g33,      \
+                        (real_gp *) g12, (real_gp *) g13, (real_gp *) g23,      \
                         (int *) ind, *nelv);                                    \
     HIP_CHECK(hipGetLastError());
 
@@ -149,8 +150,8 @@ extern "C" {
                         (hipStream_t) glb_cmd_queue,                            \
                         (real *) w, (real *) u,                                 \
                         (real *) dx, (real *) dy, (real *) dz,  (real *) h1,    \
-                        (real *) g11, (real *) g22, (real *) g33,               \
-                        (real *) g12, (real *) g13, (real *) g23,               \
+                        (real_gp *) g11, (real_gp *) g22, (real_gp *) g33,      \
+                        (real_gp *) g12, (real_gp *) g13, (real_gp *) g23,      \
                         (int *) ind, *nelv);                                    \
     HIP_CHECK(hipGetLastError());
 
@@ -324,8 +325,8 @@ static_assert(NEKO_MFMA_CANDIDATES == 10,
                         (real *) au, (real *) av, (real *) aw,                  \
                         (real *) u, (real *) v, (real *) w,                     \
                         (real *) dx, (real *) dy, (real *) dz,  (real *) h1,    \
-                        (real *) g11, (real *) g22, (real *) g33,               \
-                        (real *) g12, (real *) g13, (real *) g23,               \
+                        (real_gp *) g11, (real_gp *) g22, (real_gp *) g33,      \
+                        (real_gp *) g12, (real_gp *) g13, (real_gp *) g23,      \
                         (int *) ind, *nelv);                                    \
     HIP_CHECK(hipGetLastError());
 
@@ -338,8 +339,8 @@ static_assert(NEKO_MFMA_CANDIDATES == 10,
                         (real *) au, (real *) av, (real *) aw,                  \
                         (real *) u, (real *) v, (real *) w,                     \
                         (real *) dx, (real *) dy, (real *) dz,  (real *) h1,    \
-                        (real *) g11, (real *) g22, (real *) g33,               \
-                        (real *) g12, (real *) g13, (real *) g23,               \
+                        (real_gp *) g11, (real_gp *) g22, (real_gp *) g33,      \
+                        (real_gp *) g12, (real_gp *) g13, (real_gp *) g23,      \
                         (int *) ind, *nelv);                                    \
     HIP_CHECK(hipGetLastError());
 
@@ -485,7 +486,8 @@ int tune_compr(void *w, void *u, void *dx, void *dy, void *dz,
      returns */
   int strat = 0;
   /* Hardware capability, which the explicit NEKO_AUTOTUNE=MFMA pin needs */
-  const bool mfma = mfma_lx_supported<LX>() && hip_have_mfma();
+  const bool mfma = mfma_lx_supported<LX>() && mfma_geom_supported() &&
+                    hip_have_mfma();
   int best = 0;
   int retval;
 
@@ -732,7 +734,8 @@ int tune_compr_padded(void *w, void *u, void *dx, void *dy, void *dz,
   /* Formulation pinned by NEKO_AUTOTUNE, as the identifier this returns */
   int strat = 0;
   /* Hardware capability, which the explicit NEKO_AUTOTUNE=MFMA pin needs */
-  const bool mfma = mfma_lx_supported<LX>() && hip_have_mfma();
+  const bool mfma = mfma_lx_supported<LX>() && mfma_geom_supported() &&
+                    hip_have_mfma();
   int best = 0;
   int retval;
 
@@ -983,7 +986,8 @@ int tune_compr_vector(void *au, void *av, void *aw, void *u, void *v, void *w,
   /* Formulation pinned by NEKO_AUTOTUNE, as the identifier this returns */
   int strat = 0;
   /* Hardware capability, which the explicit NEKO_AUTOTUNE=MFMA pin needs */
-  const bool mfma = mfma_lx_supported<LX>() && hip_have_mfma();
+  const bool mfma = mfma_lx_supported<LX>() && mfma_geom_supported() &&
+                    hip_have_mfma();
   int retval;
 
   for (int c = 0; c < NEKO_EB_CANDIDATES; c++) {
@@ -1187,7 +1191,8 @@ int tune_compr_vector_padded(void *au, void *av, void *aw,
   /* Formulation pinned by NEKO_AUTOTUNE, as the identifier this returns */
   int strat = 0;
   /* Hardware capability, which the explicit NEKO_AUTOTUNE=MFMA pin needs */
-  const bool mfma = mfma_lx_supported<LX>() && hip_have_mfma();
+  const bool mfma = mfma_lx_supported<LX>() && mfma_geom_supported() &&
+                    hip_have_mfma();
   int retval;
 
   for (int c = 0; c < NEKO_EB_CANDIDATES; c++) {

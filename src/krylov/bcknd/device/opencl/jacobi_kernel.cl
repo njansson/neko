@@ -43,12 +43,12 @@ __kernel void jacobi_kernel_lx##LX(__global real * __restrict__ du,            \
                                    __global const real * __restrict__ dxt,     \
                                    __global const real * __restrict__ dyt,     \
                                    __global const real * __restrict__ dzt,     \
-                                   __global const real * __restrict__ G11,     \
-                                   __global const real * __restrict__ G22,     \
-                                   __global const real * __restrict__ G33,     \
-                                   __global const real * __restrict__ G12,     \
-                                   __global const real * __restrict__ G13,     \
-                                   __global const real * __restrict__ G23,     \
+                                   __global const real_gp * __restrict__ G11,  \
+                                   __global const real_gp * __restrict__ G22,  \
+                                   __global const real_gp * __restrict__ G33,  \
+                                   __global const real_gp * __restrict__ G12,  \
+                                   __global const real_gp * __restrict__ G13,  \
+                                   __global const real_gp * __restrict__ G23,  \
                                    const int nel) {                            \
                                                                                \
   const int idx = get_global_id(0);                                            \
@@ -65,19 +65,19 @@ __kernel void jacobi_kernel_lx##LX(__global real * __restrict__ du,            \
   real d = 0.0;                                                                \
                                                                                \
   for (int l = 0; l < LX; l++) {                                               \
-    real g = G11[l + LX*j + LX*LX*k + LX*LX*LX*e];                             \
+    real_gp g = G11[l + LX*j + LX*LX*k + LX*LX*LX*e];                          \
     real t = dxt[i + LX*l];                                                    \
     d += g*t*t;                                                                \
   }                                                                            \
                                                                                \
   for (int l = 0; l < LX; l++) {                                               \
-    real g = G22[i + LX*l + LX*LX*k + LX*LX*LX*e];                             \
+    real_gp g = G22[i + LX*l + LX*LX*k + LX*LX*LX*e];                          \
     real t = dyt[j + LX*l];                                                    \
     d += g*t*t;                                                                \
   }                                                                            \
                                                                                \
   for (int l = 0; l < LX; l++) {                                               \
-    real g = G33[i + LX*j + LX*LX*l + LX*LX*LX*e];                             \
+    real_gp g = G33[i + LX*j + LX*LX*l + LX*LX*LX*e];                          \
     real t = dzt[k + LX*l];                                                    \
     d += g*t*t;                                                                \
   }                                                                            \

@@ -34,16 +34,23 @@
  POSSIBILITY OF SUCH DAMAGE.
 */
 
+/* real_gp, the type the geometric factors are held in */
+#include <device/device_config.h>
+
 /**
  * Device kernel for coef geometry
+ * @note G11..G33 are written as @a real_gp, which need not be @a T. They are
+ * formed from the mapping derivatives in @a T, so this kernel adds no
+ * precision to a wider @a real_gp; see coef_generate_geo() in coef.f90 for
+ * when it is used.
  */
 template< typename T, const int LX, const int CHUNKS >
-__global__ void coef_generate_geo_kernel(T * __restrict__ G11,
-					 T * __restrict__ G12,
-					 T * __restrict__ G13,
-					 T * __restrict__ G22,
-					 T * __restrict__ G23,
-					 T * __restrict__ G33,
+__global__ void coef_generate_geo_kernel(real_gp * __restrict__ G11,
+					 real_gp * __restrict__ G12,
+					 real_gp * __restrict__ G13,
+					 real_gp * __restrict__ G22,
+					 real_gp * __restrict__ G23,
+					 real_gp * __restrict__ G33,
 					 const T * __restrict__ drdx,
 					 const T * __restrict__ drdy,
 					 const T * __restrict__ drdz,

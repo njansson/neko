@@ -15,6 +15,14 @@ typedef real real_xp;
 #else
 typedef @NEKO_DEV_XREAL_TYPE@ real_xp;
 #endif
+
+/**
+ * Floating point precision of the geometric factors in device kernels
+ * @note Set to the same C/C++ equivalent type as @a gp. Kernels read the
+ * factors through pointers of this type and convert to @a real on load,
+ * since the two may differ in size.
+ */
+typedef @NEKO_DEV_GREAL_TYPE@ real_gp;
 extern void *glb_ctx;
 extern void *glb_cmd_queue;
 extern void *glb_device_id;

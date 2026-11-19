@@ -119,8 +119,8 @@ extern "C" {
                          ((real *) w, (real *) u,                               \
                           (real *) dx, (real *) dy, (real *) dz,                \
                           (real *) dxt, (real *) dyt, (real *) dzt, (real *) h1,\
-                          (real *) g11, (real *) g22, (real *) g33,             \
-                          (real *) g12, (real *) g13, (real *) g23,             \
+                          (real_gp *) g11, (real_gp *) g22, (real_gp *) g33,    \
+                          (real_gp *) g12, (real_gp *) g13, (real_gp *) g23,    \
                           (const int *) ind);                                   \
       CUDA_CHECK(cudaGetLastError());
 
@@ -138,8 +138,8 @@ extern "C" {
       <<<NEKO_EB_NBLCKS(*nelv, LX, C), NEKO_EB_NTHRDS(LX, C), 0, stream>>>      \
                           ((real *) w, (real *) u,                              \
                            (real *) dx, (real *) dy, (real *) dz, (real *) h1,  \
-                           (real *) g11, (real *) g22, (real *) g33,            \
-                           (real *) g12, (real *) g13, (real *) g23,            \
+                           (real_gp *) g11, (real_gp *) g22, (real_gp *) g33,   \
+                           (real_gp *) g12, (real_gp *) g13, (real_gp *) g23,   \
                            (const int *) ind, *nelv);                           \
       CUDA_CHECK(cudaGetLastError());
 
@@ -148,8 +148,8 @@ extern "C" {
       <<<NEKO_EB_NBLCKS(*nelv, LX, C), NEKO_EB_NTHRDS(LX, C), 0, stream>>>      \
                           ((real *) w, (real *) u,                              \
                            (real *) dx, (real *) dy, (real *) dz, (real *) h1,  \
-                           (real *) g11, (real *) g22, (real *) g33,            \
-                           (real *) g12, (real *) g13, (real *) g23,            \
+                           (real_gp *) g11, (real_gp *) g22, (real_gp *) g33,   \
+                           (real_gp *) g12, (real_gp *) g13, (real_gp *) g23,   \
                            (const int *) ind, *nelv);                           \
       CUDA_CHECK(cudaGetLastError());
 
@@ -345,9 +345,10 @@ extern "C" {
                                     ((real *) au, (real *) av, (real *) aw,    \
                                      (real *) u, (real *) v, (real *) w,       \
                                      (real *) dx, (real *) dy, (real *) dz,    \
-                                     (real *) h1, (real *) g11, (real *) g22,  \
-                                     (real *) g33, (real *) g12, (real *) g13, \
-                                     (real *) g23,                             \
+                                     (real *) h1, (real_gp *) g11,             \
+                                     (real_gp *) g22, (real_gp *) g33,         \
+                                     (real_gp *) g12, (real_gp *) g13,         \
+                                     (real_gp *) g23,                          \
                                      (const int *) ind, *nelv);                \
     CUDA_CHECK(cudaGetLastError());
 
@@ -357,9 +358,10 @@ extern "C" {
                                     ((real *) au, (real *) av, (real *) aw,    \
                                      (real *) u, (real *) v, (real *) w,       \
                                      (real *) dx, (real *) dy, (real *) dz,    \
-                                     (real *) h1, (real *) g11, (real *) g22,  \
-                                     (real *) g33, (real *) g12, (real *) g13, \
-                                     (real *) g23,                             \
+                                     (real *) h1, (real_gp *) g11,             \
+                                     (real_gp *) g22, (real_gp *) g33,         \
+                                     (real_gp *) g12, (real_gp *) g13,         \
+                                     (real_gp *) g23,                          \
                                      (const int *) ind, *nelv);                \
     CUDA_CHECK(cudaGetLastError());
 
@@ -544,11 +546,13 @@ int tune_compr(void *w, void *u, void *dx, void *dy, void *dz, void *dxt,
   /* Formulation pinned by NEKO_AUTOTUNE, as the identifier tune_compr()
      returns */
   int strat = 0;
-  const bool dmma = dmma_lx_supported<LX>() && cuda_have_dmma();
+  const bool dmma = dmma_lx_supported<LX>() && dmma_geom_supported() &&
+                    cuda_have_dmma();
   /* Whether the pointers are bulk copy aligned is a property of this call
      rather than of the kernel, so it is checked rather than assumed, see
      dmma_tma_aligned() in dmma_tma_kernel.h */
-  const bool tma = dmma_tma_lx_supported<LX>() && cuda_have_tma() &&
+  const bool tma = dmma_tma_lx_supported<LX>() && dmma_geom_supported() &&
+                   cuda_have_tma() &&
                    dmma_tma_aligned(w, u, h1, g11, g22, g33, g12, g13, g23);
   int best = 0;
   int retval;
@@ -789,11 +793,13 @@ int tune_compr_padded(void *w, void *u, void *dx, void *dy, void *dz, void *dxt,
   const int tw_pin = neko_dmma_tma_pin();
   /* Formulation pinned by NEKO_AUTOTUNE, as the identifier this returns */
   int strat = 0;
-  const bool dmma = dmma_lx_supported<LX>() && cuda_have_dmma();
+  const bool dmma = dmma_lx_supported<LX>() && dmma_geom_supported() &&
+                    cuda_have_dmma();
   /* Whether the pointers are bulk copy aligned is a property of this call
      rather than of the kernel, so it is checked rather than assumed, see
      dmma_tma_aligned() in dmma_tma_kernel.h */
-  const bool tma = dmma_tma_lx_supported<LX>() && cuda_have_tma() &&
+  const bool tma = dmma_tma_lx_supported<LX>() && dmma_geom_supported() &&
+                   cuda_have_tma() &&
                    dmma_tma_aligned(w, u, h1, g11, g22, g33, g12, g13, g23);
   int best = 0;
   int retval;
@@ -1041,15 +1047,18 @@ int tune_compr_vector(void *au, void *av, void *aw, void *u, void *v, void *w,
   const int tw_pin = neko_dmma_tma_pin();
   /* Formulation pinned by NEKO_AUTOTUNE, as the identifier this returns */
   int strat = 0;
-  const bool dmma = dmma_vector_lx_supported<LX>() && cuda_have_dmma();
+  const bool dmma = dmma_vector_lx_supported<LX>() &&
+                    dmma_geom_supported() && cuda_have_dmma();
   /* Whether the pointers are bulk copy aligned is a property of this call
      rather than of the kernel, see dmma_tma_vector_aligned() */
-  const bool tma = dmma_tma_vector_lx_supported<LX>() && cuda_have_tma() &&
+  const bool tma = dmma_tma_vector_lx_supported<LX>() &&
+                   dmma_geom_supported() && cuda_have_tma() &&
                    dmma_tma_vector_aligned(au, av, aw, u, v, w, h1,
                                            g11, g22, g33, g12, g13, g23);
   /* Same pointers, and additionally the device has to grant the block the
      dynamic allocation, see cuda_have_tma_batch() */
-  const bool batch = dmma_tma_batch_lx_supported<LX>() && cuda_have_tma_batch()
+  const bool batch = dmma_tma_batch_lx_supported<LX>() &&
+                     dmma_geom_supported() && cuda_have_tma_batch()
                      && dmma_tma_vector_aligned(au, av, aw, u, v, w, h1,
                                                 g11, g22, g33,
                                                 g12, g13, g23);
@@ -1280,15 +1289,18 @@ int tune_compr_vector_padded(void *au, void *av, void *aw, void *u, void *v,
   const int tw_pin = neko_dmma_tma_pin();
   /* Formulation pinned by NEKO_AUTOTUNE, as the identifier this returns */
   int strat = 0;
-  const bool dmma = dmma_vector_lx_supported<LX>() && cuda_have_dmma();
+  const bool dmma = dmma_vector_lx_supported<LX>() &&
+                    dmma_geom_supported() && cuda_have_dmma();
   /* Whether the pointers are bulk copy aligned is a property of this call
      rather than of the kernel, see dmma_tma_vector_aligned() */
-  const bool tma = dmma_tma_vector_lx_supported<LX>() && cuda_have_tma() &&
+  const bool tma = dmma_tma_vector_lx_supported<LX>() &&
+                   dmma_geom_supported() && cuda_have_tma() &&
                    dmma_tma_vector_aligned(au, av, aw, u, v, w, h1,
                                            g11, g22, g33, g12, g13, g23);
   /* Same pointers, and additionally the device has to grant the block the
      dynamic allocation, see cuda_have_tma_batch() */
-  const bool batch = dmma_tma_batch_lx_supported<LX>() && cuda_have_tma_batch()
+  const bool batch = dmma_tma_batch_lx_supported<LX>() &&
+                     dmma_geom_supported() && cuda_have_tma_batch()
                      && dmma_tma_vector_aligned(au, av, aw, u, v, w, h1,
                                                 g11, g22, g33,
                                                 g12, g13, g23);

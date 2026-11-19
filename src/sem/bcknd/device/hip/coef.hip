@@ -59,8 +59,8 @@ extern "C" {
       hipLaunchKernelGGL(                                                       \
                HIP_KERNEL_NAME(coef_generate_geo_kernel<real, LX, 1024>),       \
                nblcks, nthrds, 0, (hipStream_t) glb_cmd_queue,                  \
-               (real *) G11, (real *) G12, (real *) G13,                        \
-               (real *) G22, (real *) G23, (real *) G33,                        \
+               (real_gp *) G11, (real_gp *) G12, (real_gp *) G13,               \
+               (real_gp *) G22, (real_gp *) G23, (real_gp *) G33,               \
                (real *) drdx, (real *) drdy, (real *) drdz,                     \
                (real *) dsdx, (real *) dsdy, (real *) dsdz,                     \
                (real *) dtdx, (real *) dtdy, (real *) dtdz,                     \

@@ -7,6 +7,7 @@ compiler=@FC@
 
 # A couple of custom variables to communicate with consumers of the package
 precision=@NEKO_REAL_TYPE@
+geom_precision=@NEKO_GREAL_TYPE@
 backend=@NEKO_BCKND@
 
 Name: NEKO

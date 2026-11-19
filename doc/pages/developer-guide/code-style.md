@@ -67,6 +67,15 @@ respectively. For 16, 32, or 64-bit integers, Neko has defined the kinds ` i2`,
 `i4` or `i8`, respectively; however, for standard integers, it is perfectly fine
 to use a plain `integer`.
 
+The geometric factors \f$ G_{ij} \f$ of `coef_t` (`G11`, ..., `G23` and their
+compressed copies) are the exception: they are declared with the kind `gp`,
+which is `rp` unless Neko is configured with `--enable-real-geom`. A routine
+receiving them as dummy arguments must declare those with `real(kind=gp)`, and
+may not hand them to a routine expecting `rp` arrays, e.g. `col2` or `copy`.
+Expressions mixing the two kinds are fine and are evaluated in the wider one.
+Device kernels read the factors through pointers of type `real_gp`, the device
+counterpart of `gp`, next to `real` for everything else.
+
 ## Enforcing rules
 
 Submitting a pull request to Neko requires that the code adheres to the linting

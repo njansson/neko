@@ -204,6 +204,20 @@ static inline bool mfma_lx_supported() {
 }
 
 /*
+ * Whether the matrix core kernels of the Helmholtz operator can read the
+ * geometric factors. They take g11..g23 from device memory in the working
+ * precision like everything else they stage, so a build that holds the
+ * factors in another one (--enable-real-geom, `real_gp` in device_config.h)
+ * is left with the scalar kernels, which read them through `real_gp`.
+ *
+ * Tested beside mfma_lx_supported() by the Helmholtz tuners only: no other
+ * operator with a matrix core variant reads the factors.
+ */
+static inline bool mfma_geom_supported() {
+  return sizeof(real_gp) == sizeof(real);
+}
+
+/*
  * Wavefronts per block for the MFMA kernels. Candidate C selects 2^C
  * wavefronts, i.e. 1, 2, 4 or 8.
  *

@@ -117,6 +117,7 @@ Features are enabled and disabled by passing either `--enable-FEATURE[=arg]` or 
 | Name                  | Description                                                                                                       |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `--enable-real=Xp`    | Specify working precision of REAL types:<br>`sp` -- `REAL(kind=REAL32)` <br>`dp` -- `REAL(kind=REAL64)` (default) |
+| `--enable-real-geom=Xp` | Specify precision of the geometric factors \f$ G_{ij} \f$:<br>`sp` -- `REAL(kind=REAL32)` <br>`dp` -- `REAL(kind=REAL64)` <br>(default: the working precision) |
 | `--enable-contrib`    | Compile various tools                                                                                             |
 | `--enable-device-mpi` | Enable device aware MPI                                                                                           |
 | `--enable-openmp`     | Enable OpenMP                                                                                                     |
@@ -289,7 +290,7 @@ $ ./configure --with-metal --enable-real=sp
 * The Objective-C compiler and flags can be passed using `OBJC` and `OBJCFLAGS`, respectively (defaults to `clang`)
 * Build using `make && make install`
 
-@note Apple GPUs do not support double precision; the Metal backend requires Neko to be configured with single precision (`--enable-real=sp`).
+@note Apple GPUs do not support double precision; the Metal backend requires Neko to be configured with single precision (`--enable-real=sp`), which the geometric factors then have to follow (`--enable-real-geom`, if given, must be `sp`).
 
 @note On devices with unified memory (Apple Silicon), the Metal backend maps arrays zero-copy: host and device share a single allocation instead of keeping replicated copies, and host-device transfers become no-ops. This roughly halves the memory footprint of mapped data. Zero-copy mapping can be disabled at runtime by setting the environment variable `NEKO_METAL_ZEROCOPY=0`, which restores fully replicated buffers. On GPUs without unified memory (e.g. AMD GPUs in Intel-based Macs), buffers are always replicated.
 

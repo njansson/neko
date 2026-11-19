@@ -123,11 +123,12 @@ contains
        if (msh%gdim .eq. 2) then
           call mxm(Xh%dx, Xh%lx, u(1,1,1,e), Xh%lx, dudr, lyz)
           call mxm(u(1,1,1,e), Xh%lx, Xh%dyt, Xh%ly, duds, Xh%ly)
-          call col3(tmp1, dudr, coef%G11(1,1,1,e), lxyz)
-          call col3(tmp2, duds, coef%G22(1,1,1,e), lxyz)
+          ! The geometric factors are gp, which need not be rp
+          tmp1 = dudr * coef%G11(:,:,:,e)
+          tmp2 = duds * coef%G22(:,:,:,e)
           if (msh%dfrmd_el(e)) then
-             call addcol3(tmp1, duds, coef%G12(1,1,1,e), lxyz)
-             call addcol3(tmp2, dudr, coef%G12(1,1,1,e), lxyz)
+             tmp1 = tmp1 + duds * coef%G12(:,:,:,e)
+             tmp2 = tmp2 + dudr * coef%G12(:,:,:,e)
           end if
           call col2(tmp1, coef%h1(1,1,1,e), lxyz)
           call col2(tmp2, coef%h1(1,1,1,e), lxyz)
@@ -143,16 +144,16 @@ contains
                   duds(1,1,k))
           end do
           call libxsmm_mmcall(ax_helm_xmm3, u(1,1,1,e), Xh%dzt, dudt)
-          call col3(tmp1, dudr, coef%G11(1,1,1,e), lxyz)
-          call col3(tmp2, duds, coef%G22(1,1,1,e), lxyz)
-          call col3(tmp3, dudt, coef%G33(1,1,1,e), lxyz)
+          tmp1 = dudr * coef%G11(:,:,:,e)
+          tmp2 = duds * coef%G22(:,:,:,e)
+          tmp3 = dudt * coef%G33(:,:,:,e)
           if (msh%dfrmd_el(e)) then
-             call addcol3(tmp1, duds, coef%G12(1,1,1,e), lxyz)
-             call addcol3(tmp1, dudt, coef%G13(1,1,1,e), lxyz)
-             call addcol3(tmp2, dudr, coef%G12(1,1,1,e), lxyz)
-             call addcol3(tmp2, dudt, coef%G23(1,1,1,e), lxyz)
-             call addcol3(tmp3, dudr, coef%G13(1,1,1,e), lxyz)
-             call addcol3(tmp3, duds, coef%G23(1,1,1,e), lxyz)
+             tmp1 = tmp1 + duds * coef%G12(:,:,:,e)
+             tmp1 = tmp1 + dudt * coef%G13(:,:,:,e)
+             tmp2 = tmp2 + dudr * coef%G12(:,:,:,e)
+             tmp2 = tmp2 + dudt * coef%G23(:,:,:,e)
+             tmp3 = tmp3 + dudr * coef%G13(:,:,:,e)
+             tmp3 = tmp3 + duds * coef%G23(:,:,:,e)
           end if
           call col2(tmp1, coef%h1(1,1,1,e), lxyz)
           call col2(tmp2, coef%h1(1,1,1,e), lxyz)

@@ -25,6 +25,20 @@
 
 ## Develop
 
+- Added a separate precision for the geometric factors, the kind `gp` (with
+  `c_gp`, `MPI_GEOM_PRECISION` and the device type `real_gp`), selected with
+  `--enable-real-geom=sp|dp` and equal to `rp` unless given. `coef_t%G11`, ...,
+  `G23` and their compressed copies are declared with it, so a single precision
+  build can hold the factors in double precision and a double precision build
+  can hold them in single. When the two kinds differ the factors are formed in
+  the wider one from the coordinates and rounded to `gp` once, and the
+  Helmholtz and Jacobi kernels of the CPU, SX, CUDA, HIP and OpenCL backends
+  read them as `gp` and evaluate the mixed products in the wider kind. The
+  CUDA `DMMA` and HIP `MFMA` strategies stage the factors in the working
+  precision and are not offered when the kinds differ, and the Metal backend
+  requires `gp = sp`. Results are unchanged when the kinds are equal. Code
+  receiving the factors as dummy arguments must declare them `real(kind=gp)`,
+  and the C API returns them as `neko_real_gp`.
 - Organaized `fluid_pnpn_t`, so that types extending `fluid_pnpn_t` can
   reuse them.
 - Reduced statistics memory usage by storing work/gradients in the scratch

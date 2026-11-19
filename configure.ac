@@ -27,6 +27,14 @@ AC_ARG_ENABLE(real,
                     ]),
             [enable_real=${enableval}], [enable_real=dp])
 
+AC_ARG_ENABLE(real-geom,
+          AS_HELP_STRING([--enable-real-geom=Xp  Specify precision of the geometric factors:
+                    sp -- REAL(kind=4)
+                    dp -- REAL(kind=8)
+                    (default: the working precision)
+                    ]),
+            [enable_real_geom=${enableval}], [enable_real_geom=""])
+
 AC_ARG_ENABLE(blk_size,
               AS_HELP_STRING([--enable-blk_size=number of values Specify size of fast memory
                     (default: 2048 for dp, 4096 for sp/ssp, 1024 for qp)]),
@@ -239,11 +247,39 @@ else
    AC_MSG_ERROR([Invalid working precision])
 fi
 
+# Select precision of the geometric factors, the working precision
+# unless requested otherwise
+if (test "x$enable_real_geom" = x || test "x$enable_real_geom" = xno); then
+   enable_real_geom=$NEKO_REAL_TYPE
+fi
+
+if test "x$enable_real_geom" = xsp; then
+   AC_SUBST(NEKO_GREAL_TYPE, "sp")
+   AC_SUBST(NEKO_C_GREAL_TYPE, "c_float")
+   AC_SUBST(NEKO_MPI_GREAL_TYPE, "MPI_REAL")
+   AC_SUBST(NEKO_DEV_GREAL_TYPE, "float")
+   AC_SUBST(NEKO_PY_GREAL_TYPE, "c_float")
+elif test "x$enable_real_geom" = xdp; then
+   AC_SUBST(NEKO_GREAL_TYPE, "dp")
+   AC_SUBST(NEKO_C_GREAL_TYPE, "c_double")
+   AC_SUBST(NEKO_MPI_GREAL_TYPE, "MPI_DOUBLE_PRECISION")
+   AC_SUBST(NEKO_DEV_GREAL_TYPE, "double")
+   AC_SUBST(NEKO_PY_GREAL_TYPE, "c_double")
+elif test "x$enable_real_geom" = xqp; then
+   AC_SUBST(NEKO_GREAL_TYPE, "qp")
+   AC_SUBST(NEKO_C_GREAL_TYPE, "c_long_double")
+   AC_SUBST(NEKO_MPI_GREAL_TYPE, "MPI_REAL16")
+   AC_SUBST(NEKO_DEV_GREAL_TYPE, "long double")
+   AC_SUBST(NEKO_PY_GREAL_TYPE, "c_longdouble")
+else
+   AC_MSG_ERROR([Invalid precision of the geometric factors])
+fi
+
 if test "x$have_real128" = xyes; then
    AC_SUBST(NEKO_REAL128_TYPE, "REAL128")
 else
    AC_SUBST(NEKO_REAL128_TYPE, "selected_real_kind(1)")
-   if test "x$enable_real" = xqp; then
+   if (test "x$enable_real" = xqp || test "x$enable_real_geom" = xqp); then
       AC_MSG_ERROR([REAL128 not supported])
    fi
 fi
@@ -301,6 +337,12 @@ AX_OPENCL
 
 # Checks for Metal backend
 AX_METAL
+
+# Apple GPUs lack fp64 support, the geometric factors read by the
+# Metal kernels can only be single precision
+if (test "x${have_metal}" = xyes && test "x$enable_real_geom" != xsp); then
+   AC_MSG_ERROR([Metal backend requires --enable-real-geom=sp])
+fi
 
 # Set the NEKO_BCKND variable
 if test "x${have_cuda}" = xyes; then
@@ -651,6 +693,8 @@ AS_ECHO(["  Build configuration:"])
 AS_ECHO([""])
 printf '    %-30s %s\n' "Working precision:" \
        "$enable_real (rp = $NEKO_REAL_TYPE, xp = $NEKO_XREAL_TYPE)"
+printf '    %-30s %s\n' "Geometric factor precision:" \
+       "$enable_real_geom (gp = $NEKO_GREAL_TYPE)"
 printf '    %-30s %s\n' "Fast memory size (blk_size):" "$blk_size"
 printf '    %-30s %s\n' "Backend:" "$NEKO_BCKND"
 printf '    %-30s %s\n' "Contrib tools:" "$enable_contrib"

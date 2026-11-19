@@ -50,9 +50,13 @@ module comm
 #ifdef HAVE_MPI_PARAM_DTYPE
   type(MPI_Datatype), public, parameter :: MPI_REAL_PRECISION = @NEKO_MPI_REAL_TYPE@
   type(MPI_Datatype), public, parameter :: MPI_EXTRA_PRECISION = @NEKO_MPI_XREAL_TYPE@
+  !> MPI type for the precision of the geometric factors
+  type(MPI_Datatype), public, parameter :: MPI_GEOM_PRECISION = @NEKO_MPI_GREAL_TYPE@
 #else
   type(MPI_Datatype), public :: MPI_REAL_PRECISION
   type(MPI_Datatype), public :: MPI_EXTRA_PRECISION
+  !> MPI type for the precision of the geometric factors
+  type(MPI_Datatype), public :: MPI_GEOM_PRECISION
 #endif
 
   !> MPI rank
@@ -177,6 +181,7 @@ contains
 #ifndef HAVE_MPI_PARAM_DTYPE
     MPI_REAL_PRECISION = @NEKO_MPI_REAL_TYPE@
     MPI_EXTRA_PRECISION = @NEKO_MPI_XREAL_TYPE@
+    MPI_GEOM_PRECISION = @NEKO_MPI_GREAL_TYPE@
 #endif
 
 

@@ -303,6 +303,25 @@ static inline bool dmma_vector_lx_supported()
   return (sizeof(real) == 8) && (LX >= 4) && (LX <= DMMA_P);
 }
 
+/**
+ * Whether the tensor core kernels of the Helmholtz operator can read the
+ * geometric factors.
+ *
+ * Those kernels take g11..g23 from device memory as fp64 like everything else
+ * they touch, the TMA staged ones as bulk byte copies of whole cubes, so the
+ * factors have to be held in the working precision. A build that holds them
+ * in another one (--enable-real-geom, `real_gp` in device_config.h) is left
+ * with the scalar kernels, which read them through `real_gp`.
+ *
+ * A correctness predicate like the two above, and tested beside them by the
+ * Helmholtz tuners only: no other operator with a tensor core variant reads
+ * the factors.
+ */
+static inline bool dmma_geom_supported()
+{
+  return sizeof(real_gp) == sizeof(real);
+}
+
 #if defined(__CUDA_ARCH__) && (__CUDA_ARCH__ >= 800) && (__CUDA_ARCH__ < 1000)
 
 /*

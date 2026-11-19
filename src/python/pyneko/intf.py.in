@@ -126,12 +126,12 @@ libneko.neko_case_fluid_space.argtypes = [POINTER(c_int),
 libneko.neko_case_fluid_space.restype = None
 
 libneko.neko_case_fluid_coef.argtypes = [POINTER(c_int),
-                                         POINTER(POINTER(@NEKO_PY_REAL_TYPE@)),
-                                         POINTER(POINTER(@NEKO_PY_REAL_TYPE@)),
-                                         POINTER(POINTER(@NEKO_PY_REAL_TYPE@)),
-                                         POINTER(POINTER(@NEKO_PY_REAL_TYPE@)),
-                                         POINTER(POINTER(@NEKO_PY_REAL_TYPE@)),
-                                         POINTER(POINTER(@NEKO_PY_REAL_TYPE@)),
+                                         POINTER(POINTER(@NEKO_PY_GREAL_TYPE@)),
+                                         POINTER(POINTER(@NEKO_PY_GREAL_TYPE@)),
+                                         POINTER(POINTER(@NEKO_PY_GREAL_TYPE@)),
+                                         POINTER(POINTER(@NEKO_PY_GREAL_TYPE@)),
+                                         POINTER(POINTER(@NEKO_PY_GREAL_TYPE@)),
+                                         POINTER(POINTER(@NEKO_PY_GREAL_TYPE@)),
                                          POINTER(POINTER(@NEKO_PY_REAL_TYPE@)),
                                          POINTER(POINTER(@NEKO_PY_REAL_TYPE@)),
                                          POINTER(POINTER(@NEKO_PY_REAL_TYPE@)),
@@ -483,12 +483,12 @@ def wrap_space(lx, zg, dr_inv, ds_inv, dt_inv, wx, wy, wz, dx, dy, dz):
 
 def case_fluid_coef(case_descr):
     """ Retrive coefficients of a Neko case's fluid solver as a `neko_coef_t`. """
-    G11_ptr = POINTER(@NEKO_PY_REAL_TYPE@)()
-    G22_ptr = POINTER(@NEKO_PY_REAL_TYPE@)()
-    G33_ptr = POINTER(@NEKO_PY_REAL_TYPE@)()
-    G12_ptr = POINTER(@NEKO_PY_REAL_TYPE@)()
-    G13_ptr = POINTER(@NEKO_PY_REAL_TYPE@)()
-    G23_ptr = POINTER(@NEKO_PY_REAL_TYPE@)()
+    G11_ptr = POINTER(@NEKO_PY_GREAL_TYPE@)()
+    G22_ptr = POINTER(@NEKO_PY_GREAL_TYPE@)()
+    G33_ptr = POINTER(@NEKO_PY_GREAL_TYPE@)()
+    G12_ptr = POINTER(@NEKO_PY_GREAL_TYPE@)()
+    G13_ptr = POINTER(@NEKO_PY_GREAL_TYPE@)()
+    G23_ptr = POINTER(@NEKO_PY_GREAL_TYPE@)()
     mult_ptr = POINTER(@NEKO_PY_REAL_TYPE@)()
     dxdr_ptr = POINTER(@NEKO_PY_REAL_TYPE@)()
     dydr_ptr = POINTER(@NEKO_PY_REAL_TYPE@)()
@@ -551,17 +551,17 @@ def case_fluid_coef(case_descr):
     dm = case_fluid_dofmap(case_descr)
 
     coef = neko_coef_t(
-        np.frombuffer((@NEKO_PY_REAL_TYPE@ * dm.ntot).from_address(
+        np.frombuffer((@NEKO_PY_GREAL_TYPE@ * dm.ntot).from_address(
             addressof(G11_ptr.contents))),
-        np.frombuffer((@NEKO_PY_REAL_TYPE@ * dm.ntot).from_address(
+        np.frombuffer((@NEKO_PY_GREAL_TYPE@ * dm.ntot).from_address(
             addressof(G22_ptr.contents))),
-        np.frombuffer((@NEKO_PY_REAL_TYPE@ * dm.ntot).from_address(
+        np.frombuffer((@NEKO_PY_GREAL_TYPE@ * dm.ntot).from_address(
             addressof(G33_ptr.contents))),
-        np.frombuffer((@NEKO_PY_REAL_TYPE@ * dm.ntot).from_address(
+        np.frombuffer((@NEKO_PY_GREAL_TYPE@ * dm.ntot).from_address(
             addressof(G12_ptr.contents))),
-        np.frombuffer((@NEKO_PY_REAL_TYPE@ * dm.ntot).from_address(
+        np.frombuffer((@NEKO_PY_GREAL_TYPE@ * dm.ntot).from_address(
             addressof(G13_ptr.contents))),
-        np.frombuffer((@NEKO_PY_REAL_TYPE@ * dm.ntot).from_address(
+        np.frombuffer((@NEKO_PY_GREAL_TYPE@ * dm.ntot).from_address(
             addressof(G23_ptr.contents))),
         np.frombuffer((@NEKO_PY_REAL_TYPE@ * dm.ntot).from_address(
             addressof(mult_ptr.contents))),

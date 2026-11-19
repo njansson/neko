@@ -1,8 +1,8 @@
 module pfunit_comm_utils
   use mpi
   use comm, only : NEKO_COMM, NEKO_GLOBAL_COMM, MPI_REAL_PRECISION, &
-       MPI_EXTRA_PRECISION, pe_rank, pe_size, nio, global_pe_rank, &
-       global_pe_size, NEKO_MPI_THREAD_PROVIDED
+       MPI_EXTRA_PRECISION, MPI_GEOM_PRECISION, pe_rank, pe_size, nio, &
+       global_pe_rank, global_pe_size, NEKO_MPI_THREAD_PROVIDED
   use utils, only : neko_error
   implicit none
   private
@@ -39,6 +39,7 @@ contains
 #ifndef HAVE_MPI_PARAM_DTYPE
     MPI_REAL_PRECISION%mpi_val = @NEKO_MPI_REAL_TYPE@
     MPI_EXTRA_PRECISION%mpi_val = @NEKO_MPI_XREAL_TYPE@
+    MPI_GEOM_PRECISION%mpi_val = @NEKO_MPI_GREAL_TYPE@
 #endif
 
     call MPI_Comm_dup(ext_comm, NEKO_GLOBAL_COMM%mpi_val, ierr)
